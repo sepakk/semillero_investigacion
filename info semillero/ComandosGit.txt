@@ -1,8 +1,0 @@
-COMANDOS GIT:
-git config --global user.name "nombre de usuario"
-git config --global user.email "email"
-git clone https://github.com/sepakk/semillero_investigacion.git
-git add. // agregar los cambios
-git commit -m "Comentario" // comentario de la modificaion
-git push origin master // carga de archivos a raiz 
-git pull // descarga modificaciones.
