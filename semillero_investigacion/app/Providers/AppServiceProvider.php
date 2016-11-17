@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace BancoDeHojas\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
