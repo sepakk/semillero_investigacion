@@ -53,6 +53,12 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    <li>
+                        <a href="{{url('login')}}">Iniciar Sesión</a>
+                    </li>
+                    <li>
+                        <a href="{{url('register')}}">Registrarse</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
