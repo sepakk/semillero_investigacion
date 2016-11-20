@@ -1,10 +1,10 @@
 <?php
 
-namespace BancoDeHojas\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth;
 
-use BancoDeHojas\User;
+use App\User;
 use Validator;
-use BancoDeHojas\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller

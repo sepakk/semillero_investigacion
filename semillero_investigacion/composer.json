@@ -20,7 +20,7 @@
             "database"
         ],
         "psr-4": {
-            "BancoDeHojas\\": "app/"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {

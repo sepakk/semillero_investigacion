@@ -172,11 +172,11 @@ return [
         /*
          * Application Service Providers...
          */
-        BancoDeHojas\Providers\AppServiceProvider::class,
-        BancoDeHojas\Providers\AuthServiceProvider::class,
-        // BancoDeHojas\Providers\BroadcastServiceProvider::class,
-        BancoDeHojas\Providers\EventServiceProvider::class,
-        BancoDeHojas\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
 
     ],
 
