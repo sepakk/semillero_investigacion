@@ -19,3 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::resource('perfec', 'PerfeccionamientoController');
+Route::resource('experiencia', 'ExperienciaLabController');
