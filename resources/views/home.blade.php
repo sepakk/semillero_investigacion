@@ -70,6 +70,99 @@
                     <p><b>Dirección: </b> Carrera 12312 #123 - 132</p>
                     <p><b>E-mail: </b> linuxdiaz@gmail.com</p>
                 </div>
+                <hr>
+                <div class="information-container">
+                    <h2>Idiomas</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Habla</th>
+                                <th>Lectura</th>
+                                <th>Escritura</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Inglés</td>
+                                <td>medio</td>
+                                <td>alto</td>
+                                <td>bajo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+                <hr>
+                <div class="information-container">
+                    <h2>Información Personal</h2>
+                    <p><b>Nombre: </b>{{ Auth::user()->name }}</p>
+                    <p><b>Apellido: </b>{{ Auth::user()->apellidos }}</p>
+                    <p><b>Género: </b> Mujer</p>
+                    <p><b>Estado Civil: </b> Andrés</p>
+                    <p><b>Nacionalidad: </b> Colombia</p>
+                    <p><b>Libreta Militar: </b> Sí</p>
+                    <p><b>Fecha de Nacimiento: </b> 20 de Octubre de 1995</p>
+                    <p><b>Lugar de Nacimiento: </b> Fusagasugá</p>
+                    <p><b>Dirección: </b> Carrera 12312 #123 - 132</p>
+                    <p><b>E-mail: </b> linuxdiaz@gmail.com</p>
+                </div>
+                <hr>
+                <div class="information-container">
+                    <h2>Información Personal</h2>
+                    <p><b>Nombre: </b>{{ Auth::user()->name }}</p>
+                    <p><b>Apellido: </b>{{ Auth::user()->apellidos }}</p>
+                    <p><b>Género: </b> Mujer</p>
+                    <p><b>Estado Civil: </b> Andrés</p>
+                    <p><b>Nacionalidad: </b> Colombia</p>
+                    <p><b>Libreta Militar: </b> Sí</p>
+                    <p><b>Fecha de Nacimiento: </b> 20 de Octubre de 1995</p>
+                    <p><b>Lugar de Nacimiento: </b> Fusagasugá</p>
+                    <p><b>Dirección: </b> Carrera 12312 #123 - 132</p>
+                    <p><b>E-mail: </b> linuxdiaz@gmail.com</p>
+                </div>
+                <hr>
+                <div class="information-container">
+                    <h2>Información Personal</h2>
+                    <p><b>Nombre: </b>{{ Auth::user()->name }}</p>
+                    <p><b>Apellido: </b>{{ Auth::user()->apellidos }}</p>
+                    <p><b>Género: </b> Mujer</p>
+                    <p><b>Estado Civil: </b> Andrés</p>
+                    <p><b>Nacionalidad: </b> Colombia</p>
+                    <p><b>Libreta Militar: </b> Sí</p>
+                    <p><b>Fecha de Nacimiento: </b> 20 de Octubre de 1995</p>
+                    <p><b>Lugar de Nacimiento: </b> Fusagasugá</p>
+                    <p><b>Dirección: </b> Carrera 12312 #123 - 132</p>
+                    <p><b>E-mail: </b> linuxdiaz@gmail.com</p>
+                </div>
+                <hr>
+                <div class="information-container">
+                    <h2>Información Personal</h2>
+                    <p><b>Nombre: </b>{{ Auth::user()->name }}</p>
+                    <p><b>Apellido: </b>{{ Auth::user()->apellidos }}</p>
+                    <p><b>Género: </b> Mujer</p>
+                    <p><b>Estado Civil: </b> Andrés</p>
+                    <p><b>Nacionalidad: </b> Colombia</p>
+                    <p><b>Libreta Militar: </b> Sí</p>
+                    <p><b>Fecha de Nacimiento: </b> 20 de Octubre de 1995</p>
+                    <p><b>Lugar de Nacimiento: </b> Fusagasugá</p>
+                    <p><b>Dirección: </b> Carrera 12312 #123 - 132</p>
+                    <p><b>E-mail: </b> linuxdiaz@gmail.com</p>
+                </div>
+                <hr>
+                <div class="information-container">
+                    <h2>Información Personal</h2>
+                    <p><b>Nombre: </b>{{ Auth::user()->name }}</p>
+                    <p><b>Apellido: </b>{{ Auth::user()->apellidos }}</p>
+                    <p><b>Género: </b> Mujer</p>
+                    <p><b>Estado Civil: </b> Andrés</p>
+                    <p><b>Nacionalidad: </b> Colombia</p>
+                    <p><b>Libreta Militar: </b> Sí</p>
+                    <p><b>Fecha de Nacimiento: </b> 20 de Octubre de 1995</p>
+                    <p><b>Lugar de Nacimiento: </b> Fusagasugá</p>
+                    <p><b>Dirección: </b> Carrera 12312 #123 - 132</p>
+                    <p><b>E-mail: </b> linuxdiaz@gmail.com</p>
+                </div>
             </div>
         </div>
 </div>
