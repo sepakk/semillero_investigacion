@@ -5,7 +5,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                
+                 <h1>Bienvenido a La Plataforma de Banco de Hojas de vida</h1>
+                <h2>Universidad de Cundinamarca</h2>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}

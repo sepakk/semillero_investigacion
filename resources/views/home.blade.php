@@ -59,8 +59,8 @@
                 <hr>
                 <div class="information-container">
                     <h2>Información Personal</h2>
-                    <p><b>Nombre: </b> Andrés</p>
-                    <p><b>Apellido: </b> Diaz</p>
+                    <p><b>Nombre: </b>{{ Auth::user()->name }}</p>
+                    <p><b>Apellido: </b>{{ Auth::user()->apellidos }}</p>
                     <p><b>Género: </b> Mujer</p>
                     <p><b>Estado Civil: </b> Andrés</p>
                     <p><b>Nacionalidad: </b> Colombia</p>
