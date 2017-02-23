@@ -144,3 +144,7 @@ form a:hover{
 .information-container{
 
 }
+
+.information-container h2{
+	margin: 40px;
+}
