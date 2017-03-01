@@ -9,11 +9,11 @@
                 <li>
                     <a href="">Inicio</a>
                 </li>
-
+                
                 <li>
                     <a href="">Información Personal</a>
                 </li>
-
+                @if($usuario->tipoUsuario!=1)
                 <li>
                     <a href="">Idiomas</a>
                 </li>
@@ -37,13 +37,21 @@
                 <li>
                     <a href="">Producción</a>
                 </li>
+                @endif
                 <li>
-                    <a onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"
-                                                     href="{{ route('logout') }}" >Salir</a>
+                    <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Salir
+                                        </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
                 </li>
             </ul>
-
+                <?php 
+                    if($usuario->tipoUsuario==1){ echo("Eres El Puto Amo");/*include('menus/submenu_admin.php');*/ }   
+                    if($usuario->tipoUsuario!=1){ echo("Buena socito");/*include('menus/submenu_standard.php');*/ }    ?>
             <div class="content">
                 <div class="information-header">
                     <div class="user-image">
@@ -51,47 +59,29 @@
                     </div>
                     @if (!Auth::guest())
                     <div class="sub-header">
-                        <h3>{{ Auth::user()->name }} {{ Auth::user()->apellidos }}</h3>
-                        <p>{{ Auth::user()->email }}</p>
+                        <h3>{{ $informacionpersonal->nombre }} {{ $informacionpersonal->apellidos }}</h3>
+                        @if (!empty($correo)) 
+                            <p>{{ $correo->correo_nombre }}</p>
+                        @endif
                     </div>
                     @endif
                 </div>
                 <hr>
                 <div class="information-container">
                     <h2>Información Personal</h2>
-                    <p><b>Nombre: </b>{{ Auth::user()->name }}</p>
-                    <p><b>Apellido: </b>{{ Auth::user()->apellidos }}</p>
-                    <p><b>Género: </b> Mujer</p>
-                    <p><b>Estado Civil: </b> Andrés</p>
-                    <p><b>Nacionalidad: </b> Colombia</p>
-                    <p><b>Libreta Militar: </b> Sí</p>
-                    <p><b>Fecha de Nacimiento: </b> 20 de Octubre de 1995</p>
-                    <p><b>Lugar de Nacimiento: </b> Fusagasugá</p>
-                    <p><b>Dirección: </b> Carrera 12312 #123 - 132</p>
-                    <p><b>E-mail: </b> linuxdiaz@gmail.com</p>
-                </div>
-                <hr>
-                <div class="information-container">
-                    <h2>Idiomas</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Habla</th>
-                                <th>Lectura</th>
-                                <th>Escritura</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Inglés</td>
-                                <td>medio</td>
-                                <td>alto</td>
-                                <td>bajo</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <p><b>Nombre: </b>{{ $informacionpersonal->nombre }}</p>
+                    <p><b>Apellido: </b>{{ $informacionpersonal->apellidos }}</p>
+                    <p><b>Género: </b>{{ $informacionpersonal->genero }}</p>
+                    <p><b>Estado Civil: </b>{{ $informacionpersonal->estado_civil }}</p>
+                    <p><b>Nacionalidad: </b>{{ $informacionpersonal->nacionalidad}}</p>
+                    <p><b>Libreta Militar: </b>{{ $informacionpersonal->libreta_militar }}</p>
+                    <p><b>Fecha de Nacimiento: </b>{{$informacionpersonal->fecha_nacimiento }}</p>
+                    <p><b>Lugar de Nacimiento: </b>{{ $informacionpersonal->lugar_nacimiento }}</p>
+                    <p><b>Dirección: </b>{{ $informacionpersonal->direccion }}</p>
                     
+                    @if (!empty($correo)) 
+                            <p><b>E-mail: </b>{{ $correo->correo_nombre }}</p>
+                        @endif
                 </div>
                 <hr>
                 <div class="information-container">
