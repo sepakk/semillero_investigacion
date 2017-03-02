@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 use App\Http\Requests;
 use App\InformacionPersonal;
+use App\Email;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\InformacionPersonalFormRequest;
@@ -55,6 +56,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'documento_identificacion' => 'required|max:30',
             'name' => 'required|max:100',
             'apellidos' => 'required|max:100',
             'email' => 'required|email|max:255|unique:users',
@@ -70,19 +72,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        try {
-            DB::beginTransaction();
-            
+        try {           
             $informacionpersonal=new InformacionPersonal;
             $informacionpersonal->documento_identificacion=$data['documento_identificacion'];
             $informacionpersonal->nombre=$data['name'];
             $informacionpersonal->apellidos=$data['apellidos'];
-            DB::commit();
-            
+            $informacionpersonal->genero=null;
+            $informacionpersonal->nacionalidad=null;
+            $informacionpersonal->residencia=null;
+            $informacionpersonal->libreta_militar=null;
+            $informacionpersonal->cod_libreta=null;
+            $informacionpersonal->fecha_nacimiento=null;
+            $informacionpersonal->lugar_nacimiento=null;
+            $informacionpersonal->direccion=null;
+            $informacionpersonal->estado_civil=null;
+            $informacionpersonal->save();
+            $correo=new Email();
+            $correo=DB::select('CALL Ingreso_Correos(?,?)',array($data['email'], $data['documento_identificacion']));
         } catch (Exception $e) {
             DB::rollback();
-        }    
+        }
         return User::create([
+            'documento_identificacion' => $data['documento_identificacion'],
             'name' => $data['name'],
             'apellidos' => $data['apellidos'],
             'email' => $data['email'],
