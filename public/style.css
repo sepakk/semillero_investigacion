@@ -27,13 +27,13 @@ h2{
 	color: gray;
 }
 
-form [type="email"], form label, form a, form [type="password"], form [type="submit"], form [type="number"], form [type="text"]{
+form [type="email"], form label, select, form a, form [type="password"], form [type="submit"], form [type="number"], form [type="text"]{
 	display: block;
 	text-align: center;
 	margin: 10px auto;
 }
 
-form [type="password"], form [type="email"], form [type="text"], form [type="number"]{
+form [type="password"], select, form [type="email"], form [type="text"], form [type="number"]{
 	padding: 10px;
 	border-radius: 5px;
 	font-size: 16px;

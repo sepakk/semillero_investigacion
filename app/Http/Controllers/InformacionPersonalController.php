@@ -35,7 +35,7 @@ class InformacionPersonalController extends Controller
         $paises=DB::table('paises')
             ->select(DB::raw('nombre_pais'))
             ->get();
-        return view(".create",["informacionpersonal"=>$informacionpersonal,"ciudades"=>$ciudades,"departamentos"=>$departamentos,"paises"=>$paises]);
+        return view("informacion_personal/create",["informacionpersonal"=>$informacionpersonal,"ciudades"=>$ciudades,"departamentos"=>$departamentos,"paises"=>$paises]);
     }
 
     public function store (InformacionPersonalFormRequest $request)
@@ -92,11 +92,12 @@ class InformacionPersonalController extends Controller
         return view(".show",["informacionpersonal"=>InformacionPersonal::findOrFail($id)]);
     }
 
+
     public function edit($id)
     {
     	$informacionpersonal=InformacionPersonal::findOrFail($id);
     	$informacionpersonal=DB::table('informacion_personal')->get();
-        return view(".edit",["informacionpersonal"=>$informacionpersonal,""=>]);
+        return view(".edit",["informacionpersonal"=>$informacionpersonal]);
     }
 
     public function update(InformacionPersonalFormRequest $request,$id)
@@ -118,9 +119,7 @@ class InformacionPersonalController extends Controller
             $informacionpersonal->direccion=$request->get('direccion');
             $informacionpersonal->estado_civil=$request->get('estado_civil');
             $informacionpersonal->update();
-            }
             DB::commit();
-            
         } catch (Exception $e) {
             DB::rollback();
         }

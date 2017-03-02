@@ -6,12 +6,12 @@
 	</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('style.css')}}">
 					
 </head>
 <body>
 	<div class="title">
-		<img src="image_logo.png">
+		<img src="{{asset('image_logo.png')}}">
 		@yield('contenido')
 	</div>
 
