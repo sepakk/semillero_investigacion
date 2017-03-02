@@ -13,13 +13,22 @@ class InformacionPersonalController extends Controller
 {
     public function __construct()
     {
-
+        return view("informacion_personal/create",["informacionpersonal"=>$informacionpersonal,"ciudades"=>$ciudades,"departamentos"=>$departamentos,"paises"=>$paises]);
     }
 
     public function index(Request $request)
     {
-        if ($request)
-        {}
+        $usuarioactual=\Auth::user();
+        $informacionpersonal=DB::table('informacion_personal')
+        ->select('documento_identificacion','nombre','apellidos','genero','estado_civil','nacionalidad','residencia','libreta_militar','cod_libreta','fecha_nacimiento','lugar_nacimiento','direccion')
+        ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
+        ->first();
+        $correo=DB::table('correos')
+        ->select('documento_identificacion','correo_nombre')
+        ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
+        ->first();
+
+        return view('informacion_personal/show',["informacionpersonal"=>$informacionpersonal,"usuario"=> $usuarioactual,"correo"=> $correo]);
     }
 
     public function create()
