@@ -13,10 +13,9 @@ class InformacionPersonalController extends Controller
 {
     public function __construct()
     {
-        return view("informacion_personal/create",["informacionpersonal"=>$informacionpersonal,"ciudades"=>$ciudades,"departamentos"=>$departamentos,"paises"=>$paises]);
     }
 
-    public function index(Request $request)
+    public function index()
     {
         $usuarioactual=\Auth::user();
         $informacionpersonal=DB::table('informacion_personal')

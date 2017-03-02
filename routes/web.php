@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index');
 
 
 Route::get('/informacion/crear', 'InformacionPersonalController@create');
+Route::get('/informacion', 'InformacionPersonalController@index');
