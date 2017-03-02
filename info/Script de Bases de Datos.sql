@@ -32,7 +32,7 @@ CREATE TABLE informacion_personal (
 	residencia INT UNSIGNED NOT NULL,
 	libreta_militar TINYINT(1) NOT NULL,
 	cod_libreta VARCHAR(15) NOT NULL,
-	fecha_naicmiento DATE NOT NULL,
+	fecha_nacimiento DATE NOT NULL,
 	lugar_nacimiento INT UNSIGNED NOT NULL,
 	direccion VARCHAR(100) NOT NULL,
 	estado_civil INT(3) NOT NULL,
