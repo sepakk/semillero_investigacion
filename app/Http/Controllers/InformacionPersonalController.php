@@ -38,7 +38,7 @@ class InformacionPersonalController extends Controller
             ->select(DB::raw('nombre_ciudad'))
             ->get();
         $departamentos=DB::table('departamentos')
-            ->select(DB::raw('nombre_departamento'))
+            ->select('cod_departamento','nombre_departamento')
             ->get();
         $paises=DB::table('paises')
             ->select('nombre_pais','cod_pais')

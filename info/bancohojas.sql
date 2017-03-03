@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 02-03-2017 a las 01:19:25
--- Versión del servidor: 10.1.10-MariaDB
--- Versión de PHP: 5.6.19
+-- Servidor: localhost
+-- Tiempo de generación: 03-03-2017 a las 13:41:54
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -62,6 +62,13 @@ CREATE TABLE `correos` (
 --
 -- Volcado de datos para la tabla `correos`
 --
+
+INSERT INTO `correos` (`correo_nombre`, `documento_identificacion`) VALUES
+('academiaojeda@gmail.com', '161214129'),
+('al-felipe@hotmail.com', '1234566'),
+('duban.mantilla@hotmail.com', '1069752846'),
+('linuxmelopela@s.com', '12345');
+
 -- --------------------------------------------------------
 
 --
@@ -73,6 +80,44 @@ CREATE TABLE `departamentos` (
   `nombre_departamento` varchar(45) NOT NULL,
   `cod_pais` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `departamentos`
+--
+
+INSERT INTO `departamentos` (`cod_departamento`, `nombre_departamento`, `cod_pais`) VALUES
+(1, 'Amazonas ', 39),
+(2, 'Antioquia ', 39),
+(3, 'Arauca ', 39),
+(4, ' AtlÃ¡ntico ', 39),
+(5, 'BolÃ­var ', 39),
+(6, 'BoyacÃ¡ ', 39),
+(7, 'Caldas ', 39),
+(8, 'CaquetÃ¡ ', 39),
+(9, 'Casanare ', 39),
+(10, 'Cauca ', 39),
+(11, 'Cesar ', 39),
+(12, 'ChocÃ³ ', 39),
+(13, 'CÃ³rdoba ', 39),
+(14, 'Cundinamarca ', 39),
+(15, 'GuainÃ­a ', 39),
+(16, 'Guaviare ', 39),
+(17, 'Huila ', 39),
+(18, 'La Guajira ', 39),
+(19, 'Magdalena ', 39),
+(20, 'Meta ', 39),
+(21, 'NariÃ±o ', 39),
+(22, 'Norte de Santander ', 39),
+(23, 'Putumayo ', 39),
+(24, 'QuindÃ­o ', 39),
+(25, 'Risaralda ', 39),
+(26, 'San AndrÃ©s y Providencia ', 39),
+(27, 'Santander ', 39),
+(28, 'Sucre ', 39),
+(29, 'Tolima ', 39),
+(30, 'Valle del Cauca ', 39),
+(31, 'VaupÃ©s ', 39),
+(32, 'Vichada ', 39);
 
 -- --------------------------------------------------------
 
@@ -118,7 +163,6 @@ CREATE TABLE `formaciones_academicas` (
 
 -- --------------------------------------------------------
 
---
 --
 -- Estructura de tabla para la tabla `idiomas`
 --
@@ -338,6 +382,19 @@ CREATE TABLE `informacion_personal` (
   `direccion` varchar(100) DEFAULT NULL,
   `estado_civil` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `informacion_personal`
+--
+
+INSERT INTO `informacion_personal` (`documento_identificacion`, `nombre`, `apellidos`, `genero`, `nacionalidad`, `residencia`, `libreta_militar`, `cod_libreta`, `fecha_nacimiento`, `lugar_nacimiento`, `direccion`, `estado_civil`) VALUES
+('1069752846', 'Duban Enrique', 'Mantilla Corredor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('1069763203', 'Jorge Enrique', 'Romero Cortes', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('12345', 'linux', 'putito', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('1234566', 'linux', 'diaz', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('161214129', 'miguel', 'ojeda', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `migrations`
@@ -670,6 +727,18 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `tipoUsuario` int(11) NOT NULL DEFAULT '2'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `documento_identificacion`, `name`, `apellidos`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `tipoUsuario`) VALUES
+(1, '1069763203', 'Jorge Enrique', 'Romero Cortes', 'jromero199@gmail.com', '$2y$10$0CHYFhiBU5aOKxXbGC22peHN/QdcPee25sYB1Rwrctlk3i6LAXnaq', '2MMnnEv2dQGyv0L1cDUxnd3gd0BvjVFNAk2lwejHLYcT1qRSmzXh4mHVpdGZ', '2017-03-01 04:26:23', '2017-03-01 04:26:23', 2),
+(2, '1069752846', 'Duban Enrique', 'Mantilla Corredor', 'duban.mantilla@hotmail.com', '$2y$10$H3pu8G2D6zgmqJ3BXDTvT.2A3l3rwH7BzSpds6WHsRqteufiNN2Ti', 'j00vKHWhz6uDesSkH6yfuY8LUFP7i3wFp2RqWzQvPet9w3jR2PoZ8FW8lIqV', '2017-03-01 19:56:13', '2017-03-01 19:56:13', 2),
+(3, '161214129', 'miguel', 'ojeda', 'academiaojeda@gmail.com', '$2y$10$DiNXoQL4HZdzoCn7Aag/duhfPdVx6Qzft7BiAttw6SdxdHh7LnXrm', 'zo7gZavqCtIXbrHLAizyRfbJTPC4xBqJhcXwR4jxSkplRhL1twMpCCrl59ju', '2017-03-01 23:09:54', '2017-03-01 23:09:54', 1),
+(4, '12345', 'linux', 'putito', 'linuxmelopela@s.com', '$2y$10$PxRov1wY7qNvpIIzA7S3MOcFsc5sc1NbGe3FgL5H64UeELbd9VAKO', NULL, '2017-03-02 00:02:38', '2017-03-02 00:02:38', 1),
+(5, '1234566', 'linux', 'diaz', 'al-felipe@hotmail.com', '$2y$10$NJBBmh6OH2ci.6hsYLfYguwEIG1fMqkPX47USVFHczFfv84Krum2q', 'mBOynP0UF5oTtAhpZtk1pp7XFlCGrvcrjxDzWVhVlhO2RmIcqHINfPxOXgTk', '2017-03-02 00:21:42', '2017-03-02 00:21:42', 1);
+
 --
 -- Índices para tablas volcadas
 --
@@ -830,7 +899,7 @@ ALTER TABLE `ciudades`
 -- AUTO_INCREMENT de la tabla `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `cod_departamento` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_departamento` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT de la tabla `escalafones`
 --
@@ -850,7 +919,7 @@ ALTER TABLE `formaciones_academicas`
 -- AUTO_INCREMENT de la tabla `idiomas`
 --
 ALTER TABLE `idiomas`
-  MODIFY `cod_idioma` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_idioma` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 --
 -- AUTO_INCREMENT de la tabla `informacion_categorias`
 --
@@ -870,7 +939,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `paises`
 --
 ALTER TABLE `paises`
-  MODIFY `cod_pais` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_pais` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
 --
 -- AUTO_INCREMENT de la tabla `perfeccionamiento_actividades`
 --
@@ -895,7 +964,7 @@ ALTER TABLE `tipos_usuario`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Restricciones para tablas volcadas
 --

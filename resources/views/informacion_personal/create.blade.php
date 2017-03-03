@@ -133,7 +133,11 @@
                                 @endforeach
                             </select>
                             <select name="departamento">
-                                <option value='0'>Departamento</option>
+
+                                <option value='0' selected="">Departamento</option>
+                                @foreach($departamentos as $depto)
+                                    <option value="{{$depto->cod_departamento}}">{{$depto->nombre_departamento}}</option>
+                                @endforeach
                             </select>
                             
                             <select name="ciudad">
