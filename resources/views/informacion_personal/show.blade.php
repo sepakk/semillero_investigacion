@@ -84,7 +84,7 @@
                         @endif
                 </div>
 
-                <a href="">Editar</a>
+                <a href="informacion/create">Editar</a>
                 
             </div>
         </div>

@@ -11,7 +11,7 @@
                 </li>
                 
                 <li>
-                    <a href="">Información Personal</a>
+                    <a href="/informacion">Información Personal</a>
                 </li>
                 @if($usuario->tipoUsuario!=1)
                 <li>

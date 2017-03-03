@@ -10,15 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('auth/login');
+Route::group(['middleware' => 'guest'], function () {
+	Route::get('/', function () {
+    	return view('auth/login');
+	});
 });
 
 Auth::routes();
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/home', 'HomeController@index');
+Route::resource('informacion', 'InformacionPersonalController');
+});
 
-Route::get('/home', 'HomeController@index');
-
-
-Route::get('/informacion/crear', 'InformacionPersonalController@create');
-Route::get('/informacion', 'InformacionPersonalController@index');
+Route::group(['middleware' => 'usuarioAdmin'], function () {
+	
+});
+Route::group(['middleware' => 'usuarioStandard'], function () {	
+});

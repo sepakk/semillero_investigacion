@@ -27,7 +27,7 @@ class InformacionPersonalController extends Controller
         ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
         ->first();
 
-        return view('informacion_personal/show',["informacionpersonal"=>$informacionpersonal,"usuario"=> $usuarioactual,"correo"=> $correo]);
+        return view('informacion_personal.show',["informacionpersonal"=>$informacionpersonal,"usuario"=> $usuarioactual,"correo"=> $correo]);
     }
 
     public function create()
@@ -41,9 +41,10 @@ class InformacionPersonalController extends Controller
             ->select(DB::raw('nombre_departamento'))
             ->get();
         $paises=DB::table('paises')
-            ->select(DB::raw('nombre_pais'))
+            ->select('nombre_pais','cod_pais')
+            ->orderBy('nombre_pais','asc')
             ->get();
-        return view("informacion_personal/create",["informacionpersonal"=>$informacionpersonal,"ciudades"=>$ciudades,"departamentos"=>$departamentos,"paises"=>$paises]);
+        return view("informacion_personal.create",["informacionpersonal"=>$informacionpersonal,"ciudades"=>$ciudades,"departamentos"=>$departamentos,"paises"=>$paises]);
     }
 
     public function store (InformacionPersonalFormRequest $request)
@@ -64,6 +65,12 @@ class InformacionPersonalController extends Controller
             $informacionpersonal->lugar_nacimiento=$request->get('lugar_nacimiento');
             $informacionpersonal->direccion=$request->get('direccion');
             $informacionpersonal->estado_civil=$request->get('estado_civil');
+
+            if (Input::hasFile('file')){
+            $file=Input::file('file');
+            $file->move(public_path().'/imagenes/perfil/',$file->getClientOriginalName());
+            $informacionpersonal->imagen=$file->getClientOriginalName();
+        }
             $informacionpersonal->save();
 
             $telefono=$request->get('telefono');
@@ -91,7 +98,7 @@ class InformacionPersonalController extends Controller
         } catch (Exception $e) {
             DB::rollback();
         }
-        return Redirect::to('compras/ingreso');
+        return Redirect::to('');
 
     }
     

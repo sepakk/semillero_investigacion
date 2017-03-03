@@ -7,6 +7,7 @@
             <div class="panel panel-default">
                  <h1>Agregue sus datos de Información Personal</h1>
                 <h2>Universidad de Cundinamarca</h2>
+                
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
@@ -76,8 +77,10 @@
                             <div class="col-md-6">
                                 <label for="country">Nacionalidad</label>
                                 <select name="country">
-                                    <option value='0'>Colombia</option>
-                                    <option value='1'>Venezuela</option>
+                                    <option value="">Seleccione Nacionalidad</option>
+                                    @foreach($paises as $pa)
+                                        <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
+                                    @endforeach
                                 </select>
                                 
                                 @if ($errors->has('country'))
@@ -126,9 +129,11 @@
                                 <label for="civil">Lugar de Nacimiento</label>
                                 
                                 <select name="país">
-                                    <option value='0'>Pais</option>
+                                    <option value="">Seleccione Pais</option>
+                                    @foreach($paises as $pa)
+                                        <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
+                                    @endforeach
                                 </select>
-
                                 <select name="departamento">
                                     <option value='0'>Departamento</option>
                                 </select>

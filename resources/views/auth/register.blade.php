@@ -73,6 +73,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     Registrarse
                                 </button>
+                                <a href="{{ route('login') }}">
+                                            Ya te registraste, Iniciar Sesión
+                                        </a>
                             </div>
                         </div>
                     </form>
