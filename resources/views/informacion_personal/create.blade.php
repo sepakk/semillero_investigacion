@@ -115,7 +115,7 @@
                             <div class="libreta">
                                 <input id="libreta" type="checkbox" class="form-control" name="libreta" value="{{ old('libreta') }}" required autofocus>
 
-                                <input id="file" type="file" class="form-control" name="file" value="{{ old('file') }}" required autofocus>
+                                <input id="file" type="file" class="form-control hidden" name="file" value="{{ old('file') }}" required autofocus>
                             </div>
                             @if ($errors->has('libreta'))
                                 <span class="help-block">
@@ -151,11 +151,11 @@
                                     <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
                                 @endforeach
                             </select>
-                            <select name="departamento">
+                            <select name="departamento" class="hidden">
                                 <option value='0'>Departamento</option>
                             </select>
                             
-                            <select name="ciudad">
+                            <select name="ciudad" class="hidden">
                                 <option value='0'>Ciudad</option>
                             </select>
                             
