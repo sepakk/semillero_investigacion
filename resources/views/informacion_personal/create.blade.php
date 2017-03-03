@@ -14,7 +14,7 @@
                         <label for="name">Ingrese sus datos</label>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
-                            <input id="name" type="text" class="form-control" name="name" placeholder="Nombres..." value="{{ old('name') }}" required autofocus>
+                            <input id="name" type="text" class="form-control" name="name" placeholder="Nombres..." value="{{ $informacionpersonal->nombre}}" required autofocus>
                             
                             @if ($errors->has('name'))
                                 <span class="help-block">
@@ -25,7 +25,7 @@
 
                         <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
 
-                            <input id="lastname" type="text" class="form-control" name="lastname" placeholder="Apellidos..." value="{{ old('lastname') }}" required autofocus>
+                            <input id="lastname" type="text" class="form-control" name="lastname" placeholder="Apellidos..." value="{{ $informacionpersonal->apellidos}}" required autofocus>
                             
                             @if ($errors->has('lastname'))
                                 <span class="help-block">
@@ -50,8 +50,13 @@
 
                             <label for="genre">Género</label>
                             <select name="genre">
-                                <option value='m'>Masculino</option>
-                                <option value='f'>Femenino</option>
+                                @if($informacionpersonal->genero=='m')
+                                    <option value='m' selected="">Masculino</option>
+                                    <option value='f'>Femenino</option>
+                                    @else
+                                    <option value='m'>Masculino</option>
+                                    <option value='f' selected="">Femenino</option>
+                                    @endif
                             </select>
                             
                             @if ($errors->has('genre'))
@@ -65,8 +70,13 @@
 
                             <label for="civil">Estado Civil</label>
                             <select name="civil">
-                                <option value = 's'>Soltero</option>
-                                <option value = 'c'>Casado</option>
+                                @if($informacionpersonal->estado_civil=='s')
+                                    <option value='s' selected="">Soltero</option>
+                                    <option value='c'>Casado</option>
+                                    @else
+                                    <option value='s'>Soltero</option>
+                                    <option value='c' selected="">Casado</option>
+                                    @endif
                             </select>
                             
                             @if ($errors->has('civil'))
@@ -81,7 +91,11 @@
 
                             <label for="country">Nacionalidad</label>
                             <select name="country">
-                                <option value="">Seleccione Nacionalidad</option>
+                                @if (!empty($informacionpersonal->nacionalidad)) 
+                                    <option value="" selected="">Seleccione Nacionalidad</option>
+                                @else
+                                    <option value="{{$informacionpersonal->nacionalidad}}">{{$informacionpersonal->nombre_pais}}}</option>
+                                @endif
                                 @foreach($paises as $pa)
                                     <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
                                 @endforeach
@@ -101,7 +115,7 @@
                             <div class="libreta">
                                 <input id="libreta" type="checkbox" class="form-control" name="libreta" value="{{ old('libreta') }}" required autofocus>
 
-                                <input id="file" type="file" class="form-control" name="file" value="{{ old('file') }}" required autofocus>
+                                <input id="file" type="file" class="form-control hidden" name="file" value="{{ old('file') }}" required autofocus>
                             </div>
                             @if ($errors->has('libreta'))
                                 <span class="help-block">
@@ -127,20 +141,30 @@
                             <label for="civil">Lugar de Nacimiento</label>
                             
                             <select name="país">
-                                <option value="">Seleccione Pais</option>
+                                @if (!empty($informacionpersonal->pais)) 
+                                    
+                                <option value="" selected="">Seleccione Pais</option>
+                                @else
+                                    <option value="{{$informacionpersonal->lugar_nacimiento}}">{{$informacionpersonal->nombre_pais}}}</option>
+                                @endif
                                 @foreach($paises as $pa)
                                     <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
                                 @endforeach
                             </select>
+<<<<<<< HEAD
                             <select name="departamento">
 
                                 <option value='0' selected="">Departamento</option>
                                 @foreach($departamentos as $depto)
                                     <option value="{{$depto->cod_departamento}}">{{$depto->nombre_departamento}}</option>
                                 @endforeach
+=======
+                            <select name="departamento" class="hidden">
+                                <option value='0'>Departamento</option>
+>>>>>>> c22e4c0147428cd6e39e39f90ab8556cbd2f0734
                             </select>
                             
-                            <select name="ciudad">
+                            <select name="ciudad" class="hidden">
                                 <option value='0'>Ciudad</option>
                             </select>
                             
