@@ -20,6 +20,10 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/home', 'HomeController@index');
 Route::resource('informacion', 'InformacionPersonalController');
+Route::resource('perfeccionamiento', 'PerfeccionamientoController');
+Route::resource('idioma', 'IdiomaController');
+Route::resource('experiencia', 'ExperienciaController');
+Route::resource('productividad', 'ProductividadController');
 });
 
 Route::group(['middleware' => 'usuarioAdmin'], function () {
