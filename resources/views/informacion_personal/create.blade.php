@@ -60,8 +60,8 @@
                             <div class="col-md-6">
                                 <label for="civil">Estado Civil</label>
                                 <select name="civil">
-                                    <option value='s'>Soltero</option>
-                                    <option value 'c'>Casado</option>
+                                    <option value = 's'>Soltero</option>
+                                    <option value = 'c'>Casado</option>
                                 </select>
                                 
                                 @if ($errors->has('civil'))
