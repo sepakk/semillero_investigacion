@@ -14,7 +14,7 @@
                         <label for="name">Ingrese sus datos</label>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
-                            <input id="name" type="text" class="form-control" name="name" placeholder="Nombres..." value="{{ old('name') }}" required autofocus>
+                            <input id="name" type="text" class="form-control" name="name" placeholder="Nombres..." value="{{ $informacionpersonal->nombre}}" required autofocus>
                             
                             @if ($errors->has('name'))
                                 <span class="help-block">
@@ -25,7 +25,7 @@
 
                         <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
 
-                            <input id="lastname" type="text" class="form-control" name="lastname" placeholder="Apellidos..." value="{{ old('lastname') }}" required autofocus>
+                            <input id="lastname" type="text" class="form-control" name="lastname" placeholder="Apellidos..." value="{{ $informacionpersonal->apellidos}}" required autofocus>
                             
                             @if ($errors->has('lastname'))
                                 <span class="help-block">
@@ -50,8 +50,13 @@
 
                             <label for="genre">Género</label>
                             <select name="genre">
-                                <option value='m'>Masculino</option>
-                                <option value='f'>Femenino</option>
+                                @if($informacionpersonal->genero=='m')
+                                    <option value='m' selected="">Masculino</option>
+                                    <option value='f'>Femenino</option>
+                                    @else
+                                    <option value='m'>Masculino</option>
+                                    <option value='f' selected="">Femenino</option>
+                                    @endif
                             </select>
                             
                             @if ($errors->has('genre'))
@@ -65,8 +70,13 @@
 
                             <label for="civil">Estado Civil</label>
                             <select name="civil">
-                                <option value = 's'>Soltero</option>
-                                <option value = 'c'>Casado</option>
+                                @if($informacionpersonal->estado_civil=='s')
+                                    <option value='s' selected="">Soltero</option>
+                                    <option value='c'>Casado</option>
+                                    @else
+                                    <option value='s'>Soltero</option>
+                                    <option value='c' selected="">Casado</option>
+                                    @endif
                             </select>
                             
                             @if ($errors->has('civil'))
@@ -81,7 +91,11 @@
 
                             <label for="country">Nacionalidad</label>
                             <select name="country">
-                                <option value="">Seleccione Nacionalidad</option>
+                                @if (!empty($informacionpersonal->nacionalidad)) 
+                                    <option value="" selected="">Seleccione Nacionalidad</option>
+                                @else
+                                    <option value="{{$informacionpersonal->nacionalidad}}">{{$informacionpersonal->nombre_pais}}}</option>
+                                @endif
                                 @foreach($paises as $pa)
                                     <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
                                 @endforeach
@@ -127,7 +141,12 @@
                             <label for="civil">Lugar de Nacimiento</label>
                             
                             <select name="país">
-                                <option value="">Seleccione Pais</option>
+                                @if (!empty($informacionpersonal->pais)) 
+                                    
+                                <option value="" selected="">Seleccione Pais</option>
+                                @else
+                                    <option value="{{$informacionpersonal->lugar_nacimiento}}">{{$informacionpersonal->nombre_pais}}}</option>
+                                @endif
                                 @foreach($paises as $pa)
                                     <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
                                 @endforeach

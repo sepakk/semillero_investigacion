@@ -32,8 +32,11 @@ class InformacionPersonalController extends Controller
 
     public function create()
     {
-    	$informacionpersonal=DB::table('informacion_personal')
-    	->get();
+    	$usuarioactual=\Auth::user();
+        $informacionpersonal=DB::table('informacion_personal')->join('paises','cod_pais','=','nacionalidad')
+        ->select('documento_identificacion','nombre','apellidos','genero','estado_civil','nacionalidad','residencia','libreta_militar','cod_libreta','fecha_nacimiento','lugar_nacimiento','direccion','nombre_pais')
+        ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
+        ->first();
         $ciudades=DB::table('ciudades')
             ->select(DB::raw('nombre_ciudad'))
             ->get();
@@ -101,13 +104,6 @@ class InformacionPersonalController extends Controller
         return Redirect::to('');
 
     }
-    
-    public function show($id)
-    {
-        return view(".show",["informacionpersonal"=>InformacionPersonal::findOrFail($id)]);
-    }
-
-
     public function edit($id)
     {
     	$informacionpersonal=InformacionPersonal::findOrFail($id);
