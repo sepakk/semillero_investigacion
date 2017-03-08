@@ -24,7 +24,6 @@ class InformacionPersonalFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'documento_identificacion'=>'required|numeric|max:30',
             'nombre'=>'required|max:40',
             'apellidos'=>'required|max:40',
             'genero',
@@ -33,7 +32,7 @@ class InformacionPersonalFormRequest extends FormRequest
             'libreta_militar',
             'cod_libreta',
             'fecha_nacimiento'=>'required',
-            'lugar_nacimiento'=>'required',
+            'lugar_nacimiento',
             'direccion'=>'required|max:100',
             'estado_civil',
         ];

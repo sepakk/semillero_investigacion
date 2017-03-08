@@ -166,7 +166,7 @@
                             <select name="país">
                                 @if ($informacionpersonal->lugar_nacimiento==null) 
                                     
-                                <option value="" selected="">Seleccione Pais</option>
+                                <option value="0" selected="">Seleccione Pais</option>
                                 @else
                                 @foreach($paises as $pa)
                                 @if($informacionpersonal->lugar_nacimiento==$pa->cod_pais)
@@ -174,19 +174,59 @@
                                 @endif
                                 @endforeach
                                 @endif
+                                $pais=0;
+                                $depto=0;
+                                $ciudada=0;
+                                <?php 
+                                    $string = $informacionpersonal->lugar_nacimiento;
+                                    $token = strtok($string, ".");
+                                    $cont=0;
+                                    while ($token !== false){
+                                        if ($cont==0) {
+                                            $pais=$token;
+                                        }
+                                        if ($cont==1) {
+                                            $depto=$token;
+                                        }
+                                        if ($cont==2) {
+                                            $ciudada=$token;
+                                        }
+                                        $cont++;
+                                        $token = strtok(".");
+                                    } 
+                                 ?>
                                 @foreach($paises as $pa)
-                                    <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
+                                    @if($pais==$pa->cod_pais)
+                                        <option value="{{$pa->cod_pais}}" selected="">{{$pa->nombre_pais}}</option>
+                                    @else
+                                        <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
+                                    @endif
                                 @endforeach
                             </select>
+                            @if($depto!=0)
+                            <select name="departamento" id="departamento">
+                                @foreach($departamentos as $deptos)
+                                    @if($depto==$deptos->cod_departamento)
+                                        <option value="{{$deptos->cod_departamento}}" selected="">{{$deptos->nombre_departamento}}</option>
+                                    @else
+                                        <option value="{{$deptos->cod_departamento}}">{{$deptos->nombre_departamento}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            @else
                             <select name="departamento" id="departamento" class="hidden">
                                 @foreach($departamentos as $deptos)
-                                    <option value="{{$deptos->cod_departamento}}">{{$deptos->nombre_departamento}}</option>
+                                        <option value="{{$deptos->cod_departamento}}">{{$deptos->nombre_departamento}}</option>
                                 @endforeach
-                                <option value='' selected="">Seleccione Departamento</option>
                             </select>
-                            
-                            <select name="ciudad" id="ciudad" class="hidden" >
-                                <option value='' selected="">Seleccione Ciudad</option>
+                            @endif
+                            @if($ciudada!=0)
+                                <select name="ciudad" id="ciudad" >
+                                <option value="{{$ciudad->cod_ciudad}}">{{$ciudad->nombre_ciudad}}</option>
+                            @else
+                                <select name="ciudad" id="ciudad" class="hidden" >
+                                    <option value="0" selected="">Seleccione Ciudad</option>
+                            @endif
                             </select>
                                 <span class="help-block">
                                     <strong>{{ $errors->first('lugar') }}</strong>
