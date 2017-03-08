@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\InformacionPersonal;
+use App\Ciudades;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\InformacionPersonalFormRequest;
@@ -40,17 +40,15 @@ class InformacionPersonalController extends Controller
         ->select('documento_identificacion','nombre','apellidos','genero','estado_civil','nacionalidad','residencia','libreta_militar','cod_libreta','fecha_nacimiento','lugar_nacimiento','direccion')
         ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
         ->first();
-        $ciudades=DB::table('ciudades')
-            ->select('cod_ciudad','nombre_ciudad','cod_departamento')
-            ->get();
         $departamentos=DB::table('departamentos')
             ->select('cod_departamento','nombre_departamento','cod_pais')
+            ->orderBy('nombre_departamento','asc')
             ->get();
         $paises=DB::table('paises')
             ->select('nombre_pais','cod_pais')
             ->orderBy('nombre_pais','asc')
             ->get();
-        return view("informacion_personal.edit",["informacionpersonal"=>$informacionpersonal,"ciudades"=>$ciudades,"departamentos"=>$departamentos,"paises"=>$paises]);
+        return view("informacion_personal.edit",["informacionpersonal"=>$informacionpersonal,"departamentos"=>$departamentos,"paises"=>$paises]);
     }
     /*public function show()
     {
@@ -144,10 +142,9 @@ class InformacionPersonalController extends Controller
             $informacionpersonal->update();
         return Redirect::to('/home');
     }
-    public function getCiudades(Requests $request,$id){
+    public function getCiudades(Request $request,$id){
         if($request->ajax()){
             $ciudades=Ciudades::ciudades($id);
-            echo "encontro ciudad";
             return response()->json($ciudades);
         }
     }

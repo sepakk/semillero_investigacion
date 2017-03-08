@@ -33,23 +33,18 @@ h2{
 }
 
 form [type="email"], form label, select, form a, form [type="password"], form [type="date"], 
-form [type="submit"], form [type="number"], form [type="text"], form [type="file"]{
+form [type="submit"], form [type="number"], form [type="text"]{
 	display: block;
 	text-align: center;
 	margin: 10px auto;
 }
 
-form [type="password"], select, form [type="email"], 
-form [type="text"], form [type="date"], form [type="number"], form [type="file"]{
+form [type="password"], select, form [type="email"], form [type="text"], form [type="date"], form [type="number"]{
 	padding: 10px;
 	border-radius: 5px;
 	font-size: 16px;
 	width: 70%;
 
-}
-
-form [type="file"]{
-	max-width: 450px;
 }
 
 form [type="submit"], ul a{
@@ -182,18 +177,4 @@ form a:hover{
 
 .hidden{
 	display: none;
-}
-
-.contenedor-lugar{
-	display: flex;
-	align-items: center;
-	padding: 0px 90px;
-}
-
-.contenedor-select{
-	width: 2000px;
-}
-
-#select-departamento{
-
 }

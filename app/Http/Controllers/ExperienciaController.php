@@ -14,7 +14,6 @@ class ExperienciaController extends Controller
     public function index()
     {
         //
-        return view('experiencia.index');
     }
 
     /**
@@ -24,7 +23,7 @@ class ExperienciaController extends Controller
      */
     public function create()
     {
-       
+        //
     }
 
     /**
@@ -35,7 +34,7 @@ class ExperienciaController extends Controller
      */
     public function store(Request $request)
     {
-       
+        //
     }
 
     /**
@@ -46,7 +45,7 @@ class ExperienciaController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -57,7 +56,7 @@ class ExperienciaController extends Controller
      */
     public function edit($id)
     {
-        return view('experiencia.index');
+        //
     }
 
     /**
@@ -69,6 +68,7 @@ class ExperienciaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
     }
 
     /**

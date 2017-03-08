@@ -185,15 +185,12 @@
                                 <option value='' selected="">Seleccione Departamento</option>
                             </select>
                             
-                            <select name="ciudad" id="ciudad" class="hidden" placeholder=>
+                            <select name="ciudad" id="ciudad" class="hidden" >
                                 <option value='' selected="">Seleccione Ciudad</option>
                             </select>
-                            
-                            @if ($errors->has('lugar'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('lugar') }}</strong>
                                 </span>
-                            @endif
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">

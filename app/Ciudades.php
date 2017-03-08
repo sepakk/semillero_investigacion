@@ -6,18 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ciudades extends Model
 {
-    protected $table='ciudades';
+    protected $table = 'ciudades';
 
-    protected $primaryKey='cod_ciudad';
+    protected $fillable = ['cod_departamento','nombre_ciudad','cod_ciudad'];
 
-
-    protected $fillable=[
-    'cod_ciudad',
-    'nombre_ciudad',
-    'cod_departamento'
-    ];
     public static function ciudades($id){
     	return Ciudades::where('cod_departamento','=',$id)
+    	->orderBy('nombre_ciudad','asc')
     	->get();
     }
 }
