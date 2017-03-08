@@ -20,7 +20,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/home', 'HomeController@index');
 Route::resource('informacion', 'InformacionPersonalController');
-Route::resource('cuidades/{id}', 'InformacionPersonalController@getCiudades');
+Route::get('cuidades/{id}', 'InformacionPersonalController@getCiudades');
 Route::resource('perfeccionamiento', 'PerfeccionamientoController');
 Route::resource('idioma', 'IdiomaController');
 Route::resource('experiencia', 'ExperienciaController');
