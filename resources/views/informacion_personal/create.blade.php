@@ -14,7 +14,7 @@
                         <label for="name">Ingrese sus datos</label>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
-                            <input id="name" type="text" class="form-control" name="name" placeholder="Nombres..." value="{{ $informacionpersonal->nombre}}" required autofocus>
+                            <input id="name" type="text" class="form-control" name="name" placeholder="Nombres..." value="{{ $informacionpersonal->nombre }}" required autofocus>
                             
                             @if ($errors->has('name'))
                                 <span class="help-block">
@@ -94,7 +94,7 @@
                                 @if (!empty($informacionpersonal->nacionalidad)) 
                                     <option value="" selected="">Seleccione Nacionalidad</option>
                                 @else
-                                    <option value="{{$informacionpersonal->nacionalidad}}">{{$informacionpersonal->nombre_pais}}}</option>
+                                    <option value="{{$informacionpersonal->nacionalidad}}">{{$informacionpersonal->nacionalidad}}}</option>
                                 @endif
                                 @foreach($paises as $pa)
                                     <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
@@ -143,25 +143,19 @@
                             <select name="país">
                                 @if (!empty($informacionpersonal->pais)) 
                                     
-                                <option value="" selected="">Seleccione Pais</option>
+                                    <option value="" selected="">Seleccione Pais</option>
                                 @else
-                                    <option value="{{$informacionpersonal->lugar_nacimiento}}">{{$informacionpersonal->nombre_pais}}}</option>
+                                    <option value="{{$informacionpersonal->lugar_nacimiento}}">{{$informacionpersonal->nacionalidad}}}</option>
                                 @endif
                                 @foreach($paises as $pa)
                                     <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
                                 @endforeach
                             </select>
-<<<<<<< HEAD
-                            <select name="departamento">
-
-                                <option value='0' selected="">Departamento</option>
+                            
+                            <select name="departamento" class="hidden">
                                 @foreach($departamentos as $depto)
                                     <option value="{{$depto->cod_departamento}}">{{$depto->nombre_departamento}}</option>
                                 @endforeach
-=======
-                            <select name="departamento" class="hidden">
-                                <option value='0'>Departamento</option>
->>>>>>> c22e4c0147428cd6e39e39f90ab8556cbd2f0734
                             </select>
                             
                             <select name="ciudad" class="hidden">

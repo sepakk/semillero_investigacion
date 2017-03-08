@@ -32,9 +32,9 @@ class InformacionPersonalController extends Controller
 
     public function create()
     {
+
     	$usuarioactual=\Auth::user();
-        $informacionpersonal=DB::table('informacion_personal')->join('paises','cod_pais','=','nacionalidad')
-        ->select('documento_identificacion','nombre','apellidos','genero','estado_civil','nacionalidad','residencia','libreta_militar','cod_libreta','fecha_nacimiento','lugar_nacimiento','direccion','nombre_pais')
+        $informacionpersonal=DB::table('informacion_personal')->select('documento_identificacion','nombre','apellidos','genero','estado_civil','nacionalidad','residencia','libreta_militar','cod_libreta','fecha_nacimiento','lugar_nacimiento','direccion')
         ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
         ->first();
         $ciudades=DB::table('ciudades')
