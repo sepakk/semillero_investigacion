@@ -9,12 +9,12 @@
                 <h2>Universidad de Cundinamarca</h2>
                 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="informacionpersonal.update" file="true">
                         {{ csrf_field() }}
                         <label for="name">Ingrese sus datos</label>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
-                            <input id="name" type="text" class="form-control" name="name" placeholder="Nombres..." value="{{ $informacionpersonal->nombre }}" required autofocus>
+                            <input id="name" type="text" class="form-control" name="name" placeholder="Nombres..." value="{{ $informacionpersonal->nombre}}" required autofocus>
                             
                             @if ($errors->has('name'))
                                 <span class="help-block">
@@ -91,10 +91,14 @@
 
                             <label for="country">Nacionalidad</label>
                             <select name="country">
-                                @if (!empty($informacionpersonal->nacionalidad)) 
+                                @if ($informacionpersonal->nacionalidad==null) 
                                     <option value="" selected="">Seleccione Nacionalidad</option>
                                 @else
-                                    <option value="{{$informacionpersonal->nacionalidad}}">{{$informacionpersonal->nacionalidad}}}</option>
+                                    @foreach($paises as $pa)
+                                @if($informacionpersonal->nacionalidad==$pa->cod_pais)
+                                    <option value="{{$informacionpersonal->nacionalidad}}">{{$pa->nombre_pais}}}</option>
+                                @endif
+                                @endforeach
                                 @endif
                                 @foreach($paises as $pa)
                                     <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
@@ -113,7 +117,7 @@
                             <label for="libreta">Libreta Militar?</label>
 
                             <div class="libreta">
-                                <input id="libreta" type="checkbox" class="form-control" name="libreta" value="{{ old('libreta') }}" required autofocus>
+                                <input id="libreta" type="checkbox" class="form-control" name="libreta" value="{{ old('libreta') }}" autofocus>
 
                                 <input id="file" type="file" class="form-control hidden" name="file" value="{{ old('file') }}" required autofocus>
                             </div>
@@ -141,21 +145,22 @@
                             <label for="civil">Lugar de Nacimiento</label>
                             
                             <select name="país">
-                                @if (!empty($informacionpersonal->pais)) 
+                                @if ($informacionpersonal->lugar_nacimiento==null) 
                                     
-                                    <option value="" selected="">Seleccione Pais</option>
+                                <option value="" selected="">Seleccione Pais</option>
                                 @else
-                                    <option value="{{$informacionpersonal->lugar_nacimiento}}">{{$informacionpersonal->nacionalidad}}}</option>
+                                @foreach($paises as $pa)
+                                @if($informacionpersonal->lugar_nacimiento==$pa->cod_pais)
+                                    <option value="{{$informacionpersonal->lugar_nacimiento}}">{{$pa->nombre_pais}}}</option>
+                                @endif
+                                @endforeach
                                 @endif
                                 @foreach($paises as $pa)
                                     <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
                                 @endforeach
                             </select>
-                            
                             <select name="departamento" class="hidden">
-                                @foreach($departamentos as $depto)
-                                    <option value="{{$depto->cod_departamento}}">{{$depto->nombre_departamento}}</option>
-                                @endforeach
+                                <option value='0'>Departamento</option>
                             </select>
                             
                             <select name="ciudad" class="hidden">
