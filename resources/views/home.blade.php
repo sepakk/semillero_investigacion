@@ -7,7 +7,7 @@
         <div class="columns">
             <ul>
                 <li>
-                    <a href="">Inicio</a>
+                    <a href="/home">Inicio</a>
                 </li>
                 
                 <li>
@@ -71,10 +71,22 @@
                     <h2>Información Personal</h2>
                     <p><b>Nombre: </b>{{ $informacionpersonal->nombre }}</p>
                     <p><b>Apellido: </b>{{ $informacionpersonal->apellidos }}</p>
-                    <p><b>Género: </b>{{ $informacionpersonal->genero }}</p>
-                    <p><b>Estado Civil: </b>{{ $informacionpersonal->estado_civil }}</p>
-                    <p><b>Nacionalidad: </b>{{ $informacionpersonal->nacionalidad}}</p>
-                    <p><b>Libreta Militar: </b>{{ $informacionpersonal->libreta_militar }}</p>
+                    @if ($informacionpersonal->genero==1)
+                        <p><b>Género: </b>Masculino</p>
+                    @else
+                        <p><b>Género: </b>Femenino</p>
+                    @endif
+                    @if ($informacionpersonal->estado_civil==1)
+                        <p><b>Estado Civil: </b>Soltero</p>
+                    @else
+                        <p><b>Estado Civil: </b>Casado</p>
+                    @endif
+                    <p><b>Nacionalidad: </b>{{ $paises->nombre_pais}}</p>
+                    @if($informacionpersonal->libreta_militar==null)
+                    <p><b>Libreta Militar: </b>No</p>
+                    @else
+                    <p><b>Libreta Militar: </b>Si</p>
+                    @endif
                     <p><b>Fecha de Nacimiento: </b>{{$informacionpersonal->fecha_nacimiento }}</p>
                     <p><b>Lugar de Nacimiento: </b>{{ $informacionpersonal->lugar_nacimiento }}</p>
                     <p><b>Dirección: </b>{{ $informacionpersonal->direccion }}</p>

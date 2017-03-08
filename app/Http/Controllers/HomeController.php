@@ -33,7 +33,10 @@ class HomeController extends Controller
         ->select('documento_identificacion','correo_nombre')
         ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
         ->first();
-
-        return view('home',["informacionpersonal"=>$informacionpersonal,"usuario"=> $usuarioactual,"correo"=> $correo]);
+        $paises=DB::table('paises')
+            ->select('nombre_pais','cod_pais')
+            ->where('cod_pais','=',$informacionpersonal->nacionalidad)
+            ->first();
+        return view('home',["informacionpersonal"=>$informacionpersonal,"usuario"=> $usuarioactual,"correo"=> $correo,"paises"=>$paises]);
     }
 }
