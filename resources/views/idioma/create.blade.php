@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>
-		Banco de Hojas de Vida - Universidad de Cundinamarca
-	</title>
+@extends('layouts.admin')
 
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-	<div class="title">
-		<img src="image_logo.png">
-		
-	</div>
+@section('contenido')
+
 
 
 	<div class="container">
@@ -52,5 +42,4 @@
 		</form>	
 	</div>
 
-</body>
-</html>
+@endsection

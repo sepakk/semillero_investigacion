@@ -27,7 +27,7 @@
                     {{Form::token()}}
                         <label for="name">Ingrese sus datos</label>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-
+<
                             <input id="name" type="text" class="form-control" name="nombre" placeholder="Nombres..." value="{{ $informacionpersonal->nombre}}" required autofocus>
                             
                             @if ($errors->has('name'))
@@ -111,10 +111,10 @@
                                     <option value="" selected="">Seleccione Nacionalidad</option>
                                 @else
                                     @foreach($paises as $pa)
-                                @if($informacionpersonal->nacionalidad==$pa->cod_pais)
-                                    <option value="{{$informacionpersonal->nacionalidad}}">{{$pa->nombre_pais}}</option>
-                                @endif
-                                @endforeach
+                                        @if($informacionpersonal->nacionalidad==$pa->cod_pais)
+                                            <option value="{{$informacionpersonal->nacionalidad}}">{{$pa->nombre_pais}}</option>
+                                        @endif
+                                    @endforeach
                                 @endif
                                 @foreach($paises as $pa)
                                     <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
@@ -196,7 +196,7 @@
                                     } 
                                  ?>
                                 @foreach($paises as $pa)
-                                    @if($pais==$pa->cod_pais)
+                                    @if($pais==$pa->cod_pais||$pais!="")
                                         <option value="{{$pa->cod_pais}}" selected="">{{$pa->nombre_pais}}</option>
                                     @else
                                         <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>

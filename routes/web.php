@@ -25,6 +25,7 @@ Route::resource('perfeccionamiento', 'PerfeccionamientoController');
 Route::resource('idioma', 'IdiomaController');
 Route::resource('experiencia', 'ExperienciaController');
 Route::resource('productividad', 'ProductividadController');
+Route::resource('escalafon', 'EscalafonController');
 });
 
 Route::group(['middleware' => 'usuarioAdmin'], function () {
