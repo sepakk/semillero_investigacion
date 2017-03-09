@@ -28,14 +28,20 @@
 
                     @if ($informacionpersonal->genero==1)
                         <p><b>Género: </b>Masculino</p>
-                    @else
+                    @endif 
+                    @if ($informacionpersonal->genero==2)
                         <p><b>Género: </b>Femenino</p>
+                    @else
+                        <p><b>Género: </b></p>
                     @endif
 
                     @if ($informacionpersonal->estado_civil==1)
                         <p><b>Estado Civil: </b>Soltero</p>
-                    @else
+                    @endif
+                    @if ($informacionpersonal->estado_civil==2)
                         <p><b>Estado Civil: </b>Casado</p>
+                    @else
+                        <p><b>Estado Civil: </b></p>
                     @endif
                     <?php $cont=0; ?>
                     @foreach($paises as $pa)
@@ -44,7 +50,7 @@
                             <?php $cont=1; ?>
                         @endif
                     @endforeach
-                    @if($cont==0) <p><b>Nacionalidad: </b></p><?php $cont=1; ?>;@endif
+                    @if($cont==0) <p><b>Nacionalidad: </b></p><?php $cont=1; ?>@endif
                     @if($informacionpersonal->libreta_militar==null)
                     <p><b>Libreta Militar: </b>No</p>
                     @else

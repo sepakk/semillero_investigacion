@@ -173,29 +173,32 @@
                                 @endif
                                 @endforeach
                                 @endif
+                                
+                                <?php 
                                 $pais=0;
                                 $depto=0;
                                 $ciudada=0;
-                                <?php 
-                                    $string = $informacionpersonal->lugar_nacimiento;
-                                    $token = strtok($string, ".");
-                                    $cont=0;
-                                    while ($token !== false){
-                                        if ($cont==0) {
-                                            $pais=$token;
-                                        }
-                                        if ($cont==1) {
-                                            $depto=$token;
-                                        }
-                                        if ($cont==2) {
-                                            $ciudada=$token;
-                                        }
-                                        $cont++;
-                                        $token = strtok(".");
-                                    } 
+                                    if ($informacionpersonal->lugar_nacimiento!=null) {
+                                        $string = $informacionpersonal->lugar_nacimiento;
+                                        $token = strtok($string, ".");
+                                        $cont=0;
+                                        while ($token !== false){
+                                            if ($cont==0) {
+                                                $pais=$token;
+                                            }
+                                            if ($cont==1) {
+                                                $depto=$token;
+                                            }
+                                            if ($cont==2) {
+                                                $ciudada=$token;
+                                            }
+                                            $cont++;
+                                            $token = strtok(".");
+                                        } 
+                                    }
                                  ?>
                                 @foreach($paises as $pa)
-                                    @if($pais==$pa->cod_pais||$pais!="")
+                                    @if($pais==$pa->cod_pais)
                                         <option value="{{$pa->cod_pais}}" selected="">{{$pa->nombre_pais}}</option>
                                     @else
                                         <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
