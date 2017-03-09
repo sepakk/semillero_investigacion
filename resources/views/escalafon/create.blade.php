@@ -12,7 +12,7 @@
 					<h1>Bienvenido a La Plataforma de Banco de Hojas de vida</h1>
 					<h2>Universidad de Cundinamarca</h2>
 
-					{!!Form::model($escalafon,['method'=>'PUT','route'=>['escalafon.store'],'files'=>true])!!}
+					{!!Form::model($escalafon,['method'=>'PUT','route'=>['escalafon.store'],'files'=>true, 'class'=>'big-form'])!!}
 	                    {{Form::token()}}
 						<label for="name">CATEGORIA EN EL ESCALAFON</label>
 						<label for="name">Si ha sido escalonado previamente en una Universidad y está ubicado en una de las categorías de las relacionadas a continuación identifíquela y anexe documento de soporte.</label>

@@ -15,7 +15,7 @@ body{
 	font-family: Arial, Helvetica, sans-serif !important;
 }
 
-form{
+.big-form{
 	border: 1px	solid #0E3D38;
 	border-radius: 20px;
 	width: 80%;
@@ -32,15 +32,16 @@ h2{
 	color: gray;
 }
 
-form [type="email"], form label, select, form a, form [type="password"], form [type="date"], 
-form [type="submit"], form [type="number"], form [type="text"], form [type="file"],form [type="checkbox"]{
+.big-form [type="email"], .big-form label, select, .big-form a, .big-form [type="password"], .big-form [type="date"], 
+.big-form [type="submit"], .big-form [type="number"], .big-form [type="text"], .big-form [type="file"],.big-form [type="checkbox"]{
 	display: block;
 	text-align: center;
 	margin: 10px auto;
 }
 
-form [type="password"], select, form [type="email"], 
-form [type="text"], form [type="date"], form [type="number"], form [type="file"],form [type="checkbox"]{
+.big-form [type="password"], select, .big-form [type="email"], 
+.big-form [type="text"], .big-form [type="date"], .big-form [type="number"], 
+.big-form [type="file"],.big-form [type="checkbox"]{
 	padding: 10px;
 	border-radius: 5px;
 	font-size: 16px;
@@ -48,11 +49,11 @@ form [type="text"], form [type="date"], form [type="number"], form [type="file"]
 
 }
 
-form [type="file"]{
+.big-form [type="file"]{
 	max-width: 450px;
 }
 
-form [type="submit"], ul a{
+.big-form [type="submit"], ul a{
 	background: #0E3D38;
 	color: white;
 	padding: 8px 10px;
@@ -86,7 +87,7 @@ ul a{
 
 }
 
-form [type="submit"]:hover, ul a:hover{
+.big-form [type="submit"]:hover, ul a:hover{
 	background: #1F7268;
 }
 
@@ -94,19 +95,19 @@ a{
 	text-decoration: none !important;
 }
 
-form a{
+.big-form a{
 	text-decoration: none;
 	outline: none;
 	color: #8C8C96;
 	transition: color 500ms ease;
 }
 
-form a:link, form a:visited, form a:active, form a:focus{
+.big-form a:link, .big-form a:visited, .big-form a:active, .big-form a:focus{
 	color: #8C8C96;
 
 }
 
-form a:hover{
+.big-form a:hover{
 	color: #FBC90B;
 }
 
