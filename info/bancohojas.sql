@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-03-2017 a las 04:25:13
--- Versión del servidor: 10.1.10-MariaDB
--- Versión de PHP: 5.6.19
+-- Tiempo de generación: 09-03-2017 a las 02:43:56
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -1253,10 +1253,17 @@ INSERT INTO `departamentos` (`cod_departamento`, `nombre_departamento`, `cod_pai
 
 CREATE TABLE `escalafones` (
   `cod_escalafon` int(10) UNSIGNED NOT NULL,
-  `tipo_escalafon` varchar(20) NOT NULL,
+  `tipo_escalafon` int(11) NOT NULL,
   `anexo` varchar(150) NOT NULL,
   `documento_identificacion` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `escalafones`
+--
+
+INSERT INTO `escalafones` (`cod_escalafon`, `tipo_escalafon`, `anexo`, `documento_identificacion`) VALUES
+(1, 0, '', '1069763203');
 
 -- --------------------------------------------------------
 
@@ -1504,7 +1511,7 @@ CREATE TABLE `informacion_personal` (
   `libreta_militar` tinyint(1) DEFAULT NULL,
   `cod_libreta` varchar(15) DEFAULT NULL,
   `fecha_nacimiento` date DEFAULT NULL,
-  `lugar_nacimiento` int(10) UNSIGNED DEFAULT NULL,
+  `lugar_nacimiento` varchar(10) DEFAULT NULL,
   `direccion` varchar(100) DEFAULT NULL,
   `estado_civil` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1515,7 +1522,7 @@ CREATE TABLE `informacion_personal` (
 
 INSERT INTO `informacion_personal` (`documento_identificacion`, `nombre`, `apellidos`, `genero`, `nacionalidad`, `residencia`, `libreta_militar`, `cod_libreta`, `fecha_nacimiento`, `lugar_nacimiento`, `direccion`, `estado_civil`) VALUES
 ('1069752846', 'Duban Enrique', 'Mantilla Corredor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('1069763203', 'Jorge Enrique', 'Romero Cortes', 1, 2, NULL, NULL, NULL, '1998-05-23', NULL, 'CRA 5A ESTE Nº 5-105 INT 2 BARRIO PEKIN', 1),
+('1069763203', 'Jorge Enrique', 'Romero Cortes', 1, 39, NULL, NULL, NULL, '1998-05-23', '39.22.979', 'CRA 5A ESTE Nº 5-105 INT 2 BARRIO PEKIN', 1),
 ('12345', 'linux', 'putito', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('161214129', 'miguel', 'ojeda', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
@@ -1837,6 +1844,27 @@ INSERT INTO `tipos_usuario` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipo_escalafones`
+--
+
+CREATE TABLE `tipo_escalafones` (
+  `cod_escalafon` int(11) NOT NULL,
+  `nombre_escalafon` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipo_escalafones`
+--
+
+INSERT INTO `tipo_escalafones` (`cod_escalafon`, `nombre_escalafon`) VALUES
+(0, 'Auxiliar'),
+(1, 'Asistente'),
+(2, 'Asociado'),
+(3, 'Titular');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -1893,7 +1921,8 @@ ALTER TABLE `departamentos`
 --
 ALTER TABLE `escalafones`
   ADD PRIMARY KEY (`cod_escalafon`),
-  ADD KEY `documento_identificacion` (`documento_identificacion`);
+  ADD KEY `documento_identificacion` (`documento_identificacion`),
+  ADD KEY `escalafones_tipo` (`tipo_escalafon`);
 
 --
 -- Indices de la tabla `experiencias_calificadas`
@@ -2003,6 +2032,12 @@ ALTER TABLE `tipos_usuario`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `tipo_escalafones`
+--
+ALTER TABLE `tipo_escalafones`
+  ADD PRIMARY KEY (`cod_escalafon`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -2028,7 +2063,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `escalafones`
 --
 ALTER TABLE `escalafones`
-  MODIFY `cod_escalafon` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_escalafon` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `experiencias_calificadas`
 --
@@ -2115,7 +2150,8 @@ ALTER TABLE `departamentos`
 -- Filtros para la tabla `escalafones`
 --
 ALTER TABLE `escalafones`
-  ADD CONSTRAINT `escalafones_ibfk_1` FOREIGN KEY (`documento_identificacion`) REFERENCES `informacion_personal` (`documento_identificacion`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `escalafones_ibfk_1` FOREIGN KEY (`documento_identificacion`) REFERENCES `informacion_personal` (`documento_identificacion`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `escalafones_tipo` FOREIGN KEY (`tipo_escalafon`) REFERENCES `tipo_escalafones` (`cod_escalafon`);
 
 --
 -- Filtros para la tabla `formaciones_academicas`
