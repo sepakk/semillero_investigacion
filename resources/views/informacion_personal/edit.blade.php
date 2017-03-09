@@ -23,11 +23,10 @@
                 <h2>Universidad de Cundinamarca</h2>
                 
                 <div class="panel-body">
-                    {!!Form::model($informacionpersonal,['method'=>'PATCH','route'=>['informacion.update',$informacionpersonal->documento_identificacion],'files'=>true])!!}
+                    {!!Form::model($informacionpersonal,['method'=>'PATCH','route'=>['informacion.update',$informacionpersonal->documento_identificacion, 'class' => 'big-form'],'files'=>true])!!}
                     {{Form::token()}}
                         <label for="name">Ingrese sus datos</label>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-<
                             <input id="name" type="text" class="form-control" name="nombre" placeholder="Nombres..." value="{{ $informacionpersonal->nombre}}" required autofocus>
                             
                             @if ($errors->has('name'))

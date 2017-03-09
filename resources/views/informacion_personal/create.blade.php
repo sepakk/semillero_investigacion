@@ -9,7 +9,7 @@
                 <h2>Universidad de Cundinamarca</h2>
                 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="informacionpersonal.update" file="true">
+                    <form class="form-horizontal" role="form" method="POST" class="big-form" action="informacionpersonal.update" file="true">
                         {{ csrf_field() }}
                         <label for="name">Ingrese sus datos</label>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
