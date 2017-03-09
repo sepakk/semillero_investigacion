@@ -23,7 +23,7 @@
                 <h2>Universidad de Cundinamarca</h2>
                 
                 <div class="panel-body">
-                    {!!Form::model($informacionpersonal,['method'=>'PATCH','route'=>['informacion.update',$informacionpersonal->documento_identificacion, 'class' => 'big-form'],'files'=>true])!!}
+                    {!!Form::model($informacionpersonal,['method'=>'PATCH','route'=>['informacion.update',$informacionpersonal->documento_identificacion],'files'=>true, 'class' => 'big-form'])!!}
                     {{Form::token()}}
                         <label for="name">Ingrese sus datos</label>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
