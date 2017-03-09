@@ -29,9 +29,30 @@ class InformacionPersonalController extends Controller
         ->first();
         $paises=DB::table('paises')
             ->select('nombre_pais','cod_pais')
-            ->where('cod_pais','=',$informacionpersonal->nacionalidad)
+            ->get();
+        $ciuda=0;
+        $depto=0;
+        $string = $informacionpersonal->lugar_nacimiento;
+        $token = strtok($string, ".");
+        $cont=0;
+        while ($token !== false){
+            if ($cont==2) {
+                $ciuda=$token;
+            }if ($cont==1) {
+                $depto=$token;
+            }
+            $cont++;
+            $token = strtok(".");
+        } 
+        $ciudad=DB::table('ciudades')
+        ->select('cod_ciudad','nombre_ciudad','cod_departamento')
+        ->where('cod_ciudad',"=",$ciuda)
+        ->first();
+        $departamentos=DB::table('departamentos')
+            ->select('cod_departamento',strtolower('nombre_departamento'),'cod_pais')
+            ->where('cod_departamento',"=",$depto)
             ->first();
-        return view('informacion_personal.show',["informacionpersonal"=>$informacionpersonal,"usuario"=> $usuarioactual,"correo"=> $correo,"paises"=>$paises]);
+        return view('informacion_personal.show',["informacionpersonal"=>$informacionpersonal,"usuario"=> $usuarioactual,"correo"=> $correo,"departamento"=>$departamentos,"paises"=>$paises,"ciudad"=>$ciudad]);
     }
 
     public function show(){
