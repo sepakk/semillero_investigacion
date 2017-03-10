@@ -3,7 +3,6 @@
 @section('contenido')
 <div class="container">
     <div class="divider"></div>
-
         <div class="columns">
             @include('layouts.sidebar')
             <div class="content">

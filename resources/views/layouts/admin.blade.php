@@ -10,6 +10,21 @@
 					
 </head>
 <body>
+<!--
+	<div class="loading-screen">
+		<div class="preloader loading">
+		  <span class="slice"></span>
+		  <span class="slice"></span>
+		  <span class="slice"></span>
+		  <span class="slice"></span>
+		  <span class="slice"></span>
+		  <span class="slice"></span>
+		</div>
+		<h1>Cargando...</h1>
+	</div>
+-->
+
+
 	<div class="title">
 		<img src="{{asset('image_logo.png')}}">
 		@yield('contenido')

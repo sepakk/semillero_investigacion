@@ -49,9 +49,9 @@
                                     <td>{{$exp->fecha_retiro}}</td>
                                     <td>
                                         {{Form::open([ 'class' => 'no-form', 'method'  => 'delete', 'route' => [ 'experiencia.destroy', $exp->cod_info_exp ] ])}}
-                                        {{ Form::hidden('cod_info_exp', $exp->cod_info_exp) }}
-                                        {{ Form::submit('Eliminar', ['class' => 'btn btn-danger']) }}
-                                    {{ Form::close() }}
+                                            {{ Form::hidden('cod_info_exp', $exp->cod_info_exp) }}
+                                            {{ Form::submit('Eliminar', ['class' => 'btn btn-danger']) }}
+                                        {{ Form::close() }}
                                     </td>
                                 </tr>
                                 @endforeach
