@@ -17,6 +17,10 @@
 
 						<input type="text" class="form-control" placeholder= "Nombre... " name="">
 
+						<input type="text" class="form-control" placeholder="Institucion..." name="Institucion">
+
+						<input type="text" class="form-control" placeholder="Tarjeta Profecional..." name="Tarjeta">
+
 						<div class="contenedor-lugar">
 							<label for="select_nivel" >Nivel:</label>
 							<select class="form-control" id="select_nivel">
@@ -45,8 +49,6 @@
 						</div>
 			            <label>Certificado</label>
 						<input type="file" name="">
-						<input type="text" placeholder="Institucion..." name="Institucion">
-						<input type="text" placeholder="Tarjeta Profecional..." name="Tarjeta">
 						<input type="submit" name="submit" value="Agregar Otra Formacion">
 
 
