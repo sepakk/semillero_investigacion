@@ -48,9 +48,15 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'Escalafon' => [
+            'driver' => 'local',
+            'root' => storage_path('Escalafon/certificaciones/'),
+            'visibility' => 'public',
+        ],
+
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            'root' => public_path('Escalafon/certificaciones/'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],

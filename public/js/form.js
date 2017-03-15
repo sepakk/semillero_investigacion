@@ -22,15 +22,4 @@ $( document ).ready(function() {
 		
 		}
 	});
-
-	$(window).load(function() {      //Do the code in the {}s when the window has loaded 
-	  $(".loading-screen").addClass('hide');
-	});
-
-	$("#add-more").click(function(){
-		var last = $(".duplicate:last");
-		$(".duplicate:last").clone().insertAfter(".duplicate:last");
-
-	});
 });
-

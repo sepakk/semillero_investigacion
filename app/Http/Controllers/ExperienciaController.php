@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+
 class ExperienciaController extends Controller
 {
     /**
@@ -14,14 +14,7 @@ class ExperienciaController extends Controller
     public function index()
     {
         //
-        $usuarioactual=\Auth::user();
-        $informacionpersonal=DB::table('informacion_personal')
-        ->select('documento_identificacion','nombre','apellidos','genero','estado_civil','nacionalidad','residencia','libreta_militar','cod_libreta','fecha_nacimiento','lugar_nacimiento','direccion')
-        ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
-        ->first();
-        $experiencias = \App\ExperienciaInformacion::where('documento_identificacion','=',$usuarioactual->documento_identificacion)
-            ->get();
-         return view('experiencia.index', ["informacionpersonal"=>$informacionpersonal, 'usuario'=> $usuarioactual, 'experiencias' => $experiencias]);   
+        return view('experiencia.create');
     }
 
     /**
@@ -32,7 +25,6 @@ class ExperienciaController extends Controller
     public function create()
     {
         //
-        return view('experiencia.create');
     }
 
     /**

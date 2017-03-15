@@ -29,7 +29,7 @@ class InformacionPersonalFormRequest extends FormRequest
             'genero',
             'nacionalidad',
             'residencia',
-            'libreta_militar',
+            'libreta_militar'=>'mimes:pdf',
             'cod_libreta',
             'fecha_nacimiento'=>'required',
             'lugar_nacimiento',

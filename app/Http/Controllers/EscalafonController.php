@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\EscalafonFormRequest;
+use App\Escalafon;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
 use DB;
+use File;
 
 class EscalafonController extends Controller
 {
@@ -38,7 +43,7 @@ class EscalafonController extends Controller
         $escalafon = DB::table('escalafones')
             ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
             ->get();
-        return view('escalafon.create', ['tipos'=> $tipos, 'escalafon'=> $escalafon]);
+        return view('escalafon.create', ['tipos'=> $tipos, 'escalafon'=> $escalafon,'documento_identificacion'=>$usuarioactual->documento_identificacion]);
     }
 
     /**
@@ -49,18 +54,8 @@ class EscalafonController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        Escalafon::create($request->all());
+        return Redirect::to('escalafones');
     }
 
     /**
@@ -71,14 +66,17 @@ class EscalafonController extends Controller
      */
     public function edit($id)
     {
-        //
         $tipos = DB::table('tipo_escalafones')
             ->get();
         $usuarioactual=\Auth::user();
         $escalafon = DB::table('escalafones')
             ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
             ->get();
-        return view('escalafon.edit', ['tipos'=> $tipos, 'escalafon'=> $escalafon]);
+        $usuarioactual=\Auth::user();
+        $escalafon=Escalafon::findOrFail($id);
+        $escalafon->delete();
+        File::delete(storage_path('Escalafon/certificaciones/').$escalafon->anexo);
+        return view('escalafon.create', ['tipos'=> $tipos, 'escalafon'=> $escalafon,'documento_identificacion'=>$usuarioactual->documento_identificacion]);
     }
 
     /**
@@ -90,7 +88,8 @@ class EscalafonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Escalafon::update($request->all());
+        return Redirect::to('escalafones');
     }
 
     /**
@@ -101,6 +100,12 @@ class EscalafonController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $escalafon = DB::table('escalafones')
+            ->where('cod_escalafon','=',$id)
+            ->get();
+        $escalafon=Escalafon::findOrFail($id);
+        $escalafon->delete();
+        File::delete(storage_path('Escalafon/certificaciones/').$escalafon->anexo);
+        return Redirect::to('escalafones');
     }
 }

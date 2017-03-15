@@ -34,17 +34,27 @@
                             @foreach($escalafones as $escalafon)
                             <tr>
                                 <td>{{$escalafon->tipo->nombre_escalafon}}</td>
-                                <td><a href="">Ver</a></td>
                                 <td>
-                                    {{Form::open([ 'class' => 'no-form', 'method'  => 'delete', 'route' => [ 'escalafon.destroy', $escalafon->cod_escalafon ] ])}}
-                                        {{ Form::hidden('cod_escalafon', $escalafon->cod_escalafon) }}
-                                        {{ Form::submit('Eliminar', ['class' => 'btn btn-danger']) }}
-                                    {{ Form::close() }}
+                                    @if($escalafon->anexo==null)
+                                        <a href="">Ver</a>
+                                    @else
+                                        <a href="<?="/Escalafon/certificaciones/".$escalafon->anexo; ?>">Ver</a>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{URL::action('EscalafonController@edit',$escalafon->cod_escalafon)}}" " ><button class="btn btn-info">Editar</button></a>
+                                </td>
+                                <td>
+                                    <a href="" data-target="#modal-delete-{{$escalafon->cod_escalafon}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
                                 </td>
                             </tr>
+                            @include('escalafon.modal')
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="form-group">
+                           <a href="escalafones/create"><button class="btn btn-success">Agregar Escalafon</button></a>
+                        </div>
                 </div>
             </div>
         </div>

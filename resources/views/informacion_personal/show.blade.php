@@ -5,7 +5,50 @@
     <div class="divider"></div>
 
         <div class="columns">
-            @include('layouts.sidebar')
+            <ul>
+                <li>
+                    <a href="/home">Inicio</a>
+                </li>
+                
+                <li>
+                    <a href="">Información Personal</a>
+                </li>
+                @if($usuario->tipoUsuario!=1)
+                <li>
+                    <a href="">Idiomas</a>
+                </li>
+
+                <li>
+                    <a href="">Perfeccionamiento</a>
+                </li>
+
+                <li>
+                    <a href="">Formación Académica</a>
+                </li>
+
+                <li>
+                    <a href="">Escalafón</a>
+                </li>
+
+                <li>
+                    <a href="">Experiencia Laboral</a>
+                </li>
+
+                <li>
+                    <a href="">Producción</a>
+                </li>
+                @endif
+                <li>
+                    <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Salir
+                                        </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                </li>
+            </ul>
                 <?php 
                     if($usuario->tipoUsuario==1){ echo("Eres El Puto Amo");/*include('menus/submenu_admin.php');*/ }   
                     if($usuario->tipoUsuario!=1){ echo("Buena socito");/*include('menus/submenu_standard.php');*/ }    ?>
@@ -31,20 +74,21 @@
 
                     @if ($informacionpersonal->genero==1)
                         <p><b>Género: </b>Masculino</p>
-                    @endif 
-                    @if ($informacionpersonal->genero==2)
-                        <p><b>Género: </b>Femenino</p>
                     @else
-                        <p><b>Género: </b></p>
-                    @endif
-
+                        @if ($informacionpersonal->genero==2)
+                            <p><b>Género: </b>Femenino</p>
+                        @else
+                            <p><b>Género: </b></p>
+                        @endif
+                    @endif 
                     @if ($informacionpersonal->estado_civil==1)
                         <p><b>Estado Civil: </b>Soltero</p>
-                    @endif
-                    @if ($informacionpersonal->estado_civil==2)
-                        <p><b>Estado Civil: </b>Casado</p>
                     @else
-                        <p><b>Estado Civil: </b></p>
+                        @if ($informacionpersonal->estado_civil==2)
+                            <p><b>Estado Civil: </b>Casado</p>
+                        @else
+                            <p><b>Estado Civil: </b></p>
+                        @endif
                     @endif
                     <?php $cont=0; ?>
                     @foreach($paises as $pa)

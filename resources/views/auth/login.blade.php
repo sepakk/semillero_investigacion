@@ -8,7 +8,7 @@
                 <h1>Bienvenido a La Plataforma de Banco de Hojas de vida</h1>
                 <h2>Universidad de Cundinamarca</h2>
                 <div class="panel-body">
-                    <form class="big-form" method="POST" action="{{ route('login') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         <label for="name">Inicia Sesión</label>
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

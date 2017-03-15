@@ -8,7 +8,7 @@
                 </li>
                 @if($usuario->tipoUsuario!=1)
                 <li>
-                    <a href="/idioma">Idiomas</a>
+                    <a href="">Idiomas</a>
                 </li>
 
                 <li>
@@ -20,7 +20,7 @@
                 </li>
 
                 <li>
-                    <a href="/escalafon">Escalafón</a>
+                    <a href="/escalafones">Escalafón</a>
                 </li>
 
                 <li>
