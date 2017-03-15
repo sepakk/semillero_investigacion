@@ -14,6 +14,8 @@ class IdiomaController extends Controller
     public function index()
     {
         //
+        $usuarioactual=\Auth::user();
+        $return view("idioma.index");
     }
 
     /**
@@ -24,6 +26,7 @@ class IdiomaController extends Controller
     public function create()
     {
         //
+        return view("idioma.create");
     }
 
     /**
