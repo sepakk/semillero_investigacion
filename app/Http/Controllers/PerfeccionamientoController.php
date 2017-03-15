@@ -13,7 +13,7 @@ class PerfeccionamientoController extends Controller
      */
     public function index()
     {
-        //
+        return view('perfeccionamiento.perfeccionamiento');
     }
 
     /**
