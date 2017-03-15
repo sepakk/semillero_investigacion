@@ -13,7 +13,7 @@
                         </div>
                         @if (!Auth::guest())
                         <div class="sub-header">
-                            <h3>{{ $informacionpersonal->nombre }} {{ $informacionpersonal->apellidos }}</h3>
+                           <h3>{{ $informacionpersonal->nombre }} {{ $informacionpersonal->apellidos }}</h3>
                             @if (!empty($correo)) 
                                 <p>{{ $correo->correo_nombre }}</p>
                             @endif
@@ -21,7 +21,7 @@
                         @endif
                     </div>
                     <div class="information-container">
-                        <h2>Perfeccionamiento</h2>
+                        <h2>Idioma</h2>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
