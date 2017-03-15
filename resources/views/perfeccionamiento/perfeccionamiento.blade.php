@@ -1,15 +1,12 @@
 @extends('layouts.admin')
 
+
 @section('contenido')
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-<!-- Include Date Range Picker -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
  <script type = "text/javascript">
 $(document).ready(function() {
 
@@ -28,13 +25,25 @@ $(document).ready(function(){
         });
 </script>
 <div class="container">
-    <div class="well">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                 <h1>Banco de hojas de vida </h1>
-                <h2>Universidad de Cundinamarca</h2>
-</div>
-<div class="well">
+    <div class="divider"></div>
+        <div class="columns">
+            @include('layouts.sidebar')
+            <div class="content">
+                <div class="information-header">
+                    <div class="user-image">
+                        
+                    </div>
+                    @if (!Auth::guest())
+                    <div class="sub-header">
+                        <h3>{{ $informacionpersonal->nombre }} {{ $informacionpersonal->apellidos }}</h3>
+                        @if (!empty($correo)) 
+                            <p>{{ $correo->correo_nombre }}</p>
+                        @endif
+                    </div>
+                    @endif
+                </div>
+                <div class="information-container">
+                    <h2>Perfeccionamiento</h2>
  {!! Form::open(array('url' => 'perfeccionamineto.perfeccionamiento')) !!}
  	<legend>ACTIVIDADES PERFECCIONAMIENTO (DIPLOMADOS-CURSOS)</legend>
  <div class="row test">
