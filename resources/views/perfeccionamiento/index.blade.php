@@ -30,8 +30,7 @@ $(document).ready(function(){
             @include('layouts.sidebar')
             <div class="content">
                 <div class="information-header">
-                    <div class="user-image">
-                        
+                    <div class="user-image"> 
                     </div>
                     @if (!Auth::guest())
                     <div class="sub-header">
@@ -44,32 +43,30 @@ $(document).ready(function(){
                 </div>
                 <div class="information-container">
                     <h2>Perfeccionamiento</h2>
- {!! Form::open(array('url' => 'perfeccionamineto.perfeccionamiento')) !!}
- 	<legend>ACTIVIDADES PERFECCIONAMIENTO (DIPLOMADOS-CURSOS)</legend>
- <div class="row test">
-	 	<div class="col-md-2">
-	 		{{ Form::text('ENTIDAD', 'Entidad...', array('class' => 'field')) }}
-	 	</div>
- 	<div class="col-md-2">
- 	{{ Form::text('nombre', 'Nombre...', array('class' => 'field')) }}
- 	</div>
- 	<div class="col-md-2">
- 	{{ Form::text('fechas', 'Fechas...', array('class' => 'field')) }}
- 	</div>
- 	<div class="col-md-2">
- 	{{ Form::text('inthoraria', 'Intensidad Horaria...', array('class' => 'field')) }}
- 	</div>
- </div>
- 	
- 	</div>
- 	<div class="col-md-10">
- 	{{ Form::submit('Continuar', array('class' => 'btn')) }}
- 	<input type="button" value="+ Agregar cuenta" class="btn-link" />
- 	<input type="button" value="+ eliminar" class="btn-danger" />
- </div>
-</div>
-{!! Form::close()  !!}
-</div>
-</div>
-</div>
+                    {!! Form::open(array('url' => 'perfeccionamineto.perfeccionamiento')) !!}
+ 	                  <legend>ACTIVIDADES PERFECCIONAMIENTO (DIPLOMADOS-CURSOS)</legend>
+                     <div class="row test">
+                    	 	<div class="col-md-2">
+                    	 		{{ Form::text('ENTIDAD', 'Entidad...', array('class' => 'field')) }}
+                    	 	</div>
+                         	<div class="col-md-2">
+                         	{{ Form::text('nombre', 'Nombre...', array('class' => 'field')) }}
+                         	</div>
+                         	<div class="col-md-2">
+                         	{{ Form::text('fechas', 'Fechas...', array('class' => 'field')) }}
+                         	</div>
+                         	<div class="col-md-2">
+                         	{{ Form::text('inthoraria', 'Intensidad Horaria...', array('class' => 'field')) }}
+                         	</div>
+                     </div>
+                </div>
+             	<div class="col-md-10">
+                 	{{ Form::submit('Continuar', array('class' => 'btn')) }}
+                 	<input type="button" value="+ Agregar cuenta" class="btn-link" />
+                 	<input type="button" value="+ eliminar" class="btn-danger" />
+                </div>
+            </div>
+                {!! Form::close()  !!}
+            </div>
+        </div>
 @endsection
