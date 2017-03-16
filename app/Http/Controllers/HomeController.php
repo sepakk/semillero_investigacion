@@ -25,6 +25,12 @@ class HomeController extends Controller
     public function index()
     {
         $usuarioactual=\Auth::user();
+        $escalafones = \App\Escalafon::where('documento_identificacion','=',$usuarioactual->documento_identificacion)
+            ->get();
+        $experiencias = \App\ExperienciaInformacion::where('documento_identificacion','=',$usuarioactual->documento_identificacion);
+        $idiomas = \App\IdiomaInformacion::where('documento_identificacion','=',$usuarioactual->documento_identificacion)
+            ->get();
+        
         $informacionpersonal=DB::table('informacion_personal')
         ->select('documento_identificacion','nombre','apellidos','genero','estado_civil','nacionalidad','residencia','libreta_militar','cod_libreta','fecha_nacimiento','lugar_nacimiento','direccion')
         ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
@@ -58,6 +64,14 @@ class HomeController extends Controller
             ->select('cod_departamento','nombre_departamento','cod_pais')
             ->where('cod_departamento',"=",$depto)
             ->first();
-        return view('home',["informacionpersonal"=>$informacionpersonal,"usuario"=> $usuarioactual,"correo"=> $correo,"departamento"=>$departamentos,"paises"=>$paises,"ciudad"=>$ciudad]);
+        return view('home',["informacionpersonal"=>$informacionpersonal,
+            "usuario"=> $usuarioactual,
+            "correo"=> $correo,
+            "departamento"=>$departamentos,
+            "paises"=>$paises,
+            "ciudad"=>$ciudad,
+            "escalafones"=>$escalafones,
+            "experiencias"=>$experiencias,
+            "idiomas"=>$idiomas]);
     }
 }

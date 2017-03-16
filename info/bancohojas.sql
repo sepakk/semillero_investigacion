@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-03-2017 a las 02:43:56
--- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 5.6.30
+-- Tiempo de generación: 16-03-2017 a las 02:06:29
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -1258,13 +1258,6 @@ CREATE TABLE `escalafones` (
   `documento_identificacion` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `escalafones`
---
-
-INSERT INTO `escalafones` (`cod_escalafon`, `tipo_escalafon`, `anexo`, `documento_identificacion`) VALUES
-(1, 0, '', '1069763203');
-
 -- --------------------------------------------------------
 
 --
@@ -1273,8 +1266,19 @@ INSERT INTO `escalafones` (`cod_escalafon`, `tipo_escalafon`, `anexo`, `document
 
 CREATE TABLE `experiencias_calificadas` (
   `cod_experiencia_calificada` int(10) UNSIGNED NOT NULL,
-  `nombre_experiencia_calificada` varchar(20) NOT NULL
+  `nombre_experiencia_calificada` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `experiencias_calificadas`
+--
+
+INSERT INTO `experiencias_calificadas` (`cod_experiencia_calificada`, `nombre_experiencia_calificada`) VALUES
+(1, 'Investigación'),
+(2, 'Docencia Universitaria'),
+(3, 'En Dirección Académica'),
+(4, 'Experiencia Diferente a Docente'),
+(5, 'Experiencia en Extensión');
 
 -- --------------------------------------------------------
 
@@ -1284,11 +1288,13 @@ CREATE TABLE `experiencias_calificadas` (
 
 CREATE TABLE `formaciones_academicas` (
   `cod_formacion` int(10) UNSIGNED NOT NULL,
+  `cod_nivel` int(11) NOT NULL,
   `modalidad_academica` varchar(30) NOT NULL,
   `programa_academico` varchar(50) NOT NULL,
   `no_semestres` int(10) UNSIGNED NOT NULL,
   `graduado` tinyint(1) NOT NULL,
   `titulo_obtenido` varchar(60) NOT NULL,
+  `nombre_institucion` varchar(50) NOT NULL,
   `fecha_terminacion` date NOT NULL,
   `no_tarjeta_profesional` varchar(30) NOT NULL,
   `documento_identificacion` varchar(30) NOT NULL
@@ -1481,6 +1487,13 @@ CREATE TABLE `informacion_experiencias` (
   `fecha_retiro` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `informacion_experiencias`
+--
+
+INSERT INTO `informacion_experiencias` (`cod_info_exp`, `documento_identificacion`, `cod_experiencia_calificada`, `entidad`, `direccion_entidad`, `cod_ciudad`, `telefono`, `correo_electronico`, `fecha_inicio`, `fecha_retiro`) VALUES
+(2, '1069763203', 1, 'UDEC', 'carrera 1', 1, '3213123', 'correo@mail.com', '2017-03-05', '2017-03-31');
+
 -- --------------------------------------------------------
 
 --
@@ -1494,6 +1507,13 @@ CREATE TABLE `informacion_idioma` (
   `lectura` varchar(10) NOT NULL,
   `escritura` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `informacion_idioma`
+--
+
+INSERT INTO `informacion_idioma` (`documento_identificacion`, `cod_idioma`, `habla`, `lectura`, `escritura`) VALUES
+('1069763203', 51, '1', '2', '0');
 
 -- --------------------------------------------------------
 
@@ -1547,6 +1567,17 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2016_07_07_223315_crear_tabla_tipos_usuario', 1),
 (4, '2016_07_07_225615_update_table_users_V2', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `nivel_institucion`
+--
+
+CREATE TABLE `nivel_institucion` (
+  `cod_nivel` int(11) NOT NULL,
+  `nombre_nivel` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1886,7 +1917,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `documento_identificacion`, `name`, `apellidos`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `tipoUsuario`) VALUES
-(1, '1069763203', 'Jorge Enrique', 'Romero Cortes', 'jromero199@gmail.com', '$2y$10$0CHYFhiBU5aOKxXbGC22peHN/QdcPee25sYB1Rwrctlk3i6LAXnaq', 'cE3xTxhH4g9mDmzsmCldB0HvobdwFIkcriODjUO3YUubd7FUpAwxDgPRFltP', '2017-03-01 04:26:23', '2017-03-01 04:26:23', 2),
+(1, '1069763203', 'Jorge Enrique', 'Romero Cortes', 'jromero199@gmail.com', '$2y$10$0CHYFhiBU5aOKxXbGC22peHN/QdcPee25sYB1Rwrctlk3i6LAXnaq', 'yfIeGwFm3RqHmgvu4xcETCDR5eUwyUJXWUTAgIFCogOTntMV0MbqGorC7P7T', '2017-03-01 04:26:23', '2017-03-01 04:26:23', 2),
 (2, '1069752846', 'Duban Enrique', 'Mantilla Corredor', 'duban.mantilla@hotmail.com', '$2y$10$H3pu8G2D6zgmqJ3BXDTvT.2A3l3rwH7BzSpds6WHsRqteufiNN2Ti', 'j00vKHWhz6uDesSkH6yfuY8LUFP7i3wFp2RqWzQvPet9w3jR2PoZ8FW8lIqV', '2017-03-01 19:56:13', '2017-03-01 19:56:13', 2),
 (3, '161214129', 'miguel', 'ojeda', 'academiaojeda@gmail.com', '$2y$10$DiNXoQL4HZdzoCn7Aag/duhfPdVx6Qzft7BiAttw6SdxdHh7LnXrm', 'zo7gZavqCtIXbrHLAizyRfbJTPC4xBqJhcXwR4jxSkplRhL1twMpCCrl59ju', '2017-03-01 23:09:54', '2017-03-01 23:09:54', 1),
 (4, '12345', 'linux', 'putito', 'linuxmelopela@s.com', '$2y$10$PxRov1wY7qNvpIIzA7S3MOcFsc5sc1NbGe3FgL5H64UeELbd9VAKO', 'lMh0h6lZsXy2eLUvfs44JCHsYlnLurENR6GWjWzasoOQNL9ofy031lnjiLx6', '2017-03-02 00:02:38', '2017-03-02 00:02:38', 2);
@@ -1935,7 +1966,8 @@ ALTER TABLE `experiencias_calificadas`
 --
 ALTER TABLE `formaciones_academicas`
   ADD PRIMARY KEY (`cod_formacion`),
-  ADD KEY `documento_identificacion` (`documento_identificacion`);
+  ADD KEY `documento_identificacion` (`documento_identificacion`),
+  ADD KEY `cod_nivel` (`cod_nivel`);
 
 --
 -- Indices de la tabla `idiomas`
@@ -1985,6 +2017,12 @@ ALTER TABLE `informacion_personal`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `nivel_institucion`
+--
+ALTER TABLE `nivel_institucion`
+  ADD PRIMARY KEY (`cod_nivel`);
 
 --
 -- Indices de la tabla `paises`
@@ -2068,7 +2106,7 @@ ALTER TABLE `escalafones`
 -- AUTO_INCREMENT de la tabla `experiencias_calificadas`
 --
 ALTER TABLE `experiencias_calificadas`
-  MODIFY `cod_experiencia_calificada` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_experiencia_calificada` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `formaciones_academicas`
 --
@@ -2088,7 +2126,7 @@ ALTER TABLE `informacion_categorias`
 -- AUTO_INCREMENT de la tabla `informacion_experiencias`
 --
 ALTER TABLE `informacion_experiencias`
-  MODIFY `cod_info_exp` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_info_exp` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `migrations`
 --
@@ -2157,7 +2195,8 @@ ALTER TABLE `escalafones`
 -- Filtros para la tabla `formaciones_academicas`
 --
 ALTER TABLE `formaciones_academicas`
-  ADD CONSTRAINT `formaciones_academicas_ibfk_1` FOREIGN KEY (`documento_identificacion`) REFERENCES `informacion_personal` (`documento_identificacion`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `formaciones_academicas_ibfk_1` FOREIGN KEY (`documento_identificacion`) REFERENCES `informacion_personal` (`documento_identificacion`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `formaciones_academicas_ibfk_2` FOREIGN KEY (`cod_nivel`) REFERENCES `nivel_institucion` (`cod_nivel`);
 
 --
 -- Filtros para la tabla `informacion_actividades`
