@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-03-2017 a las 02:06:29
+-- Tiempo de generación: 16-03-2017 a las 02:42:42
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 7.0.9
 
@@ -1300,6 +1300,13 @@ CREATE TABLE `formaciones_academicas` (
   `documento_identificacion` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `formaciones_academicas`
+--
+
+INSERT INTO `formaciones_academicas` (`cod_formacion`, `cod_nivel`, `modalidad_academica`, `programa_academico`, `no_semestres`, `graduado`, `titulo_obtenido`, `nombre_institucion`, `fecha_terminacion`, `no_tarjeta_profesional`, `documento_identificacion`) VALUES
+(1, 1, 'Presencial', 'Ingeniería de Sistemas', 9, 1, 'Ingeniero en Sistemas', 'Universidad de Cundinamarca', '2016-12-19', '123123131', '1069763203');
+
 -- --------------------------------------------------------
 
 --
@@ -1513,6 +1520,7 @@ CREATE TABLE `informacion_idioma` (
 --
 
 INSERT INTO `informacion_idioma` (`documento_identificacion`, `cod_idioma`, `habla`, `lectura`, `escritura`) VALUES
+('1069752846', 2, '0', '0', '2'),
 ('1069763203', 51, '1', '2', '0');
 
 -- --------------------------------------------------------
@@ -1578,6 +1586,16 @@ CREATE TABLE `nivel_institucion` (
   `cod_nivel` int(11) NOT NULL,
   `nombre_nivel` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `nivel_institucion`
+--
+
+INSERT INTO `nivel_institucion` (`cod_nivel`, `nombre_nivel`) VALUES
+(1, 'Pregrado'),
+(2, 'Especializacion'),
+(3, 'Maestria'),
+(4, 'Doctorado');
 
 -- --------------------------------------------------------
 
@@ -2111,7 +2129,7 @@ ALTER TABLE `experiencias_calificadas`
 -- AUTO_INCREMENT de la tabla `formaciones_academicas`
 --
 ALTER TABLE `formaciones_academicas`
-  MODIFY `cod_formacion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_formacion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `idiomas`
 --
