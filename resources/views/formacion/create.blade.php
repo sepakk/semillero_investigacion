@@ -20,8 +20,6 @@
 
 							<input type="text" class="form-control" placeholder="Institucion..." name="Institucion">
 
-							<input type="text" class="form-control" placeholder="Tarjeta Profecional..." name="Tarjeta">
-
 							<div class="contenedor-lugar">
 								<label for="select_nivel" >Nivel:</label>
 								<select class="form-control" id="select_nivel">
@@ -42,14 +40,16 @@
 							</div>
 
 							<label>¿Está Graduado?</label>
-						    <input id="graduado" type="checkbox" class="form-control" name="graduado" value="{{ old('graduado') }}" autofocus>
-				            <input type="text" placeholder="Titulo" name="Titulo">
-				            <div class="contenedor-lugar">
+						    <input id="graduado" type="checkbox" class="form-control" name="graduado" value="{{ old('graduado') }}">
+
+				            <input type="text" class="form-control hidden" placeholder="Titulo..." name="Titulo">
+							<input type="text" class="form-control hidden" placeholder="Tarjeta Profecional..." name="Tarjeta">
+				            <div class="contenedor-lugar hidden">
 								<label for="input_fecha">Fecha: </label>
-								<input id="input_fecha" type="date" name="Fecha">
+								<input class="form-control" id="input_fecha" type="date" name="Fecha">
 							</div>
-				            <label>Certificado</label>
-							<input type="file" name="">
+				            <label class="hidden">Certificado</label>
+							<input type="file" name="certificado" class="hidden">
 
 							<hr>
 							<br><br>
@@ -64,4 +64,32 @@
 		</div>
 	</div>
 	</div>
+@endsection
+
+@section('js')
+	
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			$("#add-more").click(function(){
+	 			$('#graduado').click(function() {
+				    //$("#txtAge").toggle(this.checked);
+				    if($(this).is(':checked')){
+						$(this).next().removeClass('hidden');
+						$(this).next().next().removeClass('hidden');
+						$(this).next().next().next().removeClass('hidden');
+						$(this).next().next().next().next().removeClass('hidden');
+						$(this).next().next().next().next().next().removeClass('hidden');
+					}
+					else{
+						$(this).next().addClass('hidden');
+						$(this).next().next().addClass('hidden');
+						$(this).next().next().next().addClass('hidden');
+						$(this).next().next().next().next().addClass('hidden');
+						$(this).next().next().next().next().next().addClass('hidden');
+					
+					}
+				});
+		 	});
+		 });
+	</script>
 @endsection

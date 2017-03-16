@@ -35,19 +35,27 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($formaciones as $formacion)
                             <tr>
-                                <td>Pregrado</td>
-                                <td>Presencial</td>
-                                <td>Ingeniería de Sistemas</td>
-                                <td>10</td>
-                                <td>Sí</td>
-                                <td>U Nacional</td>
-                                <td>123321</td>
+                                <td>{{$formacion->nivel->nombre_nivel}}</td>
+                                <td>{{$formacion->modalidad}}</td>
+                                <td>{{$formacion->programa_academico}}</td>
+                                <td>{{$formacion->no_semestres}}</td>
+                                <td>
+                                    @if($formacion->graduado == 1)
+                                        Sí
+                                    @else
+                                        No
+                                    @endif
+                                </td>
+                                <td>{{$formacion->nombre_institucion}}</td>
+                                <td>{{$formacion->no_tarjeta_profesional}}</td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
-                        <a class="btn btn-success" href="/formacion/create">Agregar Nueva Formación</a>
+                    <a class="btn btn-success" href="/formacion/create">Agregar Nueva Formación</a>
                 </div>
                 
             </div>
