@@ -1,8 +1,6 @@
 /*
-
 Main Green: #0E3D38;
 #1F7268;
-
 */
 
 *{
@@ -32,7 +30,7 @@ h2{
 	color: gray;
 }
 
-.big-form [type="email"], .big-form label, select, .big-form a, .big-form [type="password"], .big-form [type="date"], 
+.big-form [type="email"], .big-form label, select, .big-form a, .big-form [type="password"], .big-form [type="date"], .big-form button,
 .big-form [type="submit"], .big-form [type="number"], .big-form [type="text"], .big-form [type="file"],.big-form [type="checkbox"]{
 	display: block;
 	text-align: center;
@@ -53,7 +51,7 @@ h2{
 	max-width: 450px;
 }
 
-.big-form [type="submit"], ul a{
+.big-form [type="submit"], ul a, .big-form button{
 	background: #0E3D38;
 	color: white;
 	padding: 8px 10px;
@@ -87,7 +85,7 @@ ul a{
 
 }
 
-.big-form [type="submit"]:hover, ul a:hover{
+.big-form [type="submit"]:hover, .big-form button:hover, ul a:hover{
 	background: #1F7268;
 }
 
@@ -201,4 +199,18 @@ a{
 }
 .contenedor-graduado{
 	
+}
+
+.loading-screen{
+	background: white;
+	position: fixed;
+	z-index: 20;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.hide{
+	display: none;
 }

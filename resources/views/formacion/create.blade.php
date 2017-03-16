@@ -13,43 +13,50 @@
 
 					{!!Form::model(null,['method'=>'PUT','route'=>['formacion.store'],'files'=>true, 'class'=>'big-form'])!!}
 				    {{Form::token()}}
-						<label for="name">Formacion Academica</label>
+				    	<div class="duplicate">
+							<label for="name">Formacion Academica</label>
 
-						<input type="text" class="form-control" placeholder= "Nombre... " name="">
+							<input type="text" class="form-control" placeholder= "Nombre... " name="">
 
-						<input type="text" class="form-control" placeholder="Institucion..." name="Institucion">
+							<input type="text" class="form-control" placeholder="Institucion..." name="Institucion">
 
-						<input type="text" class="form-control" placeholder="Tarjeta Profecional..." name="Tarjeta">
+							<input type="text" class="form-control" placeholder="Tarjeta Profecional..." name="Tarjeta">
 
-						<div class="contenedor-lugar">
-							<label for="select_nivel" >Nivel:</label>
-							<select class="form-control" id="select_nivel">
-								<option value=""></option>
-							</select>
+							<div class="contenedor-lugar">
+								<label for="select_nivel" >Nivel:</label>
+								<select class="form-control" id="select_nivel">
+									<option value=""></option>
+								</select>
+							</div>
+							<div class="contenedor-lugar">
+								<label for="select_modalidad" >Modalidad:</label>
+								<select class="form-control" id="select_modalidad">
+									<option value=""></option>
+								</select>
+							</div>
+
+
+							<div class="contenedor-lugar">
+								<label for="select_modalidad" >N° de Semestres:</label>
+								<input class="form-control" type="number" name="">
+							</div>
+
+							<label>¿Está Graduado?</label>
+						    <input id="graduado" type="checkbox" class="form-control" name="graduado" value="{{ old('graduado') }}" autofocus>
+				            <input type="text" placeholder="Titulo" name="Titulo">
+				            <div class="contenedor-lugar">
+								<label for="input_fecha">Fecha: </label>
+								<input id="input_fecha" type="date" name="Fecha">
+							</div>
+				            <label>Certificado</label>
+							<input type="file" name="">
+
+							<hr>
+							<br><br>
 						</div>
-						<div class="contenedor-lugar">
-							<label for="select_modalidad" >Modalidad:</label>
-							<select class="form-control" id="select_modalidad">
-								<option value=""></option>
-							</select>
-						</div>
 
-
-						<div class="contenedor-lugar">
-							<label for="select_modalidad" >N° de Semestres:</label>
-							<input class="form-control" type="number" name="">
-						</div>
-
-						<label>¿Está Graduado?</label>
-					    <input id="graduado" type="checkbox" class="form-control" name="graduado" value="{{ old('graduado') }}" autofocus>
-			            <input type="text" placeholder="Titulo" name="Titulo">
-			            <div class="contenedor-lugar">
-							<label for="input_fecha">Fecha: </label>
-							<input id="input_fecha" type="date" name="Fecha">
-						</div>
-			            <label>Certificado</label>
-						<input type="file" name="">
-						<input type="submit" name="submit" value="Agregar Otra Formacion">
+                 		 <button type="button" id="add-more" name="submit">Agregar otra Formación</button>
+						<input type="submit" name="submit" value="Continuar">
 
 
 					{!!Form::close()!!}		

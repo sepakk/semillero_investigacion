@@ -19,7 +19,7 @@ class PerfeccionamientoController extends Controller
         ->select('documento_identificacion','nombre','apellidos','genero','estado_civil','nacionalidad','residencia','libreta_militar','cod_libreta','fecha_nacimiento','lugar_nacimiento','direccion')
         ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
         ->first();
-        return view('perfeccionamiento.perfeccionamiento',['informacionpersonal'=>$informacionpersonal,'usuario'=> $usuarioactual]);
+        return view('perfeccionamiento.index',['informacionpersonal'=>$informacionpersonal,'usuario'=> $usuarioactual]);
     }
 
     /**
