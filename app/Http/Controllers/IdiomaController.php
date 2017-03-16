@@ -14,8 +14,6 @@ class IdiomaController extends Controller
     public function index()
     {
         //
-        $usuarioactual=\Auth::user();
-        return view("idioma.index");
     }
 
     /**
@@ -26,7 +24,6 @@ class IdiomaController extends Controller
     public function create()
     {
         //
-        return view("idioma.create");
     }
 
     /**
@@ -82,13 +79,6 @@ class IdiomaController extends Controller
      */
     public function destroy($id)
     {
-        try{
-         $usuarioactual=User::finfOrfail($id);
-         $usuarioactual->delete();
-         return redirect()->route('idioma.index');
-        }catch (Exception $e){
-            return "fatal error --".$e->getMessage();
-        }
-        
+        //
     }
 }
