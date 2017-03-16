@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use DB;
-
 class IdiomaController extends Controller
 {
     /**
@@ -20,10 +17,10 @@ class IdiomaController extends Controller
         ->select('documento_identificacion','nombre','apellidos','genero','estado_civil','nacionalidad','residencia','libreta_militar','cod_libreta','fecha_nacimiento','lugar_nacimiento','direccion')
         ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
         ->first();
-        $idiomas = \App\IdiomaInformacion::where('documento_identificacion','=',$usuarioactual->documento_identificacion);
-        return view("idioma.index", ["informacionpersonal"=>$informacionpersonal, 'usuario'=> $usuarioactual, 'idiomas'=> $idiomas]);
+        $idiomas = \App\IdiomaInformacion::where('documento_identificacion','=',$usuarioactual->documento_identificacion)
+            ->get();
+         return view('idioma.index', ["informacionpersonal"=>$informacionpersonal, 'usuario'=> $usuarioactual, 'idiomas' => $idiomas]);  
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -31,11 +28,9 @@ class IdiomaController extends Controller
      */
     public function create()
     {
-        //
         $idiomas = \App\Idioma::all();
-        return view("idioma.create", ['idiomas'=> $idiomas]);
+        return view('idioma.create', ["idiomas"=>$idiomas]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -46,7 +41,6 @@ class IdiomaController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -57,7 +51,6 @@ class IdiomaController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -68,7 +61,6 @@ class IdiomaController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -80,7 +72,6 @@ class IdiomaController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
