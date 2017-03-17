@@ -11,15 +11,15 @@
 					<h1>Agregue su informaci{on de Formación Académica</h1>
 					<h2>Universidad de Cundinamarca</h2>
 
-					{!!Form::model(null,['method'=>'PUT','route'=>['formacion.store'],'files'=>true, 'class'=>'big-form'])!!}
-				    {{Form::token()}}
+						{!!Form::model(null,['method'=>'PUT','route'=>['formacion.store'],'files'=>true, 'class'=>'big-form'])!!}
+					    {{Form::token()}}
 						<label for="name">Formacion Academica</label>
 
 						<input type="text" class="form-control" placeholder= "Nombre... " name="">
 
 						<input type="text" class="form-control" placeholder="Institucion..." name="Institucion">
 
-						<input type="text" class="form-control" placeholder="Tarjeta Profecional..." name="Tarjeta">
+						<input type="text" class="form-control" placeholder="Tarjeta Profesional..." name="Tarjeta">
 
 						<div class="contenedor-lugar">
 							<label for="select_nivel" >Nivel:</label>
