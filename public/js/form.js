@@ -10,25 +10,6 @@ $( document ).ready(function() {
 		}
 	});
 
-	$('#graduado').click(function() {
-	    //$("#txtAge").toggle(this.checked);
-	    if($(this).is(':checked')){
-			$(this).next().removeClass('hidden');
-			$(this).next().next().removeClass('hidden');
-			$(this).next().next().next().removeClass('hidden');
-			$(this).next().next().next().next().removeClass('hidden');
-			$(this).next().next().next().next().next().removeClass('hidden');
-		}
-		else{
-			$(this).next().addClass('hidden');
-			$(this).next().next().addClass('hidden');
-			$(this).next().next().next().addClass('hidden');
-			$(this).next().next().next().next().addClass('hidden');
-			$(this).next().next().next().next().next().addClass('hidden');
-		
-		}
-	});
-
 	$('select[name=país]').change(function(e){
 		console.log($(this).val());
 		if($(this).val() == '39'){
@@ -50,4 +31,13 @@ $( document ).ready(function() {
  		var last = $(".duplicate:last");
  		$(".duplicate:last").clone().insertAfter(".duplicate:last");
  	});
+});
+
+$(document).on('click', '#graduado', function() {
+    if($(this).is(':checked')){
+		$(this).parent().parent().find(".graduado-hide").removeClass('hidden');
+	}
+	else{
+		$(this).parent().parent().find(".graduado-hide").addClass('hidden');
+	}
 });

@@ -14,6 +14,7 @@ class ProductividadController extends Controller
     public function index()
     {
         //
+        return view('produccion.index');
     }
 
     /**
@@ -24,6 +25,7 @@ class ProductividadController extends Controller
     public function create()
     {
         //
+        return view('produccion.create');
     }
 
     /**

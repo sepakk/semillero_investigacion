@@ -31,20 +31,24 @@ h2{
 }
 
 .big-form [type="email"], .big-form label, select, .big-form a, .big-form [type="password"], .big-form [type="date"], .big-form button,
-.big-form [type="submit"], .big-form [type="number"], .big-form [type="text"], .big-form [type="file"],.big-form [type="checkbox"]{
+.big-form [type="submit"], .big-form select, .big-form [type="number"], .big-form [type="text"], .big-form [type="file"],.big-form [type="checkbox"]{
 	display: block;
 	text-align: center;
 	margin: 10px auto;
 }
 
 .big-form [type="password"], select, .big-form [type="email"], 
-.big-form [type="text"], .big-form [type="date"], .big-form [type="number"], 
+.big-form [type="text"], .big-form select, .big-form [type="date"], .big-form [type="number"], 
 .big-form [type="file"],.big-form [type="checkbox"]{
 	padding: 10px;
 	border-radius: 5px;
 	font-size: 16px;
 	width: 70%;
 
+}
+
+.big-form select{
+	padding: 0;
 }
 
 .big-form [type="file"]{
@@ -189,6 +193,17 @@ a{
 	align-items: center;
 	padding: 0px 90px;
 }
+
+.contenedor-lugar .form-group{
+	width: 600px !important;
+}
+
+.col-70{
+	width: 70%;
+	margin: 5px auto;
+}
+
+
 
 .contenedor-select{
 	width: 2000px;

@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('productividad', 'ProductividadController');
 	Route::resource('escalafones', 'EscalafonController');
  	Route::resource('formacion', 'FormacionController');
+ 	Route::resource('produccion', 'ProductividadController');
 });
 
 Route::group(['middleware' => 'usuarioAdmin'], function () {

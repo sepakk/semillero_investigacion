@@ -11,43 +11,43 @@
                   <div class="duplicate">
                         <label for="name">Especifique los idiomas diferentes al español que:</label>
 
-                        <div class="contenedor-lugar form-group{{ $errors->has('cod_idioma') ? ' has-error' : '' }}">
-                              <label for="cod_idioma">IDIOMA:</label>
-                              <select name="cod_idioma[]">
+                        <div class="form-group{{ $errors->has('cod_idioma') ? ' has-error' : '' }}">
+                              <label class="form-label col-lg-2" for="cod_idioma[]">Idioma</label>
+                              <select name="cod_idioma[]" class="form-control">
                                     @foreach($idiomas as  $idm)
                                           <option value="{{$idm->cod_idioma}}">{{$idm->nombre_idioma}}</option>
                                     @endforeach
                               </select>
                         </div>
+                        <div class="contenedor-lugar">
+                              <div class="form-group{{ $errors->has('habla') ? ' has-error' : '' }}">
+                                    <label class="form-label" for="habla">Lo Habla:</label>
+                                    <select name="habla[]" class="form-control">
+                                          <option value="0">Regular</option>
+                                          <option value="1">Bien</option>
+                                          <option value="2">Muy bien</option>
+                                    </select>
+                              </div>
 
-                        <div class="contenedor-lugar form-group{{ $errors->has('habla') ? ' has-error' : '' }}">
-                              <label for="habla">Lo Habla:</label>
-                              <select name="habla[]">
-                                    <option value="0">Regular</option>
-                                    <option value="1">Bien</option>
-                                    <option value="2">Muy bien</option>
-                              </select>
-                        </div>
+                              <div class="form-group{{ $errors->has('lectura') ? ' has-error' : '' }}">
+                                    <label class="form-label" for="lectura">Lo Lee:</label>
+                                    <select name="lectura[]" class="form-control">
+                                          <option value="0">Regular</option>
+                                          <option value="1">Bien</option>
+                                          <option value="2">Muy bien</option>
+                                    </select>
+                              </div>
 
-                        <div class="contenedor-lugar form-group{{ $errors->has('lectura') ? ' has-error' : '' }}">
-                              <label for="lectura">Lo Lee:</label>
-                              <select name="lectura[]">
-                                    <option value="0">Regular</option>
-                                    <option value="1">Bien</option>
-                                    <option value="2">Muy bien</option>
-                              </select>
-                        </div>
-
-                        <div class="contenedor-lugar form-group{{ $errors->has('escritura') ? ' has-error' : '' }}">
-                              <label for="escritura">Lo Escribe:</label>
-                              <select name="escritura[]">
-                                    <option value="0">Regular</option>
-                                    <option value="1">Bien</option>
-                                    <option value="2">Muy bien</option>
-                              </select>
+                              <div class="form-group{{ $errors->has('escritura') ? ' has-error' : '' }}">
+                                    <label class="form-label" for="escritura">Lo Escribe:</label>
+                                    <select name="escritura[]" class="form-control">
+                                          <option value="0">Regular</option>
+                                          <option value="1">Bien</option>
+                                          <option value="2">Muy bien</option>
+                                    </select>
+                              </div>
                         </div>
                   <hr>
-                  <br>
                   <br>
                   </div>
                   <button type="button" id="add-more" name="submit">Agregar otro Idioma</button>
