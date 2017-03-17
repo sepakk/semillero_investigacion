@@ -19,9 +19,9 @@ class FormacionController extends Controller
         ->select('documento_identificacion','nombre','apellidos','genero','estado_civil','nacionalidad','residencia','libreta_militar','cod_libreta','fecha_nacimiento','lugar_nacimiento','direccion')
         ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
         ->first();
-        $experiencias = \App\ExperienciaInformacion::where('documento_identificacion','=',$usuarioactual->documento_identificacion)
+        $formaciones = \App\Formacion::where('documento_identificacion','=',$usuarioactual->documento_identificacion)
             ->get();
-         return view('formacion.index', ["informacionpersonal"=>$informacionpersonal, 'usuario'=> $usuarioactual, 'experiencias' => $experiencias]);   
+         return view('formacion.index', ["informacionpersonal"=>$informacionpersonal, 'usuario'=> $usuarioactual, 'formaciones' => $formaciones]);   
     }
 
     /**

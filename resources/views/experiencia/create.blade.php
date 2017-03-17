@@ -13,8 +13,8 @@
 	    {{Form::token()}}
 	    	<div class="duplicate">
 				<label for="name">Experiencia Calificada</label>
-	            <div class="form-group{{ $errors->has('Cargos') ? ' has-error' : '' }}">
 
+	            <div class="form-group{{ $errors->has('Cargos') ? ' has-error' : '' }}">
 					<div class="contenedor-lugar">
 						 <label for="select_cargos" >Cargos:</label>
 						 <select class="form-control" id="select_cargos" name="Cargos">
@@ -104,7 +104,7 @@
 			         <label type="name">Certificado</label>
 			         <input class="form-control" type="file" name="Archivo">
 	             </div>
-             <hr>
+              <hr>
               <br>
               <br>
               </div>
