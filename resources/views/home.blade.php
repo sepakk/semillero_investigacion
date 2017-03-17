@@ -3,6 +3,7 @@
 @section('contenido')
 <div class="container">
     <div class="divider"></div>
+
         <div class="columns">
             @include('layouts.sidebar')
             <div class="content">
@@ -27,20 +28,21 @@
 
                     @if ($informacionpersonal->genero==1)
                         <p><b>Género: </b>Masculino</p>
-                    @endif 
-                    @if ($informacionpersonal->genero==2)
-                        <p><b>Género: </b>Femenino</p>
                     @else
-                        <p><b>Género: </b></p>
-                    @endif
-
+                        @if ($informacionpersonal->genero==2)
+                            <p><b>Género: </b>Femenino</p>
+                        @else
+                            <p><b>Género: </b></p>
+                        @endif
+                    @endif 
                     @if ($informacionpersonal->estado_civil==1)
                         <p><b>Estado Civil: </b>Soltero</p>
-                    @endif
-                    @if ($informacionpersonal->estado_civil==2)
-                        <p><b>Estado Civil: </b>Casado</p>
                     @else
-                        <p><b>Estado Civil: </b></p>
+                        @if ($informacionpersonal->estado_civil==2)
+                            <p><b>Estado Civil: </b>Casado</p>
+                        @else
+                            <p><b>Estado Civil: </b></p>
+                        @endif
                     @endif
                     <?php $cont=0; ?>
                     @foreach($paises as $pa)
@@ -137,15 +139,86 @@
                             <tr>
                                 <th>Tipo</th>
                                 <th>Certificación</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($escalafones as $escalafon)
                             <tr>
-                                <td>Maestro</td>
-                                <td><a href="">Ver</a></td>
+                                <td>{{$escalafon->tipo->nombre_escalafon}}</td>
+                                <td>
+                                    @if($escalafon->anexo==null)
+                                        <a href="">Ver</a>
+                                    @else
+                                        <a href="<?="/Escalafon/certificaciones/".$escalafon->anexo; ?>">Ver</a>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{URL::action('EscalafonController@edit',$escalafon->cod_escalafon)}}" " ><button class="btn btn-info">Editar</button></a>
+                                </td>
+                                <td>
+                                    <a href="" data-target="#modal-delete-{{$escalafon->cod_escalafon}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+                                </td>
                             </tr>
+                            @include('escalafon.modal')
+                            @endforeach
                         </tbody>
                     </table>
+                </div>
+                <hr>
+                <div class="information-container">
+                    <h2>Idioma</h2>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Idioma</th>
+                                    <th>Lo habla</th>
+                                    <th>Lo lee</th>
+                                    <th>Lo escribe</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($idiomas as $idioma)
+                                    <tr>
+                                        <td>{{$idioma->idioma->nombre_idioma}}</td>
+                                        <td>
+                                            @if ($idioma->habla == '0')
+                                                Regular
+                                            @elseif($idioma->habla == '1')
+                                                Medio
+                                            @else
+                                                Muy Bien
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($idioma->lectura == '0')
+                                                Regular
+                                            @elseif($idioma->lectura == '1')
+                                                Medio
+                                            @else
+                                                Muy Bien
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($idioma->escritura == '0')
+                                                Regular
+                                            @elseif($idioma->escritura == '1')
+                                                Medio
+                                            @else
+                                                Muy Bien
+                                            @endif
+                                        </td>
+                                        <td>
+                                            {{Form::open([ 'class' => 'no-form', 'method'  => 'delete', 'route' => [ 'idioma.destroy', $idioma->cod_idioma ] ])}}
+                                                {{ Form::hidden('cod_idioma', $idioma->cod_idioma) }}
+                                                {{ Form::submit('Eliminar', ['class' => 'btn btn-danger']) }}
+                                            {{ Form::close() }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                 </div>
                 <hr>
                 <div class="information-container">
@@ -181,23 +254,30 @@
                                 <th>Ciudad</th>
                                 <th>Teléfono</th>
                                 <th>Correo</th>
-                                <th>Tipo</th>
                                 <th>Fecha Inicio</th>
                                 <th>Fecha Terminación</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($experiencias as $exp)
                             <tr>
-                                <td>Asistente</td>
-                                <td>Alcaldía</td>
-                                <td>Carrera 5</td>
-                                <td>Fusagasugá</td>
-                                <td>867 55 56</td>
-                                <td>melopela@gmail.com</td>
-                                <td>II</td>
-                                <td>4 de Octubre de 2008</td>
-                                <td>5 de Noviembre de 2012</td>
+                                <td>{{$exp->exp->nombre_experiencia_calificada}}</td>
+                                <td>{{$exp->entidad}}</td>
+                                <td>{{$exp->direccion_entidad}}</td>
+                                <td>{{$exp->ciudad->nombre_ciudad}}</td>
+                                <td>{{$exp->telefono}}</td>
+                                <td>{{$exp->correo_electronico}}</td>
+                                <td>{{$exp->fecha_inicio}}</td>
+                                <td>{{$exp->fecha_retiro}}</td>
+                                <td>
+                                    {{Form::open([ 'class' => 'no-form', 'method'  => 'delete', 'route' => [ 'experiencia.destroy', $exp->cod_info_exp ] ])}}
+                                        {{ Form::hidden('cod_info_exp', $exp->cod_info_exp) }}
+                                        {{ Form::submit('Eliminar', ['class' => 'btn btn-danger']) }}
+                                    {{ Form::close() }}
+                                </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

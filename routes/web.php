@@ -19,14 +19,14 @@ Route::group(['middleware' => 'guest'], function () {
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/home', 'HomeController@index');
-Route::resource('informacion', 'InformacionPersonalController');
-Route::get('/informacion/ciudades/{id}', 'InformacionPersonalController@getCiudades');
-Route::resource('perfeccionamiento', 'PerfeccionamientoController');
-Route::resource('idioma', 'IdiomaController');
-Route::resource('experiencia', 'ExperienciaController');
-Route::resource('productividad', 'ProductividadController');
-Route::resource('escalafon', 'EscalafonController');
-Route::resource('formacion', 'FormacionController');
+	Route::resource('informacion', 'InformacionPersonalController');
+	Route::get('/informacion/ciudades/{id}', 'InformacionPersonalController@getCiudades');
+	Route::resource('perfeccionamiento', 'PerfeccionamientoController');
+	Route::resource('idioma', 'IdiomaController');
+	Route::resource('experiencia', 'ExperienciaController');
+	Route::resource('productividad', 'ProductividadController');
+	Route::resource('escalafones', 'EscalafonController');
+ 	Route::resource('formacion', 'FormacionController');
 });
 
 Route::group(['middleware' => 'usuarioAdmin'], function () {

@@ -12,15 +12,15 @@
                 </li>
 
                 <li>
-                    <a href="">Perfeccionamiento</a>
+                    <a href="/perfeccionamiento">Perfeccionamiento</a>
                 </li>
 
                 <li>
-                    <a href="">Formación Académica</a>
+                    <a href="/formacion">Formación Académica</a>
                 </li>
 
                 <li>
-                    <a href="/escalafon">Escalafón</a>
+                    <a href="/escalafones">Escalafón</a>
                 </li>
 
                 <li>
@@ -28,7 +28,7 @@
                 </li>
 
                 <li>
-                    <a href="">Producción</a>
+                    <a href="/produccion">Producción</a>
                 </li>
                 @endif
                 <li>

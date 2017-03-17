@@ -21,41 +21,43 @@
                     @endif
                 </div>
                 <div class="information-container">
-                    <h2>Escalafón</h2>
+                    <h2>Formación Académica</h2>
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Tipo</th>
-                                <th>Certificación</th>
-                                <th></th>
+                                <th>Nivel</th>
+                                <th>Modalidad</th>
+                                <th>Nombre</th>
+                                <th>Número de Semestres</th>
+                                <th>Graduado</th>
+                                <th>Institución</th>
+                                <th>Tarjeta Profesional</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($escalafones as $escalafon)
+                            @foreach($formaciones as $formacion)
                             <tr>
-                                <td>{{$escalafon->tipo->nombre_escalafon}}</td>
+                                <td>{{$formacion->nivel->nombre_nivel}}</td>
+                                <td>{{$formacion->modalidad}}</td>
+                                <td>{{$formacion->programa_academico}}</td>
+                                <td>{{$formacion->no_semestres}}</td>
                                 <td>
-                                    @if($escalafon->anexo==null)
-                                        <a href="">Ver</a>
+                                    @if($formacion->graduado == 1)
+                                        Sí
                                     @else
-                                        <a href="<?="/Escalafon/certificaciones/".$escalafon->anexo; ?>">Ver</a>
+                                        No
                                     @endif
                                 </td>
-                                <td>
-                                    <a href="{{URL::action('EscalafonController@edit',$escalafon->cod_escalafon)}}" " ><button class="btn btn-info">Editar</button></a>
-                                </td>
-                                <td>
-                                    <a href="" data-target="#modal-delete-{{$escalafon->cod_escalafon}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
-                                </td>
+                                <td>{{$formacion->nombre_institucion}}</td>
+                                <td>{{$formacion->no_tarjeta_profesional}}</td>
                             </tr>
-                            @include('escalafon.modal')
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="form-group">
-                           <a href="escalafones/create"><button class="btn btn-success">Agregar Escalafon</button></a>
-                        </div>
+
+                    <a class="btn btn-success" href="/formacion/create">Agregar Nueva Formación</a>
                 </div>
+                
             </div>
         </div>
 </div>

@@ -10,21 +10,6 @@
 					
 </head>
 <body>
-<!--
-	<div class="loading-screen">
-		<div class="preloader loading">
-		  <span class="slice"></span>
-		  <span class="slice"></span>
-		  <span class="slice"></span>
-		  <span class="slice"></span>
-		  <span class="slice"></span>
-		  <span class="slice"></span>
-		</div>
-		<h1>Cargando...</h1>
-	</div>
--->
-
-
 	<div class="title">
 		<img src="{{asset('image_logo.png')}}">
 		@yield('contenido')
@@ -37,5 +22,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="{{asset('js/form.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/dropdown.js')}}"></script>
+	@yield('js')
 </body>
 </html>

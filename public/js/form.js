@@ -10,6 +10,25 @@ $( document ).ready(function() {
 		}
 	});
 
+	$('#graduado').click(function() {
+	    //$("#txtAge").toggle(this.checked);
+	    if($(this).is(':checked')){
+			$(this).next().removeClass('hidden');
+			$(this).next().next().removeClass('hidden');
+			$(this).next().next().next().removeClass('hidden');
+			$(this).next().next().next().next().removeClass('hidden');
+			$(this).next().next().next().next().next().removeClass('hidden');
+		}
+		else{
+			$(this).next().addClass('hidden');
+			$(this).next().next().addClass('hidden');
+			$(this).next().next().next().addClass('hidden');
+			$(this).next().next().next().next().addClass('hidden');
+			$(this).next().next().next().next().next().addClass('hidden');
+		
+		}
+	});
+
 	$('select[name=país]').change(function(e){
 		console.log($(this).val());
 		if($(this).val() == '39'){
@@ -24,13 +43,11 @@ $( document ).ready(function() {
 	});
 
 	$(window).load(function() {      //Do the code in the {}s when the window has loaded 
-	  $(".loading-screen").addClass('hide');
-	});
-
-	$("#add-more").click(function(){
-		var last = $(".duplicate:last");
-		$(".duplicate:last").clone().insertAfter(".duplicate:last");
-
-	});
+ 	  $(".loading-screen").addClass('hide');
+ 	});
+ 
+ 	$("#add-more").click(function(){
+ 		var last = $(".duplicate:last");
+ 		$(".duplicate:last").clone().insertAfter(".duplicate:last");
+ 	});
 });
-

@@ -5,10 +5,9 @@
     <div class="divider"></div>
 
         <div class="columns">
+            
             @include('layouts.sidebar')
-                <?php 
-                    if($usuario->tipoUsuario==1){ echo("Eres El Puto Amo");/*include('menus/submenu_admin.php');*/ }   
-                    if($usuario->tipoUsuario!=1){ echo("Buena socito");/*include('menus/submenu_standard.php');*/ }    ?>
+
             <div class="content">
                 <div class="information-header">
                     <div class="user-image">
@@ -31,20 +30,21 @@
 
                     @if ($informacionpersonal->genero==1)
                         <p><b>Género: </b>Masculino</p>
-                    @endif 
-                    @if ($informacionpersonal->genero==2)
-                        <p><b>Género: </b>Femenino</p>
                     @else
-                        <p><b>Género: </b></p>
-                    @endif
-
+                        @if ($informacionpersonal->genero==2)
+                            <p><b>Género: </b>Femenino</p>
+                        @else
+                            <p><b>Género: </b></p>
+                        @endif
+                    @endif 
                     @if ($informacionpersonal->estado_civil==1)
                         <p><b>Estado Civil: </b>Soltero</p>
-                    @endif
-                    @if ($informacionpersonal->estado_civil==2)
-                        <p><b>Estado Civil: </b>Casado</p>
                     @else
-                        <p><b>Estado Civil: </b></p>
+                        @if ($informacionpersonal->estado_civil==2)
+                            <p><b>Estado Civil: </b>Casado</p>
+                        @else
+                            <p><b>Estado Civil: </b></p>
+                        @endif
                     @endif
                     <?php $cont=0; ?>
                     @foreach($paises as $pa)

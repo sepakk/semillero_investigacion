@@ -58,7 +58,7 @@
 
                   <input type="submit" name="submit" value="Continuar">
 
-            {!!Form::close()!!}	
+            {!!Form::close()!!}   
 	</div>
 
 @endsection
