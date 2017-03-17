@@ -1,6 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use App\IdiomaInformacion;
 use DB;
 class IdiomaController extends Controller
 {
@@ -39,7 +42,21 @@ class IdiomaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuarioactual=\Auth::user();
+        $cod_idioma = Input::get('cod_idioma');
+        $habla = Input::get('habla');
+        $lectura = Input::get('lectura');
+        $escritura = Input::get('escritura');
+        for ($i=0; $i < count($cod_idioma); $i++) { 
+            $InfoIdioma = new IdiomaInformacion;
+            $InfoIdioma->documento_identificacion = $usuarioactual->documento_identificacion;
+            $InfoIdioma->cod_idioma = $cod_idioma[$i];
+            $InfoIdioma->habla = $habla[$i];
+            $InfoIdioma->lectura = $lectura[$i];
+            $InfoIdioma->escritura = $escritura[$i];
+            $InfoIdioma->save();
+        }
+        return Redirect::to('idioma');
     }
     /**
      * Display the specified resource.
@@ -80,6 +97,8 @@ class IdiomaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $infoidioma=IdiomaInformacion::findOrFail($id);
+        $infoidioma->delete();
+        return Redirect::to('idioma');
     }
 }

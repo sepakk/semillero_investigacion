@@ -42,7 +42,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{URL::action('EscalafonController@edit',$escalafon->cod_escalafon)}}" " ><button class="btn btn-info">Editar</button></a>
+                                    <a href="{{URL::action('EscalafonController@edit',$escalafon->cod_escalafon)}}"><button class="btn btn-info">Editar</button></a>
                                 </td>
                                 <td>
                                     <a href="" data-target="#modal-delete-{{$escalafon->cod_escalafon}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>

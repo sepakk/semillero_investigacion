@@ -63,13 +63,10 @@
                                                 Muy Bien
                                             @endif
                                         </td>
-                                        <td>
-                                            {{Form::open([ 'class' => 'no-form', 'method'  => 'delete', 'route' => [ 'idioma.destroy', $idioma->cod_idioma ] ])}}
-                                                {{ Form::hidden('cod_idioma', $idioma->cod_idioma) }}
-                                                {{ Form::submit('Eliminar', ['class' => 'btn btn-danger']) }}
-                                            {{ Form::close() }}
+                                        <td><a href="" data-target="#modal-delete-{{$idioma->cod_idioma}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
                                         </td>
                                     </tr>
+                                @include('idioma.modal')
                                 @endforeach
                             </tbody>
                         </table>
