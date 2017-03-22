@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Ciudades;
 
 class ExperienciaController extends Controller
 {
@@ -31,8 +32,19 @@ class ExperienciaController extends Controller
      */
     public function create()
     {
-        //
-        return view('experiencia.create');
+        $ciudad=DB::table('ciudades')
+        ->select('cod_ciudad','nombre_ciudad','cod_departamento')
+        ->orderBy('nombre_ciudad','asc')
+        ->first();
+        $departamentos=DB::table('departamentos')
+            ->select('cod_departamento','nombre_departamento','cod_pais')
+            ->orderBy('nombre_departamento','asc')
+            ->get();
+        $paises=DB::table('paises')
+            ->select('nombre_pais','cod_pais')
+            ->orderBy('nombre_pais','asc')
+            ->get();
+        return view('experiencia.create',["departamentos"=>$departamentos,"paises"=>$paises,"ciudad"=>$ciudad]);
     }
 
     /**
@@ -89,5 +101,11 @@ class ExperienciaController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function getCiudades(Request $request,$id){
+        if($request->ajax()){
+            $ciudades=Ciudades::ciudades($id);
+            return response()->json($ciudades);
+        }
     }
 }
