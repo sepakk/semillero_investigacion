@@ -50,13 +50,13 @@
                         <div class="form-group{{ $errors->has('gener') ? ' has-error' : '' }}">
 
                             <label for="genero">Género</label>
-                            <select name="genero">
+                            <select class="form-control" name="genero">
                                 @if($informacionpersonal->genero=='1')
-                                    <option value='1' selected="">Masculino</option>
+                                    <option value='1' select class="form-control"ed="">Masculino</option>
                                     <option value='2'>Femenino</option>
                                     @else
                                     <option value='1'>Masculino</option>
-                                    <option value='2' selected="">Femenino</option>
+                                    <option value='2' select class="form-control"ed="">Femenino</option>
                                     @endif
                             </select>
                             
@@ -70,13 +70,13 @@
                         <div class="form-group{{ $errors->has('estado_civil') ? ' has-error' : '' }}">
 
                             <label for="estado_civil">Estado Civil</label>
-                            <select name="estado_civil">
+                            <select class="form-control" name="estado_civil">
                                 @if($informacionpersonal->estado_civil=='1')
-                                    <option value='1' selected="">Soltero</option>
+                                    <option value='1' select class="form-control"ed="">Soltero</option>
                                     <option value='2'>Casado</option>
                                     @else
                                     <option value='1'>Soltero</option>
-                                    <option value='2' selected="">Casado</option>
+                                    <option value='2' select class="form-control"ed="">Casado</option>
                                     @endif
                             </select>
                             
@@ -91,9 +91,9 @@
                         <div class="form-group{{ $errors->has('nacionalidad') ? ' has-error' : '' }}">
 
                             <label for="nacionalidad">Nacionalidad</label>
-                            <select name="nacionalidad">
+                            <select class="form-control" name="nacionalidad">
                                 @if ($informacionpersonal->nacionalidad==null) 
-                                    <option value="" selected="">Seleccione Nacionalidad</option>
+                                    <option value="" select class="form-control"ed="">Seleccione Nacionalidad</option>
                                 @else
                                     @foreach($paises as $pa)
                                         @if($informacionpersonal->nacionalidad==$pa->cod_pais)
@@ -148,10 +148,10 @@
 
                             <label for="civil">Lugar de Nacimiento</label>
                             
-                            <select name="país">
+                            <select class="form-control" name="país">
                                 @if ($informacionpersonal->lugar_nacimiento==null) 
                                     
-                                <option value="0" selected="">Seleccione Pais</option>
+                                <option value="0" select class="form-control"ed="">Seleccione Pais</option>
                                 @else
                                 @foreach($paises as $pa)
                                 @if($informacionpersonal->lugar_nacimiento==$pa->cod_pais)
@@ -185,35 +185,35 @@
                                  ?>
                                 @foreach($paises as $pa)
                                     @if($pais==$pa->cod_pais)
-                                        <option value="{{$pa->cod_pais}}" selected="">{{$pa->nombre_pais}}</option>
+                                        <option value="{{$pa->cod_pais}}" select class="form-control"ed="">{{$pa->nombre_pais}}</option>
                                     @else
                                         <option value="{{$pa->cod_pais}}">{{$pa->nombre_pais}}</option>
                                     @endif
                                 @endforeach
                             </select>
                             @if($depto!=0)
-                            <select name="departamento" id="departamento">
+                            <select class="form-control" name="departamento" id="departamento">
                                 @foreach($departamentos as $deptos)
                                     @if($depto==$deptos->cod_departamento)
-                                        <option value="{{$deptos->cod_departamento}}" selected="">{{$deptos->nombre_departamento}}</option>
+                                        <option value="{{$deptos->cod_departamento}}" select class="form-control"ed="">{{$deptos->nombre_departamento}}</option>
                                     @else
                                         <option value="{{$deptos->cod_departamento}}">{{$deptos->nombre_departamento}}</option>
                                     @endif
                                 @endforeach
                             </select>
                             @else
-                            <select name="departamento" id="departamento" class="hidden">
+                            <select class="form-control" name="departamento" id="departamento" class="hidden">
                                 @foreach($departamentos as $deptos)
                                         <option value="{{$deptos->cod_departamento}}">{{$deptos->nombre_departamento}}</option>
                                 @endforeach
                             </select>
                             @endif
                             @if($ciudada!=0)
-                                <select name="ciudad" id="ciudad" >
+                                <select class="form-control" name="ciudad" id="ciudad" >
                                 <option value="{{$ciudad->cod_ciudad}}">{{$ciudad->nombre_ciudad}}</option>
                             @else
-                                <select name="ciudad" id="ciudad" class="hidden" >
-                                    <option value="0" selected="">Seleccione Ciudad</option>
+                                <select class="form-control" name="ciudad" id="ciudad" class="hidden" >
+                                    <option value="0" select class="form-control"ed="">Seleccione Ciudad</option>
                             @endif
                             </select>
                                 <span class="help-block">
