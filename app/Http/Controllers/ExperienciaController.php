@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
+use App\ExperienciaInformacion;
+use App\InformacionPersonal;
 use App\Ciudades;
+use DB;
 
 class ExperienciaController extends Controller
 {
@@ -17,11 +21,9 @@ class ExperienciaController extends Controller
     {
         //
         $usuarioactual=\Auth::user();
-        $informacionpersonal=DB::table('informacion_personal')
-        ->select('documento_identificacion','nombre','apellidos','genero','estado_civil','nacionalidad','residencia','libreta_militar','cod_libreta','fecha_nacimiento','lugar_nacimiento','direccion')
-        ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
+        $informacionpersonal=InformacionPersonal::where('documento_identificacion','=',$usuarioactual->documento_identificacion)
         ->first();
-        $experiencias = \App\ExperienciaInformacion::where('documento_identificacion','=',$usuarioactual->documento_identificacion);
+        $experiencias = ExperienciaInformacion::where('documento_identificacion','=',$usuarioactual->documento_identificacion)->get();
         return view("experiencia.index", ["informacionpersonal"=>$informacionpersonal, 'usuario'=> $usuarioactual, 'experiencias'=> $experiencias]);
     }
 
@@ -55,7 +57,20 @@ class ExperienciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuarioactual=\Auth::user();
+        $experiencia = new ExperienciaInformacion;
+        $experiencia->documento_identificacion = $usuarioactual->documento_identificacion;
+        $experiencia->cod_experiencia_calificada=Input::get('Cargos');
+        $experiencia->entidad=Input::get('Entidad');
+        $experiencia->direccion_entidad=Input::get('Dirección');
+        $experiencia->cod_ciudad=Input::get('país');
+        $experiencia->telefono=Input::get('Telefono');
+        $experiencia->correo_electronico=Input::get('Correo');
+        //$experiencia->=Input::get('Tipo');
+        $experiencia->fecha_inicio=Input::get('Fecha_i');
+        $experiencia->fecha_retiro=Input::get('Fecha_r');
+        $experiencia->save();
+        return Redirect::to('experiencia');
     }
 
     /**
@@ -100,7 +115,9 @@ class ExperienciaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $experiencia=ExperienciaInformacion::findOrFail($id);
+        $experiencia->delete();
+        return Redirect::to('experiencia');
     }
     public function getCiudades(Request $request,$id){
         if($request->ajax()){

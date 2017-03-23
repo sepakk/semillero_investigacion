@@ -7,7 +7,7 @@
     <h1>Bienvenido a La Plataforma de Banco de Hojas de vida</h1>
     <h2>Universidad de Cundinamarca</h2>
 
-    {!!Form::model(null,['method'=>'PUT','route'=>['experiencia.store'],'files'=>true, 'class'=>'big-form'])!!} {{Form::token()}}
+    {!!Form::model(null,['method'=>'POST','route'=>['experiencia.store'],'files'=>true, 'class'=>'big-form'])!!} {{Form::token()}}
     <div class="duplicate">
         <label for="name">Experiencia Calificada</label>
 
@@ -15,11 +15,11 @@
             <div class="contenedor-lugar">
                 <label for="select_cargos">Cargos:</label>
                 <select class="form-control" id="select_cargos" name="Cargos">
-			                   <option value="">Investigación</option>
-			                   <option value="">Docencia universitaria</option>
-			                   <option value="">En cargos de dirección académica</option>
-			                   <option value="">Experiencia profesional diferente a la docente</option>
-			                   <option value="">Experiencia en extensión</option>
+			                   <option value="1">Investigación</option>
+			                   <option value="2">Docencia universitaria</option>
+			                   <option value="3">En cargos de dirección académica</option>
+			                   <option value="4">Experiencia profesional diferente a la docente</option>
+			                   <option value="5">Experiencia en extensión</option>
 			             </select>
             </div>
         </div>
@@ -34,7 +34,7 @@
 
         <div class="contenedor-lugar">
             <div class="contenedor-select">
-                <div class="form-group{{ $errors->has('Pais') ? ' has-error' : '' }}">
+                <div class="form-group{{ $errors->has('Pais') ? ' has-error' : '' }} ">
                     <label for="país">Pais</label>
                     <select class="form-control" id="país" name="país">
                     @foreach($paises as $pais)
@@ -49,6 +49,7 @@
                 <div class="form-group{{ $errors->has('Departamento') ? ' has-error' : '' }}">
                     <label for="departamento" id="ndepto" class="hidden">Departamento</label>
                     <select class="form-control hidden" id="departamento" name="departamento">
+                    <option value="">Seleccione Departamento</option>
                     @foreach($departamentos as $depto)
                         <option value="{{$depto->cod_departamento}}">{{$depto->nombre_departamento}}</option>
                     @endforeach
@@ -68,7 +69,7 @@
 
 
         <div class="form-group{{ $errors->has('Telefono') ? ' has-error' : '' }}">
-            <input class="form-control" type="text" placeholder="Telefono" name="Telefono">
+            <input class="form-control" type="number" placeholder="Telefono" name="Telefono">
         </div>
 
         <div class="form-group{{ $errors->has('Correo') ? ' has-error' : '' }}">
@@ -80,8 +81,8 @@
             <div class="contenedor-lugar">
                 <label for="name">Tipo:</label>
                 <select class="form-control" id="select_Tipo" name="Tipo">
-							<option value="">Publica</option>
-							<option value="">Privada</option>
+							<option value="1">Publica</option>
+							<option value="2">Privada</option>
 						</select>
             </div>
         </div>
