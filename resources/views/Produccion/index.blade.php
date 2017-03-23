@@ -30,15 +30,22 @@
                                 <th>Categoría</th>
                                 <th>Certificado</th>
                                 <th>Fecha</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($producciones as $prod)
                                 <tr>
-                                    <td>{{$prod->categoria->tipo->nombre_produccion}}</td>
+                                    <td>{{$prod->categoria->nombre_categoria}}</td>
                                     <td>{{$prod->categoria->tipo->nombre_produccion}}</td>
                                     <td><a href="">ver</a></td>
-                                    <td>{{$prod->categoria->tipo->nombre_produccion}}</td>
+                                    <td>{{$prod->fecha}}</td>
+                                    <td>
+                                        {{Form::open([ 'class' => 'no-form', 'method'  => 'delete', 'route' => [ 'produccion.destroy', $prod->cod_info_cat ] ])}}
+                                            {{ Form::hidden('cod_info_cat', $prod->cod_info_cat) }}
+                                            {{ Form::submit('Eliminar', ['class' => 'btn btn-danger']) }}
+                                        {{ Form::close() }}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -17,4 +17,9 @@ class CategoriaProduccion extends Model
     'nombre_categoria'
     ];
 
+    public function tipo()
+    {
+        return $this->belongsTo('App\Productividad', 'cod_produccion', 'cod_produccion');
+    }
+
 }

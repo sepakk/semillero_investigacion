@@ -19,7 +19,7 @@ class ProductividadController extends Controller
         $informacionpersonal=DB::table('informacion_personal')
         ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
         ->first();
-        $producciones = \App\Productividad::all();
+        $producciones = \App\ProductividadInformacion::where('documento_identificacion','=',$usuarioactual->documento_identificacion)->get();
         return view('produccion.index', ['producciones' => $producciones, 'usuario'=> $usuarioactual, 'informacionpersonal' => $informacionpersonal]);
     }
 
