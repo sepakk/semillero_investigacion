@@ -9,21 +9,7 @@ $(document).ready(function () {
         }
     });
 
-    $('select[name=país]').change(function (e) {
-        console.log($(this).val());
-        if ($(this).val() == '39') {
-            $('select[name=departamento]').removeClass('hidden');
-            $('select[name=ciudad]').removeClass('hidden');
-            $('#ndepto').removeClass('hidden');
-            $('#nciudad').removeClass('hidden');
-        } else {
-            $('select[name=departamento]').addClass('hidden');
-            $('select[name=ciudad]').addClass('hidden');
-            $('#nciudad').addClass('hidden');
-            $('#ndepto').addClass('hidden');
-
-        }
-    });
+    
 
     $(window).load(function () { //Do the code in the {}s when the window has loaded 
         $(".loading-screen").addClass('hide');
@@ -32,7 +18,26 @@ $(document).ready(function () {
     $("#add-more").click(function () {
         var last = $(".duplicate:last");
         $(".duplicate:last").clone().insertAfter(".duplicate:last");
+        $(".duplicate:last").find('select[name=departamento]').addClass('hidden');
+        $(".duplicate:last").find('select[name=ciudad]').addClass('hidden');
+        $(".duplicate:last").find('#nciudad').addClass('hidden');
+        $(".duplicate:last").find('#ndepto').addClass('hidden');
     });
+});
+
+$(document).on('change', 'select[name=país]', function (e) {
+    if ($(this).val() == '39') {
+        $(this).parent().parent().find('select[name=departamento]').removeClass('hidden');
+        $(this).parent().parent().find('select[name=ciudad]').removeClass('hidden');
+        $(this).parent().parent().find('#ndepto').removeClass('hidden');
+        $(this).parent().parent().find('#nciudad').removeClass('hidden');
+    } else {
+        $(this).parent().parent().find('select[name=departamento]').addClass('hidden');
+        $(this).parent().parent().find('select[name=ciudad]').addClass('hidden');
+        $(this).parent().parent().find('#nciudad').addClass('hidden');
+        $(this).parent().parent().find('#ndepto').addClass('hidden');
+
+    }
 });
 
 $(document).on('click', '#graduado', function () {

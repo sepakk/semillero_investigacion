@@ -33,37 +33,31 @@
         </div>
 
         <div class="contenedor-lugar">
-            <div class="contenedor-select">
-                <div class="form-group{{ $errors->has('Pais') ? ' has-error' : '' }} ">
-                    <label for="país">Pais</label>
-                    <select class="form-control" id="país" name="país">
-                    @foreach($paises as $pais)
-				        <option value="{{$pais->cod_pais}}">{{$pais->nombre_pais}}</option>
-				    @endforeach
+            <div class="form-group{{ $errors->has('Pais') ? ' has-error' : '' }} ">
+                <label class="form-label" for="país">Pais</label>
+                <select class="form-control" id="país" name="país">
+                @foreach($paises as $pais)
+			        <option value="{{$pais->cod_pais}}">{{$pais->nombre_pais}}</option>
+			    @endforeach
+			             </select>
+            </div>
+
+
+            <div class="form-group{{ $errors->has('Departamento') ? ' has-error' : '' }}">
+                <label class="form-label hidden" for="departamento" id="ndepto">Departamento</label>
+                <select class="form-control hidden" id="departamento" name="departamento">
+                <option value="">Seleccione Departamento</option>
+                @foreach($departamentos as $depto)
+                    <option value="{{$depto->cod_departamento}}">{{$depto->nombre_departamento}}</option>
+                @endforeach
+			    </select>
+            </div>
+
+
+            <div class="form-group{{ $errors->has('Ciudad') ? ' has-error' : '' }}">
+                <label class="form-label hidden" for="ciudad" id="nciudad">Ciudad</label>
+                <select class="form-control hidden" id="ciudad" name="ciudad">
 				             </select>
-                </div>
-            </div>
-
-
-            <div class="contenedor-select">
-                <div class="form-group{{ $errors->has('Departamento') ? ' has-error' : '' }}">
-                    <label for="departamento" id="ndepto" class="hidden">Departamento</label>
-                    <select class="form-control hidden" id="departamento" name="departamento">
-                    <option value="">Seleccione Departamento</option>
-                    @foreach($departamentos as $depto)
-                        <option value="{{$depto->cod_departamento}}">{{$depto->nombre_departamento}}</option>
-                    @endforeach
-				    </select>
-                </div>
-            </div>
-
-
-            <div class="contenedor-select">
-                <div class="form-group{{ $errors->has('Ciudad') ? ' has-error' : '' }}">
-                    <label for="ciudad" id="nciudad" class="hidden">Ciudad</label>
-                    <select class="form-control hidden" id="ciudad" name="ciudad">
-					             </select>
-                </div>
             </div>
         </div>
 
