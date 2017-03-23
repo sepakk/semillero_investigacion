@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\CategoriaProduccion;
+use DB;
 class ProductividadController extends Controller
 {
     /**
@@ -14,7 +15,12 @@ class ProductividadController extends Controller
     public function index()
     {
         //
-        return view('produccion.index');
+        $usuarioactual=\Auth::user();
+        $informacionpersonal=DB::table('informacion_personal')
+        ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
+        ->first();
+        $producciones = \App\Productividad::all();
+        return view('produccion.index', ['producciones' => $producciones, 'usuario'=> $usuarioactual, 'informacionpersonal' => $informacionpersonal]);
     }
 
     /**
@@ -25,7 +31,8 @@ class ProductividadController extends Controller
     public function create()
     {
         //
-        return view('produccion.create');
+        $producciones = \App\Productividad::all();
+        return view('produccion.create', ['producciones' => $producciones]);
     }
 
     /**
@@ -82,5 +89,12 @@ class ProductividadController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getCategorias(Request $request,$id){
+        if($request->ajax()){
+            $categorias = CategoriaProduccion::where('cod_produccion','=',$id)->get();
+            return response()->json($categorias);
+        }
     }
 }

@@ -25,10 +25,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('idioma', 'IdiomaController');
 	Route::resource('experiencia', 'ExperienciaController');
     Route::get('/experiencia/ciudades/{id}', 'ExperienciaController@getCiudades');
-	Route::resource('productividad', 'ProductividadController');
 	Route::resource('escalafones', 'EscalafonController');
  	Route::resource('formacion', 'FormacionController');
  	Route::resource('produccion', 'ProductividadController');
+    Route::get('/produccion/categorias/{id}', 'ProductividadController@getCategorias');
 });
 
 Route::group(['middleware' => 'usuarioAdmin'], function () {
