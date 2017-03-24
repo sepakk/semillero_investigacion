@@ -64,7 +64,7 @@ class PerfeccionamientoController extends Controller
             $per->fecha_fin = $fechafin[$i];
             $per->save();
         }
-        return Redirect::to('idioma');
+        return Redirect::to('perfeccionamiento');
     }
 
     /**
