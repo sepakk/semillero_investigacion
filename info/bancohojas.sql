@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-03-2017 a las 02:42:42
+-- Tiempo de generación: 24-03-2017 a las 02:04:08
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 7.0.9
 
@@ -1475,6 +1475,13 @@ CREATE TABLE `informacion_categorias` (
   `anexo` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `informacion_categorias`
+--
+
+INSERT INTO `informacion_categorias` (`cod_info_cat`, `cod_categoria`, `documento_identificacion`, `fecha`, `anexo`) VALUES
+(1, 56, '1069763203', '2017-03-14', '');
+
 -- --------------------------------------------------------
 
 --
@@ -1499,7 +1506,8 @@ CREATE TABLE `informacion_experiencias` (
 --
 
 INSERT INTO `informacion_experiencias` (`cod_info_exp`, `documento_identificacion`, `cod_experiencia_calificada`, `entidad`, `direccion_entidad`, `cod_ciudad`, `telefono`, `correo_electronico`, `fecha_inicio`, `fecha_retiro`) VALUES
-(2, '1069763203', 1, 'UDEC', 'carrera 1', 1, '3213123', 'correo@mail.com', '2017-03-05', '2017-03-31');
+(2, '1069763203', 1, 'UDEC', 'carrera 1', 1, '3213123', 'correo@mail.com', '2017-03-05', '2017-03-31'),
+(3, '1069763203', 3, 'U Nacional', 'carrera 45', 4, '32112311', 'correo@mail.com', '2017-03-05', '2017-03-31');
 
 -- --------------------------------------------------------
 
@@ -1573,8 +1581,7 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2016_07_07_223315_crear_tabla_tipos_usuario', 1),
-(4, '2016_07_07_225615_update_table_users_V2', 1);
+(3, '2016_07_07_223315_crear_tabla_tipos_usuario', 1);
 
 -- --------------------------------------------------------
 
@@ -1843,9 +1850,77 @@ CREATE TABLE `perfeccionamiento_actividades` (
 
 CREATE TABLE `produccion_categorias` (
   `cod_categoria` int(10) UNSIGNED NOT NULL,
-  `nombre_categoria` varchar(50) NOT NULL,
+  `nombre_categoria` varchar(100) NOT NULL,
   `cod_produccion` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `produccion_categorias`
+--
+
+INSERT INTO `produccion_categorias` (`cod_categoria`, `nombre_categoria`, `cod_produccion`) VALUES
+(1, 'En revistas tipo A1', 1),
+(2, 'En revistas tipo A2', 1),
+(3, 'En revistas tipo B', 1),
+(4, 'En revistas tipo C', 1),
+(5, 'En revistas tipo A1', 2),
+(6, 'En revistas tipo A2', 2),
+(7, 'En revistas tipo B', 2),
+(8, 'En revistas tipo C', 2),
+(9, 'En revistas tipo A1', 3),
+(10, 'En revistas tipo A2', 3),
+(11, 'En revistas tipo B', 3),
+(12, 'En revistas tipo C', 3),
+(13, 'Difusión e impacto internacional ', 4),
+(14, 'Difusión e impacto nacional', 4),
+(15, 'Difusión e impacto internacional ', 5),
+(16, 'Difusión e impacto nacional', 5),
+(17, 'Que resulten de un labor investigativa – Divulgación Internacional', 6),
+(18, 'Que resulten de un labor investigativa – Divulgación Nacional ', 6),
+(19, 'Que resulten de un labor investigativa – Divulgación Regional ', 6),
+(20, 'De texto – Divulgación Internacional', 6),
+(21, 'De texto – Divulgación Nacional ', 6),
+(22, 'De texto – Divulgación Regional ', 6),
+(23, 'De ensayo -Divulgación internacional ', 6),
+(24, 'De ensayo -Divulgación nacional', 6),
+(25, 'De ensayo- Divulgación regional ', 6),
+(26, 'Libros  - Divulgación internacional', 7),
+(27, 'Libros -Divulgación nacional', 7),
+(28, 'Libros  - Divulgación regional', 7),
+(29, 'Premio Internacional - Primer Puesto', 8),
+(30, 'Premio Internacional - Segundo puesto', 8),
+(31, 'Premio Internacional - Tercer puesto', 8),
+(32, 'Premio Internacional - Mención', 8),
+(33, 'Premio Nacional - Primer Puesto', 8),
+(34, 'Premio Nacional - Segundo puesto', 8),
+(35, 'Premio Nacional - Tercer puesto', 8),
+(36, 'Por cada una', 9),
+(37, 'Obra Original - De impacto o trascendencia internacional', 10),
+(38, 'Obra Original - De impacto o trascendencia nacional', 10),
+(39, 'Obra Complementaria - De impacto o trascendencia internacional', 10),
+(40, 'Obra Complementaria - De impacto o trascendencia nacional', 10),
+(41, 'Interpretación - De impacto o trascendencia internacional', 10),
+(42, 'Interpretación - De impacto o trascendencia nacional', 10),
+(43, 'Obras de trascendencia regional', 10),
+(44, 'Obras complementarias o de apoyo de trascendencia regional', 10),
+(45, 'Interpretaciones de trascendencia regional', 10),
+(46, 'Diseño de sistema que constituye una innovación tecnológica y que tiene impacto y aplicación', 11),
+(47, 'Diseño de sistema que constituye una adaptación tecnológica y que tiene impacto y aplicación', 11),
+(48, 'Producción de Software – Producción científica', 11),
+(49, 'Producción de Software – Producción Tecnológica', 11),
+(50, 'Difusión  e impacto regional', 12),
+(51, 'Producción con carácter documental', 13),
+(52, 'Evento Internacional', 14),
+(53, 'Evento Nacional', 14),
+(54, 'Evento Regional', 14),
+(55, 'Publicaciones impresas universitarias', 15),
+(56, 'Reseñas críticas', 15),
+(57, 'Revistas especializadas y temáticas', 16),
+(58, 'Revistas divulgativas, culturales o de opinión, no temáticas', 16),
+(59, 'Estudios Posdoctorales', 17),
+(60, 'Artículos o capítulos', 18),
+(61, 'Dirección individual de tesis maestría', 19),
+(62, 'Dirección individual de tesis doctorado', 19);
 
 -- --------------------------------------------------------
 
@@ -1855,8 +1930,33 @@ CREATE TABLE `produccion_categorias` (
 
 CREATE TABLE `productividades_academicas` (
   `cod_produccion` int(10) UNSIGNED NOT NULL,
-  `nombre_produccion` varchar(50) NOT NULL
+  `nombre_produccion` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `productividades_academicas`
+--
+
+INSERT INTO `productividades_academicas` (`cod_produccion`, `nombre_produccion`) VALUES
+(1, 'Artículo'),
+(2, 'Comunicación Corta'),
+(3, 'Infome de Caso, Revisión de tema, Carta al Editor'),
+(4, 'Video'),
+(5, 'Fotografía'),
+(6, 'Libro'),
+(7, 'Traducción'),
+(8, 'Premio'),
+(9, 'Patente'),
+(10, 'Obra Artística'),
+(11, 'Producción Técnica/de Software'),
+(12, 'Producción de Videos'),
+(13, 'Cinematografía'),
+(14, 'Ponencia'),
+(15, 'Publicación'),
+(16, 'Articulo de Revista no Indexada'),
+(17, 'Estudio'),
+(18, 'Traducción Publicada'),
+(19, 'Dirección de Tesis');
 
 -- --------------------------------------------------------
 
@@ -1935,7 +2035,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `documento_identificacion`, `name`, `apellidos`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `tipoUsuario`) VALUES
-(1, '1069763203', 'Jorge Enrique', 'Romero Cortes', 'jromero199@gmail.com', '$2y$10$0CHYFhiBU5aOKxXbGC22peHN/QdcPee25sYB1Rwrctlk3i6LAXnaq', 'yfIeGwFm3RqHmgvu4xcETCDR5eUwyUJXWUTAgIFCogOTntMV0MbqGorC7P7T', '2017-03-01 04:26:23', '2017-03-01 04:26:23', 2),
+(1, '1069763203', 'Jorge Enrique', 'Romero Cortes', 'jromero199@gmail.com', '$2y$10$0CHYFhiBU5aOKxXbGC22peHN/QdcPee25sYB1Rwrctlk3i6LAXnaq', 'lRAqQvJLE3QGUaQWz6pKHtHWmrE8H1Zq1pKq3fW2ipXPFmhZ39kpM6SUqsnd', '2017-03-01 04:26:23', '2017-03-01 04:26:23', 2),
 (2, '1069752846', 'Duban Enrique', 'Mantilla Corredor', 'duban.mantilla@hotmail.com', '$2y$10$H3pu8G2D6zgmqJ3BXDTvT.2A3l3rwH7BzSpds6WHsRqteufiNN2Ti', 'j00vKHWhz6uDesSkH6yfuY8LUFP7i3wFp2RqWzQvPet9w3jR2PoZ8FW8lIqV', '2017-03-01 19:56:13', '2017-03-01 19:56:13', 2),
 (3, '161214129', 'miguel', 'ojeda', 'academiaojeda@gmail.com', '$2y$10$DiNXoQL4HZdzoCn7Aag/duhfPdVx6Qzft7BiAttw6SdxdHh7LnXrm', 'zo7gZavqCtIXbrHLAizyRfbJTPC4xBqJhcXwR4jxSkplRhL1twMpCCrl59ju', '2017-03-01 23:09:54', '2017-03-01 23:09:54', 1),
 (4, '12345', 'linux', 'putito', 'linuxmelopela@s.com', '$2y$10$PxRov1wY7qNvpIIzA7S3MOcFsc5sc1NbGe3FgL5H64UeELbd9VAKO', 'lMh0h6lZsXy2eLUvfs44JCHsYlnLurENR6GWjWzasoOQNL9ofy031lnjiLx6', '2017-03-02 00:02:38', '2017-03-02 00:02:38', 2);
@@ -2119,7 +2219,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `escalafones`
 --
 ALTER TABLE `escalafones`
-  MODIFY `cod_escalafon` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cod_escalafon` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `experiencias_calificadas`
 --
@@ -2139,17 +2239,17 @@ ALTER TABLE `idiomas`
 -- AUTO_INCREMENT de la tabla `informacion_categorias`
 --
 ALTER TABLE `informacion_categorias`
-  MODIFY `cod_info_cat` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_info_cat` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `informacion_experiencias`
 --
 ALTER TABLE `informacion_experiencias`
-  MODIFY `cod_info_exp` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cod_info_exp` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `paises`
 --
@@ -2164,12 +2264,12 @@ ALTER TABLE `perfeccionamiento_actividades`
 -- AUTO_INCREMENT de la tabla `produccion_categorias`
 --
 ALTER TABLE `produccion_categorias`
-  MODIFY `cod_categoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_categoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 --
 -- AUTO_INCREMENT de la tabla `productividades_academicas`
 --
 ALTER TABLE `productividades_academicas`
-  MODIFY `cod_produccion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_produccion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT de la tabla `tipos_usuario`
 --
