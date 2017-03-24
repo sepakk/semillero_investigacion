@@ -82,7 +82,7 @@
                     @endif
                 </div>
 
-                <a href="informacion/edit">Editar</a>
+                <a class="btn btn-success" href="informacion/edit">Editar</a>
                 
             </div>
         </div>

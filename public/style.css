@@ -30,7 +30,7 @@ h2{
 	color: gray;
 }
 
-.big-form [type="email"], .big-form label, select, .big-form a, .big-form [type="password"], .big-form [type="date"], .big-form button,
+.big-form [type="email"], select, .big-form a, .big-form [type="password"], .big-form [type="date"], .big-form button,
 .big-form [type="submit"], .big-form select, .big-form [type="number"], .big-form [type="text"], .big-form [type="file"],.big-form [type="checkbox"]{
 	display: block;
 	text-align: center;
@@ -44,7 +44,12 @@ h2{
 	border-radius: 5px;
 	font-size: 16px;
 	width: 70%;
+}
 
+.big-form label{
+	display: block;
+	text-align: center;
+	margin: 0px auto;
 }
 
 .big-form select{
