@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-03-2017 a las 02:04:08
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 7.0.9
+-- Tiempo de generación: 24-03-2017 a las 02:20:49
+-- Versión del servidor: 10.1.19-MariaDB
+-- Versión de PHP: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -1461,6 +1461,13 @@ CREATE TABLE `informacion_actividades` (
   `puntaje_perfeccionamiento` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `informacion_actividades`
+--
+
+INSERT INTO `informacion_actividades` (`cod_perfeccionamiento`, `documento_identificacion`, `entidad`, `fecha_inicio`, `fecha_fin`, `intensidad_horaria`, `puntaje_perfeccionamiento`) VALUES
+(1, '1069763203', 'U Cundinamarca', '2017-03-01', '2017-03-31', 40, 9);
+
 -- --------------------------------------------------------
 
 --
@@ -1841,6 +1848,14 @@ CREATE TABLE `perfeccionamiento_actividades` (
   `cod_perfeccionamiento` int(10) UNSIGNED NOT NULL,
   `nombre_perfeccionamiento` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `perfeccionamiento_actividades`
+--
+
+INSERT INTO `perfeccionamiento_actividades` (`cod_perfeccionamiento`, `nombre_perfeccionamiento`) VALUES
+(1, 'Diplomado'),
+(2, 'Curso');
 
 -- --------------------------------------------------------
 
@@ -2236,6 +2251,11 @@ ALTER TABLE `formaciones_academicas`
 ALTER TABLE `idiomas`
   MODIFY `cod_idioma` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 --
+-- AUTO_INCREMENT de la tabla `informacion_actividades`
+--
+ALTER TABLE `informacion_actividades`
+  MODIFY `cod_perfeccionamiento` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT de la tabla `informacion_categorias`
 --
 ALTER TABLE `informacion_categorias`
@@ -2259,7 +2279,7 @@ ALTER TABLE `paises`
 -- AUTO_INCREMENT de la tabla `perfeccionamiento_actividades`
 --
 ALTER TABLE `perfeccionamiento_actividades`
-  MODIFY `cod_perfeccionamiento` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_perfeccionamiento` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `produccion_categorias`
 --
@@ -2320,7 +2340,6 @@ ALTER TABLE `formaciones_academicas`
 -- Filtros para la tabla `informacion_actividades`
 --
 ALTER TABLE `informacion_actividades`
-  ADD CONSTRAINT `informacion_actividades_ibfk_1` FOREIGN KEY (`cod_perfeccionamiento`) REFERENCES `perfeccionamiento_actividades` (`cod_perfeccionamiento`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `informacion_actividades_ibfk_2` FOREIGN KEY (`documento_identificacion`) REFERENCES `informacion_personal` (`documento_identificacion`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
