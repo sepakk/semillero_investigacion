@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Perfeccionamiento;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class PerfeccionamientoController extends Controller
 {
@@ -43,6 +46,25 @@ class PerfeccionamientoController extends Controller
     public function store(Request $request)
     {
         //
+        $usuarioactual=\Auth::user();
+        $entidad = Input::get('entidad');
+        $nombre = Input::get('nombre');
+        $intensidad = Input::get('intensidad');
+        $puntaje = Input::get('puntaje');
+        $fechain = Input::get('fecha-inicio');
+        $fechafin = Input::get('fecha-final');
+        for ($i=0; $i < count($entidad); $i++) { 
+            $per = new Perfeccionamiento;
+            $per->documento_identificacion = $usuarioactual->documento_identificacion;
+            $per->entidad = $entidad[$i];
+            $per->nombre = $nombre[$i];
+            $per->puntaje_perfeccionamiento = $puntaje[$i];
+            $per->intensidad_horaria = $intensidad[$i];
+            $per->fecha_inicio = $fechain[$i];
+            $per->fecha_fin = $fechafin[$i];
+            $per->save();
+        }
+        return Redirect::to('idioma');
     }
 
     /**
@@ -88,5 +110,8 @@ class PerfeccionamientoController extends Controller
     public function destroy($id)
     {
         //
+        $per=Perfeccionamiento::findOrFail($id);
+        $per->delete();
+        return Redirect::to('perfeccionamiento');
     }
 }

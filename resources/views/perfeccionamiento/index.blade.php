@@ -41,6 +41,12 @@
                                     <td>{{$per->fecha_fin}}</td>
                                     <td>{{$per->intensidad_horaria}}</td>
                                     <td>{{$per->puntaje_perfeccionamiento}}</td>
+                                    <td>
+                                        {{Form::open([ 'class' => 'no-form', 'method'  => 'delete', 'route' => [ 'perfeccionamiento.destroy', $per->cod_perfeccionamiento ] ])}}
+                                            {{ Form::hidden('cod_perfeccionamiento', $per->cod_perfeccionamiento) }}
+                                            {{ Form::submit('Eliminar', ['class' => 'btn btn-danger']) }}
+                                        {{ Form::close() }}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
