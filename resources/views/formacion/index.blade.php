@@ -49,9 +49,9 @@
                             </td>
                             <td>{{$formacion->no_tarjeta_profesional}}</td>
                             @if($formacion->certificado==null)
-                                <a href="">Ver</a> 
+                                <td><a href="">Ver</a></td> 
                             @else
-                                <td><a target="_blank" href="<?="Produccion/certificaciones/".$formacion->certificado;?>">Ver</a></td>
+                                <td><a target="_blank" href='<?="Produccion/certificaciones/".$formacion->certificado;?>'>Ver</a></td>
                             @endif
                             <td>{{$formacion->fecha_terminacion}}</td>
                             @else

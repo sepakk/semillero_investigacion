@@ -60,7 +60,7 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
-        'Produccion' => [
+        'Producciones' => [
             'driver' => 'local',
             'root' => public_path('Produccion/certificaciones/'),
             'url' => env('APP_URL').'/storage',

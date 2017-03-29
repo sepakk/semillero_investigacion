@@ -8,7 +8,7 @@
       <h1>Bienvenido a La Plataforma de Banco de Hojas de vida</h1>
       <h2>Universidad de Cundinamarca</h2>
 
-      {!!Form::model(null,['method'=>'POST','route'=>['produccion.store'],'files'=>true, 'class'=>'big-form'])!!}
+      {!!Form::model(null,['method'=>'POST','route'=>['producciones.store'],'files'=>true, 'class'=>'big-form'])!!}
         {{Form::token()}}
         <div class="duplicate">
           <label for="name">PRODUCTIVIDAD ACADEMICA </label>
@@ -33,7 +33,7 @@
 
           <div class="form-group{{ $errors->has('archivo') ? ' has-error' : '' }}">
             <label type="name" class="form-label col-lg-2" >Certificado</label>
-            <input class="form-control" type="file" name="archivo[]">
+            <input class="form-control" type="file" name="archivo[]"  required id="archivo">
           </div>
 
           <div class="form-group{{ $errors->has('fecha') ? ' has-error' : '' }}">

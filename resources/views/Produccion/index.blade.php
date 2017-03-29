@@ -38,10 +38,14 @@
                                 <tr>
                                     <td>{{$prod->categoria->nombre_categoria}}</td>
                                     <td>{{$prod->categoria->tipo->nombre_produccion}}</td>
-                                    <td><a href="">ver</a></td>
+                                     @if($prod->anexo==null)
+                                        <td><a href="">Ver</a> </td>
+                                    @else
+                                        <td><a target="_blank" href='<?="/Produccion/certificaciones/".$prod->anexo;?>'>Ver</a></td> 
+                                    @endif
                                     <td>{{$prod->fecha}}</td>
                                     <td>
-                                        {{Form::open([ 'class' => 'no-form', 'method'  => 'delete', 'route' => [ 'produccion.destroy', $prod->cod_info_cat ] ])}}
+                                        {{Form::open([ 'class' => 'no-form', 'method'  => 'delete', 'route' => [ 'producciones.destroy', $prod->cod_info_cat ] ])}}
                                             {{ Form::hidden('cod_info_cat', $prod->cod_info_cat) }}
                                             {{ Form::submit('Eliminar', ['class' => 'btn btn-danger']) }}
                                         {{ Form::close() }}
@@ -51,7 +55,7 @@
                         </tbody>
                     </table>
                 </div>
-                <a class="btn btn-success" href="/produccion/create">Agregar Nueva Producción</a>
+                <a class="btn btn-success" href="/producciones/create">Agregar Nueva Producción</a>
             </div>
         </div>
 </div>

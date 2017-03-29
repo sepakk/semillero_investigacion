@@ -28,7 +28,7 @@
                 </li>
 
                 <li>
-                    <a href="/produccion">Producción</a>
+                    <a href="/producciones">Producción</a>
                 </li>
                 @endif
                 <li>

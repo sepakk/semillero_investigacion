@@ -27,8 +27,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/experiencia/ciudades/{id}', 'ExperienciaController@getCiudades');
 	Route::resource('escalafones', 'EscalafonController');
  	Route::resource('formacion', 'FormacionController');
- 	Route::resource('produccion', 'ProductividadController');
-    Route::get('/produccion/categorias/{id}', 'ProductividadController@getCategorias');
+ 	Route::resource('producciones', 'ProductividadController');
+    Route::get('/producciones/categorias/{id}', 'ProductividadController@getCategorias');
 });
 
 Route::group(['middleware' => 'usuarioAdmin'], function () {
