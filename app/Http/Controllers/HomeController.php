@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\InformacionPersonal;
+use App\Formacion;
 use DB;
 
 class HomeController extends Controller
@@ -31,9 +33,7 @@ class HomeController extends Controller
         $idiomas = \App\IdiomaInformacion::where('documento_identificacion','=',$usuarioactual->documento_identificacion)
             ->get();
         
-        $informacionpersonal=DB::table('informacion_personal')
-        ->select('documento_identificacion','nombre','apellidos','genero','estado_civil','nacionalidad','residencia','libreta_militar','cod_libreta','fecha_nacimiento','lugar_nacimiento','direccion')
-        ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
+        $informacionpersonal=InformacionPersonal::where('documento_identificacion','=',$usuarioactual->documento_identificacion)
         ->first();
         $correo=DB::table('correos')
         ->select('documento_identificacion','correo_nombre')
@@ -64,6 +64,8 @@ class HomeController extends Controller
             ->select('cod_departamento','nombre_departamento','cod_pais')
             ->where('cod_departamento',"=",$depto)
             ->first();
+        $formaciones = Formacion::where('documento_identificacion','=',$usuarioactual->documento_identificacion)
+            ->get();
         return view('home',["informacionpersonal"=>$informacionpersonal,
             "usuario"=> $usuarioactual,
             "correo"=> $correo,
@@ -72,6 +74,7 @@ class HomeController extends Controller
             "ciudad"=>$ciudad,
             "escalafones"=>$escalafones,
             "experiencias"=>$experiencias,
-            "idiomas"=>$idiomas]);
+            "idiomas"=>$idiomas,
+            "formaciones" => $formaciones]);
     }
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-03-2017 a las 02:20:49
+-- Tiempo de generación: 29-03-2017 a las 02:25:04
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 5.6.28
 
@@ -1289,7 +1289,7 @@ INSERT INTO `experiencias_calificadas` (`cod_experiencia_calificada`, `nombre_ex
 CREATE TABLE `formaciones_academicas` (
   `cod_formacion` int(10) UNSIGNED NOT NULL,
   `cod_nivel` int(11) NOT NULL,
-  `modalidad_academica` varchar(30) NOT NULL,
+  `cod_modalidad` int(11) NOT NULL,
   `programa_academico` varchar(50) NOT NULL,
   `no_semestres` int(10) UNSIGNED NOT NULL,
   `graduado` tinyint(1) NOT NULL,
@@ -1304,8 +1304,8 @@ CREATE TABLE `formaciones_academicas` (
 -- Volcado de datos para la tabla `formaciones_academicas`
 --
 
-INSERT INTO `formaciones_academicas` (`cod_formacion`, `cod_nivel`, `modalidad_academica`, `programa_academico`, `no_semestres`, `graduado`, `titulo_obtenido`, `nombre_institucion`, `fecha_terminacion`, `no_tarjeta_profesional`, `documento_identificacion`) VALUES
-(1, 1, 'Presencial', 'Ingeniería de Sistemas', 9, 1, 'Ingeniero en Sistemas', 'Universidad de Cundinamarca', '2016-12-19', '123123131', '1069763203');
+INSERT INTO `formaciones_academicas` (`cod_formacion`, `cod_nivel`, `cod_modalidad`, `programa_academico`, `no_semestres`, `graduado`, `titulo_obtenido`, `nombre_institucion`, `fecha_terminacion`, `no_tarjeta_profesional`, `documento_identificacion`) VALUES
+(2, 1, 1, 'Ingenieria de Sistemas', 9, 1, 'Ingeniero de Sistemas', 'Universidad de Cundinamarca', '2015-12-12', '123231321', '1069763203');
 
 -- --------------------------------------------------------
 
@@ -1455,6 +1455,7 @@ CREATE TABLE `informacion_actividades` (
   `cod_perfeccionamiento` int(10) UNSIGNED NOT NULL,
   `documento_identificacion` varchar(30) NOT NULL,
   `entidad` varchar(40) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date NOT NULL,
   `intensidad_horaria` double NOT NULL,
@@ -1465,8 +1466,10 @@ CREATE TABLE `informacion_actividades` (
 -- Volcado de datos para la tabla `informacion_actividades`
 --
 
-INSERT INTO `informacion_actividades` (`cod_perfeccionamiento`, `documento_identificacion`, `entidad`, `fecha_inicio`, `fecha_fin`, `intensidad_horaria`, `puntaje_perfeccionamiento`) VALUES
-(1, '1069763203', 'U Cundinamarca', '2017-03-01', '2017-03-31', 40, 9);
+INSERT INTO `informacion_actividades` (`cod_perfeccionamiento`, `documento_identificacion`, `entidad`, `nombre`, `fecha_inicio`, `fecha_fin`, `intensidad_horaria`, `puntaje_perfeccionamiento`) VALUES
+(3, '1069763203', 'Universidad de Cundinamarca', 'Diplomado de Artes', '2015-03-02', '2015-04-02', 40, 9),
+(4, '1069763203', 'Universidad de Cundinamarca', 'Diplomado de Ciencia', '2015-03-02', '2015-04-02', 45, 9),
+(5, '1069763203', 'Universidad de Cundinamarca', 'Diplomado de Tecnologia', '2015-03-02', '2015-04-02', 45, 9);
 
 -- --------------------------------------------------------
 
@@ -1536,7 +1539,8 @@ CREATE TABLE `informacion_idioma` (
 
 INSERT INTO `informacion_idioma` (`documento_identificacion`, `cod_idioma`, `habla`, `lectura`, `escritura`) VALUES
 ('1069752846', 2, '0', '0', '2'),
-('1069763203', 51, '1', '2', '0');
+('1069763203', 51, '1', '2', '0'),
+('1069763203', 100, '2', '2', '2');
 
 -- --------------------------------------------------------
 
@@ -1589,6 +1593,25 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2016_07_07_223315_crear_tabla_tipos_usuario', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `modalidad_formacion`
+--
+
+CREATE TABLE `modalidad_formacion` (
+  `cod_modalidad` int(11) NOT NULL,
+  `nombre_modalidad` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `modalidad_formacion`
+--
+
+INSERT INTO `modalidad_formacion` (`cod_modalidad`, `nombre_modalidad`) VALUES
+(1, 'Prescencial'),
+(2, 'Virtual');
 
 -- --------------------------------------------------------
 
@@ -2100,7 +2123,8 @@ ALTER TABLE `experiencias_calificadas`
 ALTER TABLE `formaciones_academicas`
   ADD PRIMARY KEY (`cod_formacion`),
   ADD KEY `documento_identificacion` (`documento_identificacion`),
-  ADD KEY `cod_nivel` (`cod_nivel`);
+  ADD KEY `cod_nivel` (`cod_nivel`),
+  ADD KEY `cod_modalidad` (`cod_modalidad`);
 
 --
 -- Indices de la tabla `idiomas`
@@ -2150,6 +2174,12 @@ ALTER TABLE `informacion_personal`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `modalidad_formacion`
+--
+ALTER TABLE `modalidad_formacion`
+  ADD PRIMARY KEY (`cod_modalidad`);
 
 --
 -- Indices de la tabla `nivel_institucion`
@@ -2244,7 +2274,7 @@ ALTER TABLE `experiencias_calificadas`
 -- AUTO_INCREMENT de la tabla `formaciones_academicas`
 --
 ALTER TABLE `formaciones_academicas`
-  MODIFY `cod_formacion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cod_formacion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `idiomas`
 --
@@ -2254,7 +2284,7 @@ ALTER TABLE `idiomas`
 -- AUTO_INCREMENT de la tabla `informacion_actividades`
 --
 ALTER TABLE `informacion_actividades`
-  MODIFY `cod_perfeccionamiento` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cod_perfeccionamiento` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `informacion_categorias`
 --
@@ -2270,6 +2300,11 @@ ALTER TABLE `informacion_experiencias`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de la tabla `modalidad_formacion`
+--
+ALTER TABLE `modalidad_formacion`
+  MODIFY `cod_modalidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `paises`
 --
@@ -2334,7 +2369,8 @@ ALTER TABLE `escalafones`
 --
 ALTER TABLE `formaciones_academicas`
   ADD CONSTRAINT `formaciones_academicas_ibfk_1` FOREIGN KEY (`documento_identificacion`) REFERENCES `informacion_personal` (`documento_identificacion`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `formaciones_academicas_ibfk_2` FOREIGN KEY (`cod_nivel`) REFERENCES `nivel_institucion` (`cod_nivel`);
+  ADD CONSTRAINT `formaciones_academicas_ibfk_2` FOREIGN KEY (`cod_nivel`) REFERENCES `nivel_institucion` (`cod_nivel`),
+  ADD CONSTRAINT `formaciones_academicas_ibfk_3` FOREIGN KEY (`cod_modalidad`) REFERENCES `modalidad_formacion` (`cod_modalidad`);
 
 --
 -- Filtros para la tabla `informacion_actividades`

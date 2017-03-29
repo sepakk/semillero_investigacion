@@ -7,8 +7,9 @@ use App\Http\Requests\EscalafonFormRequest;
 use App\Escalafon;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
-use DB;
 use File;
+use Carbon\Carbon;
+use DB;
 
 class EscalafonController extends Controller
 {
@@ -43,7 +44,7 @@ class EscalafonController extends Controller
         $escalafon = DB::table('escalafones')
             ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
             ->get();
-        return view('escalafon.create', ['tipos'=> $tipos, 'escalafon'=> $escalafon,'documento_identificacion'=>$usuarioactual->documento_identificacion]);
+        return view('escalafon.create', ['tipos'=> $tipos, 'escalafon'=> $escalafon]);
     }
 
     /**
@@ -54,7 +55,26 @@ class EscalafonController extends Controller
      */
     public function store(Request $request)
     {
-        Escalafon::create($request->all());
+        $usuarioactual=\Auth::user();
+        $tipo_escalafon = Input::get('tipo_escalafon');
+        $anexo = Input::file('anexo');
+        for ($i=0; $i < count($tipo_escalafon); $i++) { 
+            $escalafon = new Escalafon;
+            $escalafon->documento_identificacion = $usuarioactual->documento_identificacion;
+            
+            if (Input::hasFile('anexo')){
+                $path=$anexo[$i];
+                $hora=str_replace(":", "-", Carbon::now('America/Bogota')->toTimeString().Carbon::now('America/Bogota')->toDateString());
+                $this->attributes['anexo'] =$hora.$path->getClientOriginalName();
+                $name =$hora.$path->getClientOriginalName();
+                
+                \Storage::disk('public')->put($name,\File::get($anexo[$i]));
+                $escalafon->anexo = $name;
+            }
+            
+            $escalafon->tipo_escalafon = $tipo_escalafon[$i];
+            $escalafon->save();
+        }
         return Redirect::to('escalafones');
     }
 
@@ -72,11 +92,8 @@ class EscalafonController extends Controller
         $escalafon = DB::table('escalafones')
             ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
             ->get();
-        $usuarioactual=\Auth::user();
         $escalafon=Escalafon::findOrFail($id);
-        $escalafon->delete();
-        File::delete(storage_path('Escalafon/certificaciones/').$escalafon->anexo);
-        return view('escalafon.create', ['tipos'=> $tipos, 'escalafon'=> $escalafon,'documento_identificacion'=>$usuarioactual->documento_identificacion]);
+        return view('escalafon.edit', ['tipos'=> $tipos, 'escalafon'=> $escalafon]);
     }
 
     /**
@@ -88,7 +105,23 @@ class EscalafonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Escalafon::update($request->all());
+        
+        $usuarioactual=\Auth::user();
+        $escalafon=Escalafon::findOrFail($id);
+            $escalafon->documento_identificacion = $usuarioactual->documento_identificacion;
+            
+            if (Input::hasFile('anexo')){
+                File::delete(public_path('Escalafon/certificaciones/').$escalafon->anexo);
+                $path=Input::file('anexo');
+                $hora=str_replace(":", "-", Carbon::now('America/Bogota')->toTimeString().Carbon::now('America/Bogota')->toDateString());
+                $this->attributes['anexo'] =$hora.$path->getClientOriginalName();
+                $name =$hora.$path->getClientOriginalName();
+                \Storage::disk('public')->put($name,\File::get($path));
+                $escalafon->anexo = $name;
+            }
+            
+            $escalafon->tipo_escalafon = Input::get('tipo_escalafon');
+        $escalafon->update();
         return Redirect::to('escalafones');
     }
 
@@ -100,12 +133,9 @@ class EscalafonController extends Controller
      */
     public function destroy($id)
     {
-        $escalafon = DB::table('escalafones')
-            ->where('cod_escalafon','=',$id)
-            ->get();
         $escalafon=Escalafon::findOrFail($id);
+        File::delete(public_path('Escalafon/certificaciones/').$escalafon->anexo);
         $escalafon->delete();
-        File::delete(storage_path('Escalafon/certificaciones/').$escalafon->anexo);
         return Redirect::to('escalafones');
     }
 }
