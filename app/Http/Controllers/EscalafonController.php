@@ -63,13 +63,16 @@ class EscalafonController extends Controller
             $escalafon->documento_identificacion = $usuarioactual->documento_identificacion;
             
             if (Input::hasFile('anexo')){
-                $path=$anexo[$i];
-                $hora=str_replace(":", "-", Carbon::now('America/Bogota')->toTimeString().Carbon::now('America/Bogota')->toDateString());
-                $this->attributes['anexo'] =$hora.$path->getClientOriginalName();
-                $name =$hora.$path->getClientOriginalName();
-                
-                \Storage::disk('public')->put($name,\File::get($anexo[$i]));
-                $escalafon->anexo = $name;
+                try { // catch file not found errors
+                    $path=$anexo[$i];
+                    $hora=str_replace(":", "-", Carbon::now('America/Bogota')->toTimeString().Carbon::now('America/Bogota')->toDateString());
+                    $this->attributes['anexo'] =$hora.$path->getClientOriginalName();
+                    $name =$hora.$path->getClientOriginalName();
+                    \Storage::disk('public')->put($name,\File::get($anexo[$i]));
+                    $escalafon->anexo = $name;
+                } catch (Illuminate\Filesystem\FileNotFoundException $exception) {
+                    die ('Bad File');
+                }
             }
             
             $escalafon->tipo_escalafon = $tipo_escalafon[$i];

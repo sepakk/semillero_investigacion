@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-03-2017 a las 02:25:04
--- Versión del servidor: 10.1.19-MariaDB
--- Versión de PHP: 5.6.28
+-- Tiempo de generación: 29-03-2017 a las 03:59:25
+-- Versión del servidor: 10.1.10-MariaDB
+-- Versión de PHP: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -1258,6 +1258,13 @@ CREATE TABLE `escalafones` (
   `documento_identificacion` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `escalafones`
+--
+
+INSERT INTO `escalafones` (`cod_escalafon`, `tipo_escalafon`, `anexo`, `documento_identificacion`) VALUES
+(11, 0, '20-26-082017-03-28base.png', '1069763203');
+
 -- --------------------------------------------------------
 
 --
@@ -1297,15 +1304,16 @@ CREATE TABLE `formaciones_academicas` (
   `nombre_institucion` varchar(50) NOT NULL,
   `fecha_terminacion` date NOT NULL,
   `no_tarjeta_profesional` varchar(30) NOT NULL,
-  `documento_identificacion` varchar(30) NOT NULL
+  `documento_identificacion` varchar(30) NOT NULL,
+  `certificado` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `formaciones_academicas`
 --
 
-INSERT INTO `formaciones_academicas` (`cod_formacion`, `cod_nivel`, `cod_modalidad`, `programa_academico`, `no_semestres`, `graduado`, `titulo_obtenido`, `nombre_institucion`, `fecha_terminacion`, `no_tarjeta_profesional`, `documento_identificacion`) VALUES
-(2, 1, 1, 'Ingenieria de Sistemas', 9, 1, 'Ingeniero de Sistemas', 'Universidad de Cundinamarca', '2015-12-12', '123231321', '1069763203');
+INSERT INTO `formaciones_academicas` (`cod_formacion`, `cod_nivel`, `cod_modalidad`, `programa_academico`, `no_semestres`, `graduado`, `titulo_obtenido`, `nombre_institucion`, `fecha_terminacion`, `no_tarjeta_profesional`, `documento_identificacion`, `certificado`) VALUES
+(2, 1, 1, 'Ingenieria de Sistemas', 9, 1, 'Ingeniero de Sistemas', 'Universidad de Cundinamarca', '2015-12-12', '123231321', '1069763203', NULL);
 
 -- --------------------------------------------------------
 
@@ -2264,7 +2272,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `escalafones`
 --
 ALTER TABLE `escalafones`
-  MODIFY `cod_escalafon` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_escalafon` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `experiencias_calificadas`
 --

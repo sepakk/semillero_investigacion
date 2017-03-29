@@ -61,6 +61,7 @@ class FormacionController extends Controller
         $titulo = Input::get('titulo');
         $tarjeta = Input::get('tarjeta');
         $fecha = Input::get('fecha');
+        $certificado = Input::file('certificado');
         for ($i=0; $i < count($nombre); $i++) { 
             $per = new Formacion;
             $per->documento_identificacion = $usuarioactual->documento_identificacion;
@@ -74,11 +75,26 @@ class FormacionController extends Controller
                 $per->titulo_obtenido = $titulo[$i];
                 $per->no_tarjeta_profesional = $tarjeta[$i];
                 $per->fecha_terminacion = $fecha[$i];
+                
+                if (Input::hasFile('anexo')){
+                try { // catch file not found errors
+                    $path=$certificado[$i];
+                    $hora=str_replace(":", "-", Carbon::now('America/Bogota')->toTimeString().Carbon::now('America/Bogota')->toDateString());
+                    $this->attributes['anexo'] =$hora.$path->getClientOriginalName();
+                    $name =$hora.$path->getClientOriginalName();
+                    \Storage::disk('Produccion')->put($name,\File::get($certificado[$i]));
+                    $per->$certificado = $name;
+                } catch (Illuminate\Filesystem\FileNotFoundException $exception) {
+                    die ('Bad File');
+                }
+            }
             }
             else{
                 $per->graduado = 0;
                 $per->titulo_obtenido = '';
                 $per->no_tarjeta_profesional = '';
+                $per->fecha_terminacion = '';
+                $per->$certificado = '';
 
             }
             $per->save();
