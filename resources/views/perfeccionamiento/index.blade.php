@@ -26,6 +26,7 @@
                         <thead>
                             <tr>
                                 <th>Entidad</th>
+                                <th>Nombre</th>
                                 <th>Fecha de Inicio</th>
                                 <th>Fecha de Terminación</th>
                                 <th>Intensidad Horaria</th>
@@ -37,6 +38,7 @@
                             @foreach($perfeccionamientos as $per)
                                 <tr>
                                     <td>{{$per->entidad}}</td>
+                                    <td>{{$per->nombre}}</td>
                                     <td>{{$per->fecha_inicio}}</td>
                                     <td>{{$per->fecha_fin}}</td>
                                     <td>{{$per->intensidad_horaria}}</td>

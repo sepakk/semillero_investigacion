@@ -79,7 +79,6 @@ class FormacionController extends Controller
                 $per->graduado = 0;
                 $per->titulo_obtenido = '';
                 $per->no_tarjeta_profesional = '';
-                $per->fecha_terminacion = '';
 
             }
             $per->save();
@@ -129,6 +128,8 @@ class FormacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $forma=Formacion::findOrFail($id);
+        $forma->delete();
+        return Redirect::to('formacion');
     }
 }

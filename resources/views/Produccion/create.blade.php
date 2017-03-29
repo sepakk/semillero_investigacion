@@ -12,33 +12,33 @@
         {{Form::token()}}
         <div class="duplicate">
           <label for="name">PRODUCTIVIDAD ACADEMICA </label>
-          <div class="form-group{{ $errors->has('Especializaciones') ? ' has-error' : '' }}">
+          <div class="form-group{{ $errors->has('especializacion') ? ' has-error' : '' }}">
             <label for="select_Especializaciones" class="form-label col-lg-2" >Producción</label>
-            <select class="form-control" id="select_Especializaciones" name="Especiliaciones">
+            <select class="form-control" id="select_Especializaciones" name="especializacion[]">
               @foreach($producciones as $produccion)
                 <option value="{{$produccion->cod_produccion}}">{{$produccion->nombre_produccion}}</option>
               @endforeach
             </select>
           </div>
 
-          <div class="form-group{{ $errors->has('Tipo') ? ' has-error' : '' }}">
+          <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
             <label for="select_Tipo" class="form-label col-lg-2">Categoria</label>
-            <select class="form-control" id="select_Tipo" name="Tipo">
+            <select class="form-control" id="select_Tipo" name="tipo[]">
               <option value="1"> En revistas tipo A1 </option>
-              <option value="2"> En revistas tipo A2 </option>
+              <option value="2"> En routevistas tipo A2 </option>
               <option value="3"> En revistas tipo B </option>
               <option value="4"> En revistas tipo C </option>
             </select>
           </div>
 
-          <div class="form-group{{ $errors->has('Archivo') ? ' has-error' : '' }}">
+          <div class="form-group{{ $errors->has('archivo') ? ' has-error' : '' }}">
             <label type="name" class="form-label col-lg-2" >Certificado</label>
-            <input class="form-control" type="file" name="Archivo">
+            <input class="form-control" type="file" name="archivo[]">
           </div>
 
-          <div class="form-group{{ $errors->has('Fecha') ? ' has-error' : '' }}">
+          <div class="form-group{{ $errors->has('fecha') ? ' has-error' : '' }}">
             <label for="date"  class="form-label col-lg-2" >Fecha</label>
-            <input class="form-control" id="date" type="date" name="Fecha">
+            <input class="form-control" id="date" type="date" name="fecha[]">
           </div>
 
           <hr>

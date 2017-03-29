@@ -11,9 +11,9 @@
 			<div>
 				<div class="information-header">
            	    <div class="user-image">                
-      		 </div>
+      		 </div class="contenido-admin">
 
-		      		 <div>
+		      		 <div class="contenido-texto">
 		      		 	<p><b>Nombre:</b></p>
 		      		 	<p><b>Apellidos:</b></p>
 		      		 	<p><b>Cedula:</b></p>

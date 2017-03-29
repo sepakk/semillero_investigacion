@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CategoriaProduccion;
 use DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
+use App\ProductividadInformacion;
 class ProductividadController extends Controller
 {
     /**
@@ -19,7 +22,7 @@ class ProductividadController extends Controller
         $informacionpersonal=DB::table('informacion_personal')
         ->where('documento_identificacion','=',$usuarioactual->documento_identificacion)
         ->first();
-        $producciones = \App\ProductividadInformacion::where('documento_identificacion','=',$usuarioactual->documento_identificacion)->get();
+        $producciones = ProductividadInformacion::where('documento_identificacion','=',$usuarioactual->documento_identificacion)->get();
         return view('produccion.index', ['producciones' => $producciones, 'usuario'=> $usuarioactual, 'informacionpersonal' => $informacionpersonal]);
     }
 
@@ -43,7 +46,18 @@ class ProductividadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuarioactual=\Auth::user();
+        $tipo = Input::get('tipo');
+        $fecha = Input::get('fecha');
+        for ($i=0; $i < count($tipo); $i++) { 
+            $per = new ProductividadInformacion;
+            $per->documento_identificacion = $usuarioactual->documento_identificacion;
+            $per->cod_categoria = $tipo[$i];
+            $per->fecha = $fecha[$i];
+            $per->anexo = '';
+            $per->save();
+        }
+        return Redirect::to('produccion');
     }
 
     /**
@@ -89,6 +103,9 @@ class ProductividadController extends Controller
     public function destroy($id)
     {
         //
+        $per=ProductividadInformacion::findOrFail($id);
+        $per->delete();
+        return Redirect::to('produccion');
     }
 
     public function getCategorias(Request $request,$id){
