@@ -9,6 +9,17 @@ $(document).ready(function () {
         }
     });
 
+    var active = false;
+
+    $("#collapse").click(function(){
+        active = !active;
+        if(active)
+            $("ul").css({"height": "auto"});
+        else
+            $("ul").css({"height": "40px"});
+
+    });
+
     
 
     $(window).load(function () { //Do the code in the {}s when the window has loaded 

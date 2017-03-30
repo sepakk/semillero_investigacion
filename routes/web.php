@@ -27,14 +27,8 @@ Route::group(['middleware' => 'usuarioStandard'], function () {
     Route::get('/experiencia/ciudades/{id}', 'ExperienciaController@getCiudades');
 	Route::resource('escalafones', 'EscalafonController');
  	Route::resource('formacion', 'FormacionController');
-<<<<<<< HEAD
- 	Route::resource('produccion', 'ProductividadController');
- 	Route::resource('administrador', 'AdministradorController');
-    Route::get('/produccion/categorias/{id}', 'ProductividadController@getCategorias');
-=======
  	Route::resource('producciones', 'ProductividadController');
     Route::get('/producciones/categorias/{id}', 'ProductividadController@getCategorias');
->>>>>>> 44b4ede3f7a0b05e4e95bd4f4355b8bdfe1002b0
 });
 
 Route::group(['middleware' => 'usuarioAdmin'], function () {

@@ -60,7 +60,7 @@ h2{
 	max-width: 450px;
 }
 
-.big-form [type="submit"], ul a, .big-form button{
+.big-form [type="submit"], ul a, .menu-collapse, .big-form button{
 	background: #0E3D38;
 	color: white;
 	padding: 8px 10px;
@@ -86,12 +86,16 @@ ul li{
 	list-style: none;
 }
 
-ul a{
+ul a, ul .menu-collapse{
 	display: block;
 	margin: 0 0 2px 0;
 	text-decoration: none;
 	outline: none;
 
+}
+
+ul .menu-collapse{
+	display: none;
 }
 
 .big-form [type="submit"]:hover, .big-form button:hover, ul a:hover{
@@ -240,38 +244,78 @@ a{
 	ADMINISTRADOR
 */
 
-<<<<<<< HEAD
-.contenido-texto{
-	
-}
-.user-image{
-=======
 .user_container{
-	width: 80%;
+	width: 60%;
 	margin: 10px auto;
-	display: block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	background: #fffafa;
 	padding: 15px;
 	border: 1px lightgray solid;
 	border-radius: 15px;
+	text-decoration: none;
+
+
+}
+
+.user_container:hover, .user_container:visited, .user_container:active, .user_container:focus,.user_container:link{
+	text-decoration: none;
+	color: black;
 }
 
 .admin-header{
-	width: 20%;
-	display: inline-block;
+	width: 150px;
+	display: block;
+	padding: 20px;
 }
 
 .admin-contenido{
-	width: 70%;
-	display: inline-block;
+	width: 30%;
+	min-width: 100px;
+	display: block;
 }
 
 .admin-image{
->>>>>>> 44b4ede3f7a0b05e4e95bd4f4355b8bdfe1002b0
 	width: 100px;
 	height: 100px;
 	background-image: url('default-user.png');
 	background-size: contain;
 	background-repeat: no-repeat;
 	border-radius: 50%;
+}
+
+@media screen and (max-width: 768px) {
+    .divider{
+    	display: none;
+    }
+
+    .user_container{
+    	flex-wrap: wrap;
+	}
+
+	.columns{
+		display: block;
+	}
+
+	ul{
+		margin-top: 10px;
+		height: 40px;
+		overflow: hidden;
+		transition: all 300ms ease-in-out;
+	}
+
+	ul a, ul .menu-collapse{
+		margin: 0 0 0px 0;
+		border-radius: 0;
+	}
+
+	.big-form [type="submit"]:hover, .big-form button:hover, ul a:hover{
+		background: #1F7268;
+	}
+
+	ul .menu-collapse{
+		display: block;
+	}
+
 }
