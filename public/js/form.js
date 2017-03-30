@@ -14,7 +14,7 @@ $(document).ready(function () {
     $("#collapse").click(function(){
         active = !active;
         if(active)
-            $("ul").css({"height": "auto"});
+            $("ul").css({"height": "360px"});
         else
             $("ul").css({"height": "36px"});
 

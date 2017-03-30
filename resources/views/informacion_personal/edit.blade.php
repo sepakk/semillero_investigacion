@@ -3,6 +3,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
+                <a class="button-back" href="/informacion">Volver</a>
                 <h1>Agregue sus datos de Información Personal</h1>
                 <h2>Universidad de Cundinamarca</h2>
 

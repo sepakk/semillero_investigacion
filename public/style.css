@@ -60,7 +60,7 @@ h2{
 	max-width: 450px;
 }
 
-.big-form [type="submit"], ul a, .menu-collapse, .big-form button{
+.big-form [type="submit"], ul a, .button-back, .menu-collapse, .big-form button{
 	background: #0E3D38;
 	color: white;
 	padding: 8px 10px;
@@ -69,15 +69,20 @@ h2{
 }
 
 .columns{
-	display: flex;
+   height: auto;
+   overflow: hidden;
 }
 
 ul{
-	flex-grow: 1;
+	width: 200px;
+	float: left;
+	height: 360px;
 }
 
 .content{
-	flex-grow: 20;
+	width: auto;
+	float: none;
+    overflow: hidden;
 	padding: 40px;
 }
 
@@ -86,19 +91,24 @@ ul li{
 	list-style: none;
 }
 
-ul a, ul .menu-collapse{
+ul a, .button-back, ul .menu-collapse{
 	display: block;
 	margin: 0 0 2px 0;
 	text-decoration: none;
 	outline: none;
+	margin: 5px;
+}
 
+.button-back{
+	width: 80px;
+	text-align: center;
 }
 
 ul .menu-collapse{
 	display: none;
 }
 
-.big-form [type="submit"]:hover, .big-form button:hover, ul a:hover{
+.big-form [type="submit"]:hover, .big-form button:hover, ul a:hover, .button-bkac:hover{
 	background: #1F7268;
 }
 
@@ -131,6 +141,8 @@ a{
 }
 
 .title img{
+	width: 90%;
+	max-width: 900px;
 	display: block;
 	margin: 0px auto;
 }
@@ -299,6 +311,9 @@ a{
 	}
 
 	ul{
+		width: 95%;
+		float: none;
+		margin: 0px auto;
 		margin-top: 10px;
 		height: 36px;
 		overflow: hidden;
@@ -311,7 +326,7 @@ a{
 		border-radius: 0;
 	}
 
-	.big-form [type="submit"]:hover, .big-form button:hover, ul a:hover{
+	.big-form [type="submit"]:hover, .big-form button:hover, ul a:hover, .button-back:hover{
 		background: #1F7268;
 	}
 
@@ -319,6 +334,9 @@ a{
 		display: block;
 		border: none;
 		border-radius: 0 5px 0 0;
+	}
+	.contenedor-lugar{
+		flex-wrap: wrap;
 	}
 
 }
