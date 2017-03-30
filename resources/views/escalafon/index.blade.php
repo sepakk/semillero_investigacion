@@ -34,7 +34,7 @@
                             <td>{{$escalafon->tipo->nombre_escalafon}}</td>
                             <td>
                                 @if($escalafon->anexo==null)
-                                    <a href="">Ver</a> 
+                                    <td><a href="">Ver</a> </td>
                                 @else
                                     <a target="_blank" href="<?="/Escalafon/certificaciones/".$escalafon->anexo;?>">Ver</a> 
                                 @endif

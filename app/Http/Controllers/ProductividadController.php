@@ -8,6 +8,8 @@ use DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use App\ProductividadInformacion;
+use File;
+use Carbon\Carbon;
 class ProductividadController extends Controller
 {
     /**
@@ -49,15 +51,27 @@ class ProductividadController extends Controller
         $usuarioactual=\Auth::user();
         $tipo = Input::get('tipo');
         $fecha = Input::get('fecha');
+        $anexo = Input::file('archivo');
         for ($i=0; $i < count($tipo); $i++) { 
             $per = new ProductividadInformacion;
             $per->documento_identificacion = $usuarioactual->documento_identificacion;
             $per->cod_categoria = $tipo[$i];
             $per->fecha = $fecha[$i];
-            $per->anexo = '';
+            if (Input::hasFile('archivo')){
+                try { // catch file not found errors
+                    $path=$anexo[$i];
+                    $hora=str_replace(":", "-", Carbon::now('America/Bogota')->toTimeString().Carbon::now('America/Bogota')->toDateString());
+                    $this->attributes['archivo'] =$hora.$path->getClientOriginalName();
+                    $name =$hora.$path->getClientOriginalName();
+                    \Storage::disk('Producciones')->put($name,\File::get($anexo[$i]));
+                    $per->anexo = $name;
+                } catch (Illuminate\Filesystem\FileNotFoundException $exception) {
+                    die ('Bad File');
+                }
+            }
             $per->save();
         }
-        return Redirect::to('produccion');
+        return Redirect::to('producciones');
     }
 
     /**
@@ -105,7 +119,7 @@ class ProductividadController extends Controller
         //
         $per=ProductividadInformacion::findOrFail($id);
         $per->delete();
-        return Redirect::to('produccion');
+        return Redirect::to('producciones');
     }
 
     public function getCategorias(Request $request,$id){

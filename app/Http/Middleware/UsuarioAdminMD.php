@@ -17,7 +17,7 @@ class UsuarioAdminMD
     {
        $usuario_actual=\Auth::user();
         if($usuario_actual->tipoUsuario!=1){
-         return view("mensajes.msj_rechazado")->with("msj","No tiene suficientes Privilegios para acceder a esta seccion");
+         return response()->view("mensajes.msj_rechazado", ["msj"=>"No tiene suficientes Privilegios para acceder a esta seccion"]);
         }
         return $next($request);
     }

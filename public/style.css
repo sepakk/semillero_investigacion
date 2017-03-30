@@ -240,10 +240,34 @@ a{
 	ADMINISTRADOR
 */
 
+<<<<<<< HEAD
 .contenido-texto{
 	
 }
 .user-image{
+=======
+.user_container{
+	width: 80%;
+	margin: 10px auto;
+	display: block;
+	background: #fffafa;
+	padding: 15px;
+	border: 1px lightgray solid;
+	border-radius: 15px;
+}
+
+.admin-header{
+	width: 20%;
+	display: inline-block;
+}
+
+.admin-contenido{
+	width: 70%;
+	display: inline-block;
+}
+
+.admin-image{
+>>>>>>> 44b4ede3f7a0b05e4e95bd4f4355b8bdfe1002b0
 	width: 100px;
 	height: 100px;
 	background-image: url('default-user.png');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use File;
+use Carbon\Carbon;
 use App\NivelInstitucion;
 use App\ModalidadFormacion;
 use App\Formacion;
@@ -76,11 +78,11 @@ class FormacionController extends Controller
                 $per->no_tarjeta_profesional = $tarjeta[$i];
                 $per->fecha_terminacion = $fecha[$i];
                 
-                if (Input::hasFile('anexo')){
+                if (Input::hasFile('certificado')){
                 try { // catch file not found errors
                     $path=$certificado[$i];
                     $hora=str_replace(":", "-", Carbon::now('America/Bogota')->toTimeString().Carbon::now('America/Bogota')->toDateString());
-                    $this->attributes['anexo'] =$hora.$path->getClientOriginalName();
+                    $this->attributes['certificado'] =$hora.$path->getClientOriginalName();
                     $name =$hora.$path->getClientOriginalName();
                     \Storage::disk('Produccion')->put($name,\File::get($certificado[$i]));
                     $per->$certificado = $name;
