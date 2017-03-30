@@ -6,7 +6,7 @@
 
 		<h1>Bienvenido a La Plataforma de Banco de Hojas de vida</h1>
 		<h2>Universidad de Cundinamarca</h2>
-   		@include('Search')
+   		<!--@inclue('Search')-->
 		<a>
 			<div>
 				<div class="information-header">

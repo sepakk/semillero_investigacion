@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('escalafones', 'EscalafonController');
  	Route::resource('formacion', 'FormacionController');
  	Route::resource('produccion', 'ProductividadController');
+ 	Route::resource('administrador', 'AdministradorController');
     Route::get('/produccion/categorias/{id}', 'ProductividadController@getCategorias');
 });
 
