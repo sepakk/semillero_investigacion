@@ -17,7 +17,7 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Auth::routes();
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'usuarioStandard'], function () {
 	Route::get('/home', 'HomeController@index');
 	Route::resource('informacion', 'InformacionPersonalController');
 	Route::get('/informacion/ciudades/{id}', 'InformacionPersonalController@getCiudades');
@@ -32,7 +32,6 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'usuarioAdmin'], function () {
+	Route::resource('/admin', 'AdministradorController');
 	
-});
-Route::group(['middleware' => 'usuarioStandard'], function () {	
 });
