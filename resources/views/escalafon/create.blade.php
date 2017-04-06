@@ -20,10 +20,10 @@
                         <div class="contenedor-lugar">
                             <label for="tipo_escalafon">Tipo:</label>
                             <select id="tipo_escalafon" name="tipo_escalafon[]">
-										@foreach($tipos as $tipo)
-											<option value="{{$tipo->cod_escalafon}}">{{$tipo->nombre_escalafon}}</option>
-										@endforeach
-									</select>
+								@foreach($tipos as $tipo)
+									<option value="{{$tipo->cod_escalafon}}">{{$tipo->nombre_escalafon}}</option>
+								@endforeach
+							</select>
                         </div>
                     </div>
 

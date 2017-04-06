@@ -271,9 +271,22 @@ a{
 
 }
 
+.pagination{
+	height: auto;
+	float: none;
+	margin: 0 auto;
+	display: block;
+    overflow: hidden;
+	text-align: center;
+}
+
 .user_container:hover, .user_container:visited, .user_container:active, .user_container:focus,.user_container:link{
 	text-decoration: none;
 	color: black;
+}
+
+.user_container:hover{
+	background: lightgray;
 }
 
 .admin-header{

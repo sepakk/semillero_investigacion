@@ -12,10 +12,20 @@ use Illuminate\Support\Facades\Redirect;
 
 class AdministradorController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $usuarios = User::where('tipoUsuario','=','2')->get();
-        return view('admin.index', ['usuarios' => $usuarios]);
+        if ($request){
+                $query=trim($request->get('searchText'));
+                $usuarios = DB::table('users') 
+                ->orwhere('name','LIKE','%'.$query.'%')->where('tipoUsuario','=','2')
+                ->orwhere('apellidos','LIKE','%'.$query.'%')
+                ->where('tipoUsuario','=','2')
+                ->orwhere('documento_identificacion','LIKE','%'.$query.'%')
+                ->where('tipoUsuario','=','2')
+                ->orderBy('name','asc')
+                ->paginate(2);
+                return view('admin.index', ['usuarios' => $usuarios,"searchText"=>$query]);
+        }
     }
 
     public function create()

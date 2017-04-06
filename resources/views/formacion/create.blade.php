@@ -28,6 +28,7 @@
 						@endforeach
 					</select>
 				</div>
+				
 				<div class="col-70 form-group{{ $errors->has('modalidad') ? ' has-error' : '' }}">
 					<label for="select_modalidad" class="form-label col-lg-2" >Modalidad</label>
 					<select class="form-control" name="modalidad[]" id="select_modalidad">
