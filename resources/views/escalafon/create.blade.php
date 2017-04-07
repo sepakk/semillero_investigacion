@@ -13,6 +13,7 @@
 
                 {!!Form::open(array('url'=>'escalafones','method'=>'POST','autocomplete'=>'off','files'=>true, 'class'=>'big-form'))!!} {{Form::token()}}
                 <div class="duplicate">
+                    <button id="cerrar" type="button"  class="hidden btn btn-danger top-right"><b>X</b></button>
                     <label for="name">CATEGORIA EN EL ESCALAFON</label>
                     <label for="name">Si ha sido escalonado previamente en una Universidad y está ubicado en una de las categorías de las relacionadas a continuación identifíquela y anexe documento de soporte.</label>
 

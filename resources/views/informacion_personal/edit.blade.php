@@ -173,7 +173,8 @@
                                     @endif
                                 @endforeach
                             </select> @else
-                        <select class="form-control" name="departamento" id="departamento">
+                        <select class="form-control hidden" name="departamento" id="departamento">
+                                <option value="0">Seleccione Departamento</option>
                                 @foreach($departamentos as $deptos)
                                         <option value="{{$deptos->cod_departamento}}">{{$deptos->nombre_departamento}}</option>
                                 @endforeach
@@ -181,7 +182,7 @@
                         <select class="form-control" name="ciudad" id="ciudad">
                                 <option value="{{$ciudad->cod_ciudad}}">{{$ciudad->nombre_ciudad}}</option>
                             @else
-                                <select class="form-control" name="ciudad" id="ciudad" class="hidden" >
+                                <select class="form-control hidden" name="ciudad" id="ciudad" >
                                     <option value="0" select class="form-control"ed="">Seleccione Ciudad</option>
                             @endif
                             </select>
@@ -191,7 +192,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">
-                                Agregar Datos
+                                Editar Datos
                             </button>
                     </div>
                     {!!Form::close()!!}

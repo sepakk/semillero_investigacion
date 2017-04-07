@@ -47,13 +47,25 @@
                         @endif
                     @endif
                     <?php $cont=0; ?>
-                    @foreach($paises as $pa)
-                        @if($pa->cod_pais == $informacionpersonal->nacionalidad)
-                            <p><b>Nacionalidad: </b>{{ $pa->nombre_pais}}</p>
-                            <?php $cont=1; ?>
+                    @foreach($paises as $pa) 
+                    @if(!empty($departamento)) 
+                        @if(!empty($ciudad)) 
+                            @if($pa->cod_pais == $departamento->cod_pais)
+                                <p><b>Lugar de Nacimiento: </b>{{ $ciudad->nombre_ciudad}} - {{$departamento->nombre_departamento}} ( {{$pa->nombre_pais}})</p>
+                            @endif 
+                        @else
+                            <p><b>Lugar de Nacimiento: </b>{{ $departamento->nombre_departamento}} ({{$pa->nombre_pais }})</p>
                         @endif
-                    @endforeach
-                    @if($cont==0) <p><b>Nacionalidad: </b></p><?php $cont=1; ?>@endif
+                    @else
+                        @if($pais==$pa->cod_pais)
+                            <p><b>Lugar de Nacimiento: </b>{{$pa->nombre_pais }}</p>
+                        @endif
+                        <?php $cont=2; ?> 
+                    @endif 
+                @endforeach 
+                @if($cont==1)
+                    <p><b>Lugar de Nacimiento: </b></p>
+                @endif
                     @if($informacionpersonal->libreta_militar==null)
                     <p><b>Libreta Militar: </b>No</p>
                     @else

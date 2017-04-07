@@ -11,13 +11,14 @@
 		{!!Form::open(array('url'=>'formacion','method'=>'POST','autocomplete'=>'off','class'=>'big-form'))!!}
 	    {{Form::token()}}
 	    	<div class="duplicate">
-				<label for="name">Formacion Academica</label>
+				<button id="cerrar" type="button"  class="hidden btn btn-danger top-right"><b>X</b></button>
+                <label for="name">Formacion Academica</label>
 
 				<div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
-					<input type="text" class="form-control" placeholder= "Nombre de Carrera... " name="nombre[]">
+					<input type="text" class="form-control" placeholder= "Nombre de Carrera... " name="nombre[]"  required="">
 				</div>
 				<div class="form-group{{ $errors->has('Institucion') ? ' has-error' : '' }}">
-					<input type="text" class="form-control" placeholder="Institución..." name="institucion[]">
+					<input type="text" class="form-control" placeholder="Institución..." name="institucion[]" required="">
 				</div>
 
 				<div class="col-70 form-group{{ $errors->has('nivel') ? ' has-error' : '' }}">
@@ -41,7 +42,7 @@
 
 				<div class="col-70 form-group{{ $errors->has('semestres') ? ' has-error' : '' }}">
 					<label for="select_modalidad" class="form-label col-lg-2" >N° de Semestres:</label>
-					<input class="form-control" type="number" name="semestres[]">
+					<input class="form-control" type="number" name="semestres[]" required="">
 				</div>
 
 				<div class="col-70 form-group{{ $errors->has('graduado') ? ' has-error' : '' }}">

@@ -62,7 +62,9 @@
                                 <td></td>
                                 @endif
                                 <td>
-                                    {{Form::open([ 'class' => 'no-form', 'method' => 'delete', 'route' => [ 'formacion.destroy', $formacion->cod_formacion ] ])}} {{ Form::hidden('cod_formacion', $formacion->cod_formacion) }} {{ Form::submit('Eliminar', ['class' => 'btn btn-danger']) }} {{ Form::close() }}
+                                    {{Form::open([ 'class' => 'no-form', 'method' => 'delete', 'route' => [ 'formacion.destroy', $formacion->cod_formacion ] ])}} 
+                                        {{ Form::hidden('cod_formacion', $formacion->cod_formacion) }} {{ Form::submit('Eliminar', ['class' => 'btn btn-danger']) }} 
+                                    {{ Form::close() }}
                                 </td>
                             </tr>
                             @endforeach

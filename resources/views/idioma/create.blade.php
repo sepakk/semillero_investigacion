@@ -9,6 +9,7 @@
 
             {!!Form::open(array('url'=>'idioma','method'=>'POST','autocomplete'=>'off','class'=>'big-form'))!!}
                   <div class="duplicate">
+                        <button id="cerrar" type="button"  class="hidden btn btn-danger top-right"><b>X</b></button>
                         <label for="name">Especifique los idiomas diferentes al español que:</label>
 
                         <div class="form-group{{ $errors->has('cod_idioma') ? ' has-error' : '' }}">

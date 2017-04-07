@@ -30,6 +30,7 @@ class HomeController extends Controller
             ->get();
         $ciuda=0;
         $depto=0;
+        $pais=0;
         $string = $informacionpersonal->lugar_nacimiento;
         $token = strtok($string, ".");
         $cont=0;
@@ -38,6 +39,8 @@ class HomeController extends Controller
                 $ciuda=$token;
             }if ($cont==1) {
                 $depto=$token;
+            }if ($cont==0) {
+                $pais=$token;
             }
             $cont++;
             $token = strtok(".");
@@ -61,6 +64,7 @@ class HomeController extends Controller
             "escalafones"=>$escalafones,
             "experiencias"=>$experiencias,
             "idiomas"=>$idiomas,
-            "formaciones" => $formaciones]);
+            "formaciones" => $formaciones,
+            "pais"=>$pais]);
     }
 }

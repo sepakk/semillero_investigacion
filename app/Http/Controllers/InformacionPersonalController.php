@@ -32,6 +32,7 @@ class InformacionPersonalController extends Controller
             ->get();
         $ciuda=0;
         $depto=0;
+        $pais=0;
         $string = $informacionpersonal->lugar_nacimiento;
         $token = strtok($string, ".");
         $cont=0;
@@ -40,6 +41,8 @@ class InformacionPersonalController extends Controller
                 $ciuda=$token;
             }if ($cont==1) {
                 $depto=$token;
+            }if ($cont==0) {
+                $pais=$token;
             }
             $cont++;
             $token = strtok(".");
@@ -52,7 +55,7 @@ class InformacionPersonalController extends Controller
             ->select('cod_departamento',strtolower('nombre_departamento'),'cod_pais')
             ->where('cod_departamento',"=",$depto)
             ->first();
-        return view('informacion_personal.show',["informacionpersonal"=>$informacionpersonal,"usuario"=> $usuarioactual,"correo"=> $correo,"departamento"=>$departamentos,"paises"=>$paises,"ciudad"=>$ciudad]);
+        return view('informacion_personal.show',["informacionpersonal"=>$informacionpersonal,"usuario"=> $usuarioactual,"correo"=> $correo,"departamento"=>$departamentos,"paises"=>$paises,"ciudad"=>$ciudad,"pais"=>$pais]);
     }
 
     public function show(){
@@ -173,12 +176,15 @@ class InformacionPersonalController extends Controller
             }
             $informacionpersonal->cod_libreta=$request->get('cod_libreta');
             $informacionpersonal->fecha_nacimiento=$request->get('fecha_nacimiento');
-            $informacionpersonal->lugar_nacimiento=$request->get('país').".".$request->get('departamento').".".$request->get('ciudad');
+            if($request->get('país') == '39')
+                $informacionpersonal->lugar_nacimiento=$request->get('país').".".$request->get('departamento').".".$request->get('ciudad');
+            else
+                $informacionpersonal->lugar_nacimiento=$request->get('país').".0.0";
             $informacionpersonal->direccion=$request->get('direccion');
             $informacionpersonal->estado_civil=$request->get('estado_civil');
             //echo "país   ".$request->get('país')." depto  ".$request->get('departamento')." ciudad ".$request->get('ciudad');
             $informacionpersonal->update();
-        return Redirect::to('/home');
+        return Redirect::to('/informacion');
     }
     public function getCiudades(Request $request,$id){
         if($request->ajax()){

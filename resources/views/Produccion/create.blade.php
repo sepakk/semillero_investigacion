@@ -11,7 +11,8 @@
       {!!Form::model(null,['method'=>'POST','route'=>['producciones.store'],'files'=>true, 'class'=>'big-form'])!!}
         {{Form::token()}}
         <div class="duplicate">
-          <label for="name">PRODUCTIVIDAD ACADEMICA </label>
+          <button id="cerrar" type="button"  class="hidden btn btn-danger top-right"><b>X</b></button>
+            <label for="name">PRODUCTIVIDAD ACADEMICA </label>
           <div class="form-group{{ $errors->has('especializacion') ? ' has-error' : '' }}">
             <label for="select_Especializaciones" class="form-label col-lg-2" >Producción</label>
             <select class="form-control" id="select_Especializaciones" name="especializacion[]">

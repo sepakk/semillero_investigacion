@@ -9,6 +9,7 @@
 
     {!!Form::model(null,['method'=>'POST','route'=>['experiencia.store'],'files'=>true, 'class'=>'big-form'])!!} {{Form::token()}}
     <div class="duplicate">
+        <button id="cerrar" type="button"  class="hidden btn btn-danger top-right"><b>X</b></button>
         <label for="name">Experiencia Calificada</label>
 
         <div class="form-group{{ $errors->has('Cargos') ? ' has-error' : '' }}">
@@ -25,11 +26,11 @@
         </div>
 
         <div class="form-group{{ $errors->has('Entidad') ? ' has-error' : '' }}">
-            <input class="form-control" type="text" placeholder="Entidad" name="Entidad">
+            <input class="form-control" type="text" placeholder="Entidad" name="Entidad" required="">
         </div>
 
         <div class="form-group{{ $errors->has('Dirección') ? ' has-error' : '' }}">
-            <input class="form-control" type="text" placeholder="Dirección" name="Dirección">
+            <input class="form-control" type="text" placeholder="Dirección" name="Dirección" required="">
         </div>
 
         <div class="contenedor-lugar">
@@ -63,11 +64,11 @@
 
 
         <div class="form-group{{ $errors->has('Telefono') ? ' has-error' : '' }}">
-            <input class="form-control" type="number" placeholder="Telefono" name="Telefono">
+            <input class="form-control" type="number" placeholder="Telefono" name="Telefono"  required="">
         </div>
 
         <div class="form-group{{ $errors->has('Correo') ? ' has-error' : '' }}">
-            <input class="form-control" type="email" placeholder="Correo..." name="Correo">
+            <input class="form-control" type="email" placeholder="Correo..." name="Correo"  required="">
         </div>
 
 
@@ -83,17 +84,17 @@
 
         <div class="form-group{{ $errors->has('Fecha_i') ? ' has-error' : '' }}">
             <label>Fecha De Ingreso</label>
-            <input class="form-control" type="date" name="Fecha_i">
+            <input class="form-control" type="date" name="Fecha_i"  required="">
         </div>
 
         <div class="form-group{{ $errors->has('Fecha_r') ? ' has-error' : '' }}">
             <label>Fecha De Retiro</label>
-            <input class="form-control" type="date" name="Fecha_r">
+            <input class="form-control" type="date" name="Fecha_r"  required="">
         </div>
 
         <div class="form-group{{ $errors->has('Archivo') ? ' has-error' : '' }}">
             <label type="name">Certificado</label>
-            <input class="form-control" type="file" name="Archivo">
+            <input class="form-control" type="file" name="Archivo"  required="">
         </div>
         <hr>
         <br>

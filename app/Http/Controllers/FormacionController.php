@@ -93,10 +93,9 @@ class FormacionController extends Controller
             }
             else{
                 $per->graduado = 0;
-                $per->titulo_obtenido = '';
-                $per->no_tarjeta_profesional = '';
-                $per->fecha_terminacion = '';
-                $per->$certificado = '';
+                $per->titulo_obtenido = '1';
+                $per->no_tarjeta_profesional = '2';
+                $per->fecha_terminacion = Carbon::now('America/Bogota');
 
             }
             $per->save();

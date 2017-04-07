@@ -48,17 +48,29 @@
                 @endif
                 <p><b>Fecha de Nacimiento: </b>{{$informacionpersonal->fecha_nacimiento }}</p>
 
-                @foreach($paises as $pa) @if(!empty($departamento)) @if(!empty($ciudad)) @if($pa->cod_pais == $departamento->cod_pais)
-                <p><b>Lugar de Nacimiento: </b>{{ $ciudad->nombre_ciudad}} - {{$departamento->nombre_departamento}} ( {{$pa->nombre_pais}})</p>
-                @endif @else
-                <p><b>Lugar de Nacimiento: </b>{{ $departamento->nombre_departamento}} ({{$pa->nombre_pais }})</p>
+                @foreach($paises as $pa) 
+                    @if(!empty($departamento)) 
+                        @if(!empty($ciudad)) 
+                            @if($pa->cod_pais == $departamento->cod_pais)
+                                <p><b>Lugar de Nacimiento: </b>{{ $ciudad->nombre_ciudad}} - {{$departamento->nombre_departamento}} ( {{$pa->nombre_pais}})</p>
+                            @endif 
+                        @else
+                            <p><b>Lugar de Nacimiento: </b>{{ $departamento->nombre_departamento}} ({{$pa->nombre_pais }})</p>
+                        @endif
+                    @else
+                        @if($pais==$pa->cod_pais)
+                            <p><b>Lugar de Nacimiento: </b>{{$pa->nombre_pais }}</p>
+                        @endif
+                        <?php $cont=2; ?> 
+                    @endif 
+                @endforeach 
+                @if($cont==1)
+                    <p><b>Lugar de Nacimiento: </b></p>
                 @endif
-                <?php $cont=2; ?> @endif @endforeach @if($cont==1)
-                <p><b>Lugar de Nacimiento: </b></p>@endif
                 <p><b>Dirección: </b>{{ $informacionpersonal->direccion }}</p>
 
                 @if (!empty($correo))
-                <p><b>E-mail: </b>{{ $correo->correo_nombre }}</p>
+                    <p><b>E-mail: </b>{{ $correo->correo_nombre }}</p>
                 @endif
             </div>
             <hr>

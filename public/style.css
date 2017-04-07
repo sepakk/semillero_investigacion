@@ -30,7 +30,7 @@ h2{
 	color: gray;
 }
 
-.big-form [type="email"], select, .big-form a, .big-form [type="password"], .big-form [type="date"], .big-form button,
+.big-form [type="email"], select, .big-form a, .big-form [type="password"], .big-form [type="date"], .big-form #add-more,
 .big-form [type="submit"], .big-form select, .big-form [type="number"], .big-form [type="text"], .big-form [type="file"],.big-form [type="checkbox"]{
 	display: block;
 	text-align: center;
@@ -60,7 +60,7 @@ h2{
 	max-width: 450px;
 }
 
-.big-form [type="submit"], ul a, .button-back, .menu-collapse, .big-form button{
+.big-form [type="submit"], ul a, .button-back, .menu-collapse, .big-form #add-more{
 	background: #0E3D38;
 	color: white;
 	padding: 8px 10px;
@@ -108,7 +108,7 @@ ul .menu-collapse{
 	display: none;
 }
 
-.big-form [type="submit"]:hover, .big-form button:hover, ul a:hover, .button-bkac:hover{
+.big-form [type="submit"]:hover, .big-form #add-more:hover, ul a:hover, .button-back:hover{
 	background: #1F7268;
 }
 
@@ -205,6 +205,13 @@ a{
 	width: 400px;
 }
 
+.top-right{
+	position: absolute;
+	top: -15px;
+	right: 10px;
+	z-index: 20;
+}
+
 .hidden{
 	display: none;
 }
@@ -251,6 +258,14 @@ a{
 	display: none;
 }
 
+.remove-btn{
+	background: default;
+	color: default;
+}
+
+.duplicate{
+	position: relative;
+}
 
 /*
 	ADMINISTRADOR
@@ -339,7 +354,7 @@ a{
 		border-radius: 0;
 	}
 
-	.big-form [type="submit"]:hover, .big-form button:hover, ul a:hover, .button-back:hover{
+	.big-form [type="submit"]:hover, .big-form #add-more:hover, ul a:hover, .button-back:hover{
 		background: #1F7268;
 	}
 

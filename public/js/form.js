@@ -33,6 +33,11 @@ $(document).ready(function () {
         $(".duplicate:last").find('select[name=ciudad]').addClass('hidden');
         $(".duplicate:last").find('#nciudad').addClass('hidden');
         $(".duplicate:last").find('#ndepto').addClass('hidden');
+        $(".duplicate:last").find('#cerrar').removeClass('hidden');
+        $(".duplicate:last").find('#cerrar').click(function(){
+            $(this).parent().remove();
+        });
+        $(".duplicate:last").find("input").val("");
     });
 });
 
@@ -54,7 +59,9 @@ $(document).on('change', 'select[name=país]', function (e) {
 $(document).on('click', '#graduado', function () {
     if ($(this).is(':checked')) {
         $(this).parent().parent().find(".graduado-hide").removeClass('hidden');
+        $(this).parent().parent().find(".graduado-hide").prop('required',true);
     } else {
         $(this).parent().parent().find(".graduado-hide").addClass('hidden');
+        $(this).parent().parent().find(".graduado-hide").prop('required',false);
     }
 });
